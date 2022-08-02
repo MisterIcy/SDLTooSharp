@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using SDLTooSharp.Managed.Events.Display;
 
 namespace SDLTooSharp.Bindings;
 
@@ -506,7 +507,7 @@ public static partial class SDL2
         /// </summary>
         public int Length;
     }
-    
+
     /// <summary>
     /// Keyboard text input event structure
     /// </summary>
@@ -532,5 +533,330 @@ public static partial class SDL2
         /// The editing text
         /// </summary>
         public fixed char Text[32];
+    }
+
+    /// <summary>
+    /// Mouse motion structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_MouseMotionEvent
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        public SDL_EventType Type;
+
+        /// <summary>
+        /// The timestamp the event occurred in milliseconds (from SDL_GetTicks())
+        /// </summary>
+        public uint Timestamp;
+
+        /// <summary>
+        /// The ID of the Window with keyboard focus
+        /// </summary>
+        public uint WindowId;
+
+        /// <summary>
+        /// The Mouse Instance id associated with the event
+        /// </summary>
+        public uint Which;
+
+        /// <summary>
+        /// The current button state
+        /// </summary>
+        public uint State;
+
+        /// <summary>
+        /// X coordinate, relative to the window
+        /// </summary>
+        public int X;
+
+        /// <summary>
+        /// Y coordinate, relative to the window
+        /// </summary>
+        public int Y;
+
+        /// <summary>
+        /// Relative motion in the X direction
+        /// </summary>
+        public int XRel;
+
+        /// <summary>
+        /// Relative motion in the Y direction
+        /// </summary>
+        public int YRel;
+    }
+
+    /// <summary>
+    /// Mouse button structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_MouseButtonEvent
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        public SDL_EventType Type;
+
+        /// <summary>
+        /// The timestamp the event occurred in milliseconds (from SDL_GetTicks())
+        /// </summary>
+        public uint Timestamp;
+
+        /// <summary>
+        /// The ID of the Window with keyboard focus
+        /// </summary>
+        public uint WindowId;
+
+        /// <summary>
+        /// The Mouse Instance id associated with the event
+        /// </summary>
+        public uint Which;
+
+        /// <summary>
+        /// The mouse button index
+        /// </summary>
+        public byte Button;
+
+        /// <summary>
+        /// Pressed or released
+        /// </summary>
+        /// <see cref="SDL2.SDL_PRESSED"/>
+        /// <see cref="SDL2.SDL_RELEASED"/>
+        public byte State;
+
+        /// <summary>
+        /// Number of clicks
+        /// </summary>
+        public byte Clicks;
+
+        private byte _padding1;
+
+        /// <summary>
+        /// X coordinate, relative to the window
+        /// </summary>
+        public int X;
+
+        /// <summary>
+        /// Y coordinate, relative to the window
+        /// </summary>
+        public int Y;
+    }
+
+    /// <summary>
+    /// Mouse wheel structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_MouseWheelEvent
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        public SDL_EventType Type;
+
+        /// <summary>
+        /// The timestamp the event occurred in milliseconds (from SDL_GetTicks())
+        /// </summary>
+        public uint Timestamp;
+
+        /// <summary>
+        /// The ID of the Window with keyboard focus
+        /// </summary>
+        public uint WindowId;
+
+        /// <summary>
+        /// The Mouse Instance id associated with the event
+        /// </summary>
+        public uint Which;
+
+        /// <summary>
+        /// The amount scrolled horizontally
+        /// </summary>
+        public int X;
+
+        /// <summary>
+        /// The amount scrolled vertically
+        /// </summary>
+        public int Y;
+
+        /// <summary>
+        /// The direction
+        /// </summary>
+        /// <see cref="SDL_MouseWheelDirection"/>
+        public uint Direction;
+
+        /// <summary>
+        /// The amount scrolled horizontally
+        /// </summary>
+        public float PreciseX;
+
+        /// <summary>
+        /// The amount scrolled vertically
+        /// </summary>
+        public float PreciseY;
+    }
+
+    /// <summary>
+    /// Drop event strcture
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_DropEvent
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        public SDL_EventType Type;
+
+        /// <summary>
+        /// The timestamp the event occurred in milliseconds (from SDL_GetTicks())
+        /// </summary>
+        public uint Timestamp;
+
+        /// <summary>
+        /// The filename
+        /// </summary>
+        public IntPtr File;
+
+        /// <summary>
+        /// The window that was dropped on
+        /// </summary>
+        public uint WindowId;
+    }
+
+    /// <summary>
+    /// Quit event structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_QuitEvent
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        public SDL_EventType Type;
+
+        /// <summary>
+        /// The timestamp the event occurred in milliseconds (from SDL_GetTicks())
+        /// </summary>
+        public uint Timestamp;
+    }
+
+    [StructLayout(LayoutKind.Explicit)]
+    public struct SDL_Event
+    {
+        /// <summary>
+        /// The event type
+        /// </summary>
+        [FieldOffset(0)] public SDL_EventType Type;
+
+        /// <summary>
+        /// Common event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_CommonEvent Common;
+
+        /// <summary>
+        /// Display event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_DisplayEvent Display;
+
+        /// <summary>
+        /// Window event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_WindowEvent Window;
+
+        /// <summary>
+        /// Keyboard event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_KeyboardEvent Key;
+
+        /// <summary>
+        /// Text editing event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_TextEditingEvent Edit;
+
+        /// <summary>
+        /// Extended text editing event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_TextEditingExtEvent EditExt;
+
+        /// <summary>
+        /// Text input event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_TextInputEvent Text;
+
+        /// <summary>
+        /// Mouse motion event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_MouseMotionEvent Motion;
+
+        /// <summary>
+        /// Mouse button event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_MouseButtonEvent Button;
+
+        /// <summary>
+        /// Mouse wheel event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_MouseWheelEvent Wheel;
+
+        /// <summary>
+        /// Quit event data
+        /// </summary>
+        [FieldOffset(0)] public SDL_QuitEvent Quit;
+
+        /// <summary>
+        /// Drop event data.
+        /// </summary>
+        [FieldOffset(0)] public SDL_DropEvent Drop;
+    }
+
+    public enum SDL_eventaction
+    {
+        SDL_ADDEVENT,
+        SDL_PEEKEVENT,
+        SDL_GETEVENT
+    }
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern void SDL_PumpEvents();
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int SDL_PeepEvents([In] SDL_Event[] events, int numEvents, SDL_eventaction action,
+        uint minType, uint maxType);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern bool SDL_HasEvent(uint type);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern bool SDL_HasEvents(uint minType, uint maxType);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern void SDL_FlushEvent(uint type);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern void SDL_FlushEvents(uint minType, uint maxType);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int SDL_PollEvent(ref SDL_Event @event);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int SDL_WaitEvent(ref SDL_Event @event);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int SDL_WaitEventTimeout(ref SDL_Event @event, int timeout);
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern int SDL_PushEvent(ref SDL_Event @event);
+
+    public const int SDL_QUERY = -1;
+    public const int SDL_IGNORE = 0;
+    public const int SDL_DISABLE = 0;
+    public const int SDL_ENABLE = 1;
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern byte SDL_EventState(uint type, int state);
+
+    public static byte SDL_GetEventState(uint type)
+    {
+        return SDL_EventState(type, SDL_QUERY);
     }
 }
