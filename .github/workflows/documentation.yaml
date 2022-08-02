@@ -1,0 +1,26 @@
+name: "Build Documentation"
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    name: Build & Deploy Documentation
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nikeee/docfx-action@v1.0.0
+        name: Build Documentation
+        with:
+          args: SDLTooSharp/docfx_project/docfx.json
+      
+      # Publish generated site using GitHub Pages
+      - uses: maxheld83/ghpages@master
+        name: Publish Documentation on GitHub Pages
+        env:
+          BUILD_DIR: SDLTooSharp/docfx_project/_site # docfx's default output directory is _site
+          GH_PAT: ${{ secrets.GH_PAT }}
