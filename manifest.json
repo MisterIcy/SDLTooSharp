@@ -1,0 +1,740 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/SDLTooSharp/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.MessageBox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.MessageBox.html",
+          "hash": "AganWn8aOaDkk6B7Ii34Hg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.Pixels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.Pixels.html",
+          "hash": "5gzU4Vw/tMwnHqQZv8TEWQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.Rect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.Rect.html",
+          "hash": "yShY5qJRfybfsVb91mUsmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendFactor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendFactor.html",
+          "hash": "NZVv13L/Q9Y7+wAlZ2dgsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendMode.html",
+          "hash": "6bJhDVjbqrjteSZmIrpYzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_BlendOperation.html",
+          "hash": "ULa4d3rOd9l2PW9itaYwYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_CommonEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_CommonEvent.html",
+          "hash": "FLz9eOWCo5w4si8+E/BAcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_DisplayEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_DisplayEvent.html",
+          "hash": "DM/gXupNoYspymBCvDt2ug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_DropEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_DropEvent.html",
+          "hash": "wgAAEz4WIhu36nbMjUJXzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Event.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Event.html",
+          "hash": "4c3HIqjWfbOuCv8HEtDiNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_EventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_EventType.html",
+          "hash": "moYnGtvlhkHXVO7aroB8Xg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_KeyboardEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_KeyboardEvent.html",
+          "hash": "faP2JKnFHhubbMGzV712eg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keycode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keycode.html",
+          "hash": "c0Hy08HVhu/p93SwhAtSIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keymod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keymod.html",
+          "hash": "fpcvCEpu1O0aXpbAlHat6A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keysym.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Keysym.html",
+          "hash": "wFSJKRz1eYcGkHYefWt8Sg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogCategory.html",
+          "hash": "YT0Y7zqMrIQguSd/150fbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogOutputFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogOutputFunction.html",
+          "hash": "FHMKtCTwPZilEtimXiyELA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_LogPriority.html",
+          "hash": "m61T+pIi+QNer0KHv19ITw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseButtonEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseButtonEvent.html",
+          "hash": "kxILrAOL/AN/iW/ZX9P9Pw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseMotionEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseMotionEvent.html",
+          "hash": "O32TO4/NffIQl0S/vmEhWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseWheelDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseWheelDirection.html",
+          "hash": "/zJJiFRgHecZuponuGJV8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseWheelEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_MouseWheelEvent.html",
+          "hash": "BFqEmkoNZXyrKlqo6miTuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_QuitEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_QuitEvent.html",
+          "hash": "K0RX+ER6tBplkQ/PTJL5RQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Scancode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_Scancode.html",
+          "hash": "Dy9x/bXStkmhuoMo847i7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_SystemCursor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_SystemCursor.html",
+          "hash": "54rEPUb5fkfeBOGBAZyVPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextEditingEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextEditingEvent.html",
+          "hash": "EI3ZrFy1PcCpAHc+JaIksg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextEditingExtEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextEditingExtEvent.html",
+          "hash": "JrTEaxHWXX6solP0DyLFDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextInputEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_TextInputEvent.html",
+          "hash": "ZAgU8Yk3iURHz+evH5Ey9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_WindowEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_WindowEvent.html",
+          "hash": "qr4/k1/QgsI9HHWYvOWA6A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_eventaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.SDL_eventaction.html",
+          "hash": "1B/9rcDTf9Gu060UQTi/1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDL2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDL2.html",
+          "hash": "37DQ/VwWxux5yapwV7vjEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.SDLVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.SDLVersion.html",
+          "hash": "f/QBhsiNjM42oU2YC+Z+Lw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.Video.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.Video.html",
+          "hash": "s121sUSZcKtnNq1U583nVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Bindings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Bindings.html",
+          "hash": "H0xV6LAtoGhzOXaGBfU0DA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Events.Display.DisplayEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Events.Display.DisplayEventArgs.html",
+          "hash": "sqcqsDJHV4h4cUOatWxjCw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Events.Display.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Events.Display.html",
+          "hash": "J++8NBpWeIcgyrE4ejL6yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Events.TTF.FontEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Events.TTF.FontEvent.html",
+          "hash": "XzKsjMrNNzt/xtUnc77Lbg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Events.TTF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Events.TTF.html",
+          "hash": "kv6O5O2oOYV0YsoJOV6kHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Exceptions.ManagedSDLException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Exceptions.ManagedSDLException.html",
+          "hash": "5pi8a0346JKw1FStdEdGkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Exceptions.SDLException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Exceptions.SDLException.html",
+          "hash": "wljN7r192J3YjhGLf2M5FQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Exceptions.TTFException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Exceptions.TTFException.html",
+          "hash": "4skJfmpoTrIfRaVoMRJAsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.Exceptions.html",
+          "hash": "WPFv8JwbekrsruDccNAswQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.SDL.Display.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.SDL.Display.html",
+          "hash": "Q2ROZXaNdGQ3c0ifGXiQqA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.SDL.DisplayMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.SDL.DisplayMode.html",
+          "hash": "fvkpRwD+l9Ggn8ApEch2JA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.SDL.DisplayModeFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.SDL.DisplayModeFormat.html",
+          "hash": "3FbPE8lY054DGOud4oY1CQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.SDL.SDL2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.SDL.SDL2.html",
+          "hash": "NydacofKahdpD3NS1bG+nQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.SDL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.SDL.html",
+          "hash": "mTqOlk0DFzaeZcrGoWyGBg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.TTF.Font.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.TTF.Font.html",
+          "hash": "O/0l/JqtNiF4BQw2nmkxYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.TTF.FontManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.TTF.FontManager.html",
+          "hash": "c5rUZHxzLYH+lJaC3HFOzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.TTF.GlyphMetrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.TTF.GlyphMetrics.html",
+          "hash": "FJA94ITgr5rKZFAaMrFq1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SDLTooSharp.Managed.TTF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SDLTooSharp.Managed.TTF.html",
+          "hash": "ok4zhySLR7cDI1DSJtKafg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "m5idWruaewRNdRV9RdlcNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "mwkuez8/HEpXaqxFx/x1vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "AVpnMc41Hz/gJmiXCFwDRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "A2K56nZ7mIMo1BlegGmGjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "bW1a1uMh8vMR2ffROAiacQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 51,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
