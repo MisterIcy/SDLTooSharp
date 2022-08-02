@@ -95,6 +95,9 @@ public static partial class SDL2
         SDL_BLENDOPERATION_MAXIMUM = 0x5
     }
 
+    /// <summary>
+    /// The normalized factor used to multiply pixel components.
+    /// </summary>
     public enum SDL_BlendFactor
     {
         /// <summary>
