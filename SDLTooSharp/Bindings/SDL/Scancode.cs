@@ -489,7 +489,7 @@ public static partial class SDL2
         /// <summary>
         /// Keypad 0
         /// </summary>
-        SDL_SCANCODEKP_0 = 98,
+        SDL_SCANCODE_KP_0 = 98,
 
         /// <summary>
         /// Keypad Period
