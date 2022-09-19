@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -34,4 +35,32 @@ public static partial class SDL
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_Quit();
+
+    internal static string PtrToManaged(IntPtr str, bool mustFree = false)
+    {
+        if (str == IntPtr.Zero)
+        {
+            return string.Empty;
+        }
+
+        unsafe
+        {
+            byte* ptr = (byte*)str;
+            while (*ptr != 0)
+            {
+                ptr++;
+            }
+
+            var result = Encoding.UTF8.GetString(
+                (byte*)str, (int)(ptr - (byte*)str)
+            );
+
+            if (mustFree)
+            {
+                //TODO: Implement free string
+            }
+
+            return result;
+        }
+    }
 }
