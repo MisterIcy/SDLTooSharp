@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added missing function `SDL_LoadWAV`.
+
 ### Fixed
 - Fix const types in Audio.cs.
 - Fix return type of `SDL_GetSystemRAM`.
