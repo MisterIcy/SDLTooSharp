@@ -55,6 +55,9 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GameControllerAddMappingsFromRW(IntPtr rw, int freeRw);
 
+    public static int SDL_GameControllerAddMappingsFromFile(string file) =>
+        SDL_GameControllerAddMappingsFromRW(SDL_RWFromFile(file, "rb"), 1);
+
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GameControllerAddMapping([MarshalAs(UnmanagedType.LPUTF8Str)] string mappingString);
 
