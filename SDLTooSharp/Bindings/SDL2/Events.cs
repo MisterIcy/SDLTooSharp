@@ -463,7 +463,7 @@ public static partial class SDL
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_PeepEvents(out SDL_Event events, int numEvents, SDL_eventaction action, uint minType,
+    public static extern int SDL_PeepEvents(out SDL_Event[] events, int numEvents, SDL_eventaction action, uint minType,
         uint maxType);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
