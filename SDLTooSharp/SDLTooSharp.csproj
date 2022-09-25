@@ -5,6 +5,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Title>SDLTooSharp</Title>
+        <Authors>Alexandros Koutroulis</Authors>
+        <Description>SDL2 Bindings for .NET Core</Description>
+        <PackageProjectUrl>https://github.com/MisterIcy/SDLTooSharp</PackageProjectUrl>
+        <PackageLicenseUrl>LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/MisterIcy/SDLTooSharp</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <PackageTags>SDL2</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
 </Project>
