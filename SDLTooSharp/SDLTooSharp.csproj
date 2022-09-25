@@ -10,11 +10,11 @@
         <Authors>Alexandros Koutroulis</Authors>
         <Description>SDL2 Bindings for .NET Core</Description>
         <PackageProjectUrl>https://github.com/MisterIcy/SDLTooSharp</PackageProjectUrl>
-        <PackageLicenseUrl>LICENSE</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <RepositoryUrl>https://github.com/MisterIcy/SDLTooSharp</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
         <PackageTags>SDL2</PackageTags>
-        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
 </Project>

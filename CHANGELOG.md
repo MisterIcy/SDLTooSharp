@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2022-09-25
+### Fixed
+- Fixed an issue with licensing when creating a package. 
+
 ## [0.1.0] - 2022-09-25
 ### Added
 - Bindings for SDL2
@@ -13,5 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bindings for SDL2 Image
 - Bindings for SDL2 Ttf
 
-[Unreleased]: https://github.com/MisterIcy/SDLTooSharp/compare/v0.1.0...HEAD
-[0.0.1]: https://github.com/MisterIcy/SDLTooSharp/releases/tag/v0.1.0
+[Unreleased]: https://github.com/MisterIcy/SDLTooSharp/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/MisterIcy/SDLTooSharp/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/MisterIcy/SDLTooSharp/releases/tag/v0.1.0
