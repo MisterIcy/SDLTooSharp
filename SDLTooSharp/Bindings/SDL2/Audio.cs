@@ -37,13 +37,13 @@ public static partial class SDL
     public const ushort AUDIO_F32MSB = 0x9120;
     public const ushort AUDIO_F32 = AUDIO_F32LSB;
 
-    public const ushort SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
-    public const ushort SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
-    public const ushort SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
-    public const ushort SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
+    public const int SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
+    public const int SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
+    public const int SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
+    public const int SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
 
-    public const ushort SDL_AUDIO_ALLOW_ANY_CHANGE = SDL_AUDIO_ALLOW_FREQUENCY_CHANGE | SDL_AUDIO_ALLOW_FORMAT_CHANGE |
-                                                     SDL_AUDIO_ALLOW_CHANNELS_CHANGE | SDL_AUDIO_ALLOW_SAMPLES_CHANGE;
+    public const int SDL_AUDIO_ALLOW_ANY_CHANGE = SDL_AUDIO_ALLOW_FREQUENCY_CHANGE | SDL_AUDIO_ALLOW_FORMAT_CHANGE |
+                                                  SDL_AUDIO_ALLOW_CHANNELS_CHANGE | SDL_AUDIO_ALLOW_SAMPLES_CHANGE;
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void SDL_AudioCallback(IntPtr userData, IntPtr stream, int len);
@@ -97,7 +97,8 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetCurrentAudioDriver")]
     private static extern IntPtr _SDL_GetCurrentAudioDriver();
 
-    public static string SDL_GetCurrentAudioDriver() => PtrToManaged(_SDL_GetCurrentAudioDriver());
+    public static string SDL_GetCurrentAudioDriver() =>
+        PtrToManaged(_SDL_GetCurrentAudioDriver());
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_OpenAudio(ref SDL_AudioSpec desired, ref SDL_AudioSpec obtained);
@@ -114,6 +115,9 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GetAudioDeviceSpec(int index, int isCapture, ref SDL_AudioSpec spec);
 
+    //FIXME: This is an operation to a double pointer which will probably will not work
+    //out of the box with marshalling and `out`. This has to be tested in order to verify
+    //if it works and if not, to be refactored. See issue #1
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GetDefaultAudioInfo([MarshalAs(UnmanagedType.LPUTF8Str)] out string name,
         ref SDL_AudioSpec spec, int isCapture);
@@ -148,6 +152,9 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern IntPtr SDL_LoadWAV_RW(IntPtr src, int freeSrc, out SDL_AudioSpec spec, [Out] IntPtr buf,
         out uint audioLen);
+
+    public static IntPtr SDL_LoadWAV(string file, out SDL_AudioSpec spec, [Out] IntPtr buf, out uint audioLen) =>
+        SDL_LoadWAV_RW(SDL_RWFromFile(file, "rb"), 1, out spec, buf, out audioLen);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_FreeWAV(IntPtr audioBuf);

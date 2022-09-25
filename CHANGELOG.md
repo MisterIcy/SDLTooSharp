@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Fix const types in Audio.cs.
+
 ## [0.1.1] - 2022-09-25
 ### Fixed
 - Fixed an issue with licensing when creating a package. 
