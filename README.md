@@ -1,6 +1,8 @@
 # SDLTooSharp
 
 ![License](https://shields.io/github/license/mistericy/sdltoosharp)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/MisterIcy/SDLTooSharp)
+
 
 SDL2 Bindings for .NET Core
 

@@ -26,7 +26,12 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
       
-      - name: Push
+      - name: Push (Github)
         run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source "https://nuget.pkg.github.com/MisterIcy/index.json" --api-key ${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Push (NuGet)
+        run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
+        env:
+          NUGET_TOKEN: ${{ secrets.NUGET_API_KEY }}
