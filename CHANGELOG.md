@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added missing function `SDL_LoadWAV`.
 - Added missing function `SDL_GameControllerAddMappingsFromFile`.
+- Added missing function `SDL_JoystickUpdate`.
 
 ### Fixed
 - Fix const types in Audio.cs.

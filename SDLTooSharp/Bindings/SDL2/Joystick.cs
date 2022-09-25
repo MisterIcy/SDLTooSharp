@@ -199,6 +199,9 @@ public static partial class SDL
     public static extern int SDL_JoystickNumButtons(IntPtr joystick);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+    public static extern void SDL_JoystickUpdate();
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_JoystickEventState(int state);
 
     public const short SDL_JOYSTICK_AXIS_MAX = 32767;
