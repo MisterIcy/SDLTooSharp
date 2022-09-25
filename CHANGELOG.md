@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added missing function `SDL_JoystickUpdate`.
 - Added metal related functions (`metal.h`)
 - Added system related functions (`system.h`).
+- Added version related function (`version.h`).
 
 
 ### Fixed
