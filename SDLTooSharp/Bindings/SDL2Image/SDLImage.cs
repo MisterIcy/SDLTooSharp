@@ -175,7 +175,7 @@ public static partial class SDLImage
         public int H;
         public int Count;
         public IntPtr Frames;
-        public IntPtr Delays;=
+        public IntPtr Delays;
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
