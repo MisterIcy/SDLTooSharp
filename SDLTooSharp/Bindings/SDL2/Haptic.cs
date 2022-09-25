@@ -96,7 +96,7 @@ public static partial class SDL
         public ushort Button;
         public ushort Interval;
         public fixed ushort RightSat[3];
-        public fixed ushort leftSat[3];
+        public fixed ushort LeftSat[3];
         public fixed short RightCoeff[3];
         public fixed short LeftCoeff[3];
         public fixed ushort DeadBand[2];

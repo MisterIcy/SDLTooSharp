@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix `SDL_JoyAxisEvent` struct.
 - Fix `SDL_PeepEvents` signature, where `events` parameter was not an array.
 - Fix `SDL_GameControllerGetSensorData` signature, where data was not an array.
+- Fix typo in `SDL_HapticCondition`
 
 ## [0.1.1] - 2022-09-25
 ### Fixed
