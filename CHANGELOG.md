@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix const types in Audio.cs.
 - Fix return type of `SDL_GetSystemRAM`.
 - Fix types in `SDL_KeyboardEvent` struct.
+- Fix `SDL_JoyAxisEvent` struct.
 
 ## [0.1.1] - 2022-09-25
 ### Fixed

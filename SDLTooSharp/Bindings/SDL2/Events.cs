@@ -200,10 +200,24 @@ public static partial class SDL
         public uint Type;
         public uint Timestamp;
         public int Which;
-        public byte Ball;
+        public byte Axis;
         public byte Padding1;
         public byte Padding2;
         public byte Padding3;
+        public short Value;
+        private short Padding4;
+    }
+    
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_JoyBallEvent
+    {
+        public uint Type;
+        public uint Timestamp;
+        public int Which;
+        public byte Ball;
+        private byte Padding1;
+        private byte Padding2;
+        private byte Padding3;
         public short XRel;
         public short YRel;
     }
@@ -218,20 +232,6 @@ public static partial class SDL
         public byte Value;
         private byte Padding1;
         private byte Padding2;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SDL_JoyBallEvent
-    {
-        public uint Type;
-        public uint Timestamp;
-        public int Which;
-        public byte Ball;
-        private byte Padding1;
-        private byte Padding2;
-        private byte Padding3;
-        public short XRel;
-        public short YRel;
     }
 
     [StructLayout(LayoutKind.Sequential)]
