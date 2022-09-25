@@ -295,7 +295,7 @@ public static partial class SDL
     public static extern float SDL_GameControllerGetSensorDataRate(IntPtr gameController, SDL_SensorType type);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_GameControllerGetSensorData(IntPtr gameController, SDL_SensorType type, out float data,
+    public static extern int SDL_GameControllerGetSensorData(IntPtr gameController, SDL_SensorType type, out float[] data,
         int numValues);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
