@@ -108,9 +108,9 @@ public static partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_KeyboardEvent
     {
-        public int Type;
-        public int Timestamp;
-        public int WindowID;
+        public uint Type;
+        public uint Timestamp;
+        public uint WindowID;
         public byte State;
         public byte Repeat;
         private byte Padding2;
