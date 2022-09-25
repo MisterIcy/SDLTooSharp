@@ -6,6 +6,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added missing function `SDL_LoadWAV`.
+- Added missing function `SDL_GameControllerAddMappingsFromFile`.
+- Added missing function `SDL_JoystickUpdate`.
+- Added metal related functions (`metal.h`)
+- Added system related functions (`system.h`).
+- Added version related function (`version.h`).
+- Added missing version functions to SDL_Image, SDL_Mixer and SDL_TTF.
+
+### Fixed
+- Fix const types in Audio.cs.
+- Fix return type of `SDL_GetSystemRAM`.
+- Fix types in `SDL_KeyboardEvent` struct.
+- Fix `SDL_JoyAxisEvent` struct.
+- Fix `SDL_PeepEvents` signature, where `events` parameter was not an array.
+- Fix `SDL_GameControllerGetSensorData` signature, where data was not an array.
+- Fix typo in `SDL_HapticCondition`
+
 ## [0.1.1] - 2022-09-25
 ### Fixed
 - Fixed an issue with licensing when creating a package. 

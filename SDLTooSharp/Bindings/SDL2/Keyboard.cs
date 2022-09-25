@@ -48,6 +48,7 @@ public static partial class SDL
 
     public static string SDL_GetKeyName(SDL_KeyCode key) =>
         PtrToManaged(_SDL_GetKeyName(key));
+
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern SDL_KeyCode SDL_GetKeyFromName([MarshalAs(UnmanagedType.LPUTF8Str)] string name);
 

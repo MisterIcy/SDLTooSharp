@@ -59,7 +59,7 @@ public static partial class SDL
     public static extern bool SDL_HasLASX();
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern bool SDL_GetSystemRAM();
+    public static extern int SDL_GetSystemRAM();
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern ulong SDL_SIMDGetAlignment();

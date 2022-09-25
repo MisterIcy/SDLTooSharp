@@ -68,6 +68,8 @@ public static partial class SDL
         SDL_PACKEDLAYOUT_1010102
     }
 
+    public static uint SDL_DEFINE_PIXELFOURCC(uint a, uint b, uint c, uint d) => SDL_FOURCC(a, b, c, d);
+    
     public static uint SDL_DEFINE_PIXELFORMAT(int type, int order, int layout, int bits, int bytes)
     {
         return (uint)((1 << 28) | (type << 24) | (order << 20) | (layout << 16) | (bits << 8) | (bytes << 0));

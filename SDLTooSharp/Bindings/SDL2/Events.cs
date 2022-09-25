@@ -108,9 +108,9 @@ public static partial class SDL
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_KeyboardEvent
     {
-        public int Type;
-        public int Timestamp;
-        public int WindowID;
+        public uint Type;
+        public uint Timestamp;
+        public uint WindowID;
         public byte State;
         public byte Repeat;
         private byte Padding2;
@@ -200,10 +200,24 @@ public static partial class SDL
         public uint Type;
         public uint Timestamp;
         public int Which;
-        public byte Ball;
+        public byte Axis;
         public byte Padding1;
         public byte Padding2;
         public byte Padding3;
+        public short Value;
+        private short Padding4;
+    }
+    
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_JoyBallEvent
+    {
+        public uint Type;
+        public uint Timestamp;
+        public int Which;
+        public byte Ball;
+        private byte Padding1;
+        private byte Padding2;
+        private byte Padding3;
         public short XRel;
         public short YRel;
     }
@@ -218,20 +232,6 @@ public static partial class SDL
         public byte Value;
         private byte Padding1;
         private byte Padding2;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SDL_JoyBallEvent
-    {
-        public uint Type;
-        public uint Timestamp;
-        public int Which;
-        public byte Ball;
-        private byte Padding1;
-        private byte Padding2;
-        private byte Padding3;
-        public short XRel;
-        public short YRel;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -463,7 +463,7 @@ public static partial class SDL
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_PeepEvents(out SDL_Event events, int numEvents, SDL_eventaction action, uint minType,
+    public static extern int SDL_PeepEvents(out SDL_Event[] events, int numEvents, SDL_eventaction action, uint minType,
         uint maxType);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
