@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Bindings.SDL2Image;
 
@@ -14,6 +15,15 @@ public static partial class SDLImage
         IMG_INIT_WEBP = 0x00000008,
         IMG_INIT_JXL = 0x00000010,
         IMG_INIT_AVIF = 0x00000020
+    }
+
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "IMG_Linked_Version")]
+    private static extern IntPtr _IMG_Linked_Version();
+
+    public static SDL.SDL_version IMG_Linked_Version()
+    {
+        IntPtr version = _IMG_Linked_Version();
+        return Marshal.PtrToStructure<SDL.SDL_version>(version);
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]

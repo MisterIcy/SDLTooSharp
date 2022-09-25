@@ -6,6 +6,15 @@ namespace SDLTooSharp.Bindings.SDL2Ttf;
 public static partial class SDLTtf
 {
     private const string dllName = "SDL2_ttf";
+    
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "TTF_Linked_Version")]
+    private static extern IntPtr _TTF_Linked_Version();
+
+    public static SDL.SDL_version TTF_Linked_Version()
+    {
+        IntPtr version = _TTF_Linked_Version();
+        return Marshal.PtrToStructure<SDL.SDL_version>(version);
+    }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void TTF_GetFreeTypeVersion(out int major, out int minor, out int patch);
