@@ -57,7 +57,7 @@ public static partial class SDL
 
             if (mustFree)
             {
-                //TODO: Implement free string
+                SDL_free(str);
             }
 
             return result;
