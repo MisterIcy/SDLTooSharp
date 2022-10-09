@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added a [class](SDLTooSharp/Managed/Font/Font.cs) for performing font operations in a more managed way. 
+
 ## [0.2.0] - 2022-09-25
 ### Added
 - Added missing function `SDL_LoadWAV`.
