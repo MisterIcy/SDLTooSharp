@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       matrix:
-        dotnet_versions: [ '6.0.x', '7.0.x' ]
+        dotnet_versions: [ '6.0.x' ]
         configuration: [ 'Release' ]
     
     steps:
