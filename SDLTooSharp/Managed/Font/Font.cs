@@ -8,9 +8,16 @@ namespace SDLTooSharp.Managed.Font;
 /// </summary>
 public class Font : IDisposable
 {
+    /// <summary>
+    /// Gets a value that represents the Pointer to the font object
+    /// </summary>
     public IntPtr FontPtr { get; private set; }
 
+    /// <summary>
+    /// Gets a value that indicates the filename of the loaded font
+    /// </summary>
     public string Filename { get; private set; }
+
     private int _pointSize;
     private uint _horizontalDpi;
     private uint _verticalDpi;
@@ -18,13 +25,186 @@ public class Font : IDisposable
     private readonly long _fontIndex = 0;
 
     /// <summary>
-    /// Sets or get the font's style.
+    /// Gets or sets the font's style
     /// </summary>
+    /// <see cref="FontStyle"/>
     public FontStyle Style
     {
         get => FontStyle.FromIntegerStyle(SDLTtf.TTF_GetFontStyle(FontPtr));
         set => SDLTtf.TTF_SetFontStyle(FontPtr, value.GetIntegerStyle());
     }
+
+    /// <summary>
+    /// Gets or sets the font's outline
+    /// </summary>
+    /// <remarks>Set 0 to default</remarks>
+    public int Outline
+    {
+        get => SDLTtf.TTF_GetFontOutline(FontPtr);
+        set => SDLTtf.TTF_SetFontOutline(FontPtr, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the font's Hinting
+    /// </summary>
+    /// <see cref="Hinting"/>
+    public Hinting Hinting
+    {
+        get => (Hinting)SDLTtf.TTF_GetFontHinting(FontPtr);
+        set => SDLTtf.TTF_SetFontHinting(FontPtr, (int)value);
+    }
+
+    /// <summary>
+    /// Gets or sets the font's alignment
+    /// </summary>
+    public WrapAlignment WrapAlignment
+    {
+        get => (WrapAlignment)SDLTtf.TTF_GetFontWrappedAlign(FontPtr);
+        set => SDLTtf.TTF_SetFontWrappedAlign(FontPtr, (int)value);
+    }
+
+    /// <summary>
+    /// Gets the font's height
+    /// </summary>
+    public int Height => SDLTtf.TTF_FontHeight(FontPtr);
+
+    /// <summary>
+    /// Gets the font's ascent
+    /// </summary>
+    public int Ascent => SDLTtf.TTF_FontAscent(FontPtr);
+
+    /// <summary>
+    /// Gets the font's descent
+    /// </summary>
+    public int Descent => SDLTtf.TTF_FontDescent(FontPtr);
+
+    /// <summary>
+    /// Gets the font's line skip
+    /// </summary>
+    public int LineSkip => SDLTtf.TTF_FontLineSkip(FontPtr);
+
+    /// <summary>
+    /// Gets or sets a value that indicates whether kerning is enabled for the font.
+    /// </summary>
+    public bool Kerning
+    {
+        get => SDLTtf.TTF_GetFontKerning(FontPtr) != 0;
+        set => SDLTtf.TTF_SetFontKerning(FontPtr, value ? 1 : 0);
+    }
+
+    /// <summary>
+    /// Gets a number of faces contained in the font.
+    /// </summary>
+    public long NumFontFaces => SDLTtf.TTF_FontFaces(FontPtr);
+
+    /// <summary>
+    /// Gets a value that indicates whether the font is a fixed width (monospace) one.
+    /// </summary>
+    public bool IsFixedWidth => SDLTtf.TTF_FontFaceIsFixedWidth(FontPtr) != 0;
+
+    /// <summary>
+    /// Gets the font's family name.
+    /// </summary>
+    public string FamilyName => SDLTtf.TTF_FontFaceFamilyName(FontPtr);
+
+    /// <summary>
+    /// Gets the font's style name.
+    /// </summary>
+    public string StyleName => SDLTtf.TTF_FontFaceStyleName(FontPtr);
+
+    /// <summary>
+    /// Checks whether a glyph is provided by the font
+    /// </summary>
+    /// <param name="glyph"></param>
+    /// <returns></returns>
+    public bool IsGlyphProvided(ushort glyph)
+    {
+        return SDLTtf.TTF_GlyphIsProvided(FontPtr, glyph) != 0;
+    }
+
+    /// <summary>
+    /// Checks whether a glyph is provided by the font
+    /// </summary>
+    /// <param name="glyph"></param>
+    /// <returns></returns>
+    public bool IsGlyphProvided(uint glyph)
+    {
+        return SDLTtf.TTF_GlyphIsProvided32(FontPtr, glyph) != 0;
+    }
+
+    /// <summary>
+    /// Gets the metrics for a glyph
+    /// </summary>
+    /// <param name="glyph"></param>
+    /// <returns></returns>'
+    /// TODO: Other glyph metrics should be included in this structure.
+    public GlyphMetrics GetGlyphMetrics(ushort glyph)
+    {
+        GlyphMetrics metrics = default;
+        SDLTtf.TTF_GlyphMetrics(FontPtr, glyph, out metrics.MinX, out metrics.MaxX, out metrics.MinY, out metrics.MaxY,
+            out metrics.Advance);
+
+        return metrics;
+    }
+
+    /// <summary>
+    /// Gets the metrics for a glyph
+    /// </summary>
+    /// <param name="glyph"></param>
+    /// <returns></returns>
+    public GlyphMetrics GetGlyphMetrics(uint glyph)
+    {
+        GlyphMetrics metrics = default;
+        SDLTtf.TTF_GlyphMetrics32(FontPtr, glyph, out metrics.MinX, out metrics.MaxX, out metrics.MinY,
+            out metrics.MaxY,
+            out metrics.Advance);
+
+        return metrics;
+    }
+
+    /// <summary>
+    /// Measures a text and returns its size
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <exception cref="FontException"></exception>
+    public void SizeText(string text, out int width, out int height)
+    {
+        //TODO: Refactor this to a Size Oject
+        int result = SDLTtf.TTF_SizeUTF8(FontPtr, text, out width, out height);
+        if (result != 0)
+        {
+            throw new FontException("Unable to get the size of the text!");
+        }
+    }
+
+    /// <summary>
+    /// Measures a text against a known width and reports how many characters can be rendered
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="measureWidth"></param>
+    /// <param name="extent"></param>
+    /// <param name="count"></param>
+    /// <exception cref="FontException"></exception>
+    public void MeasureText(string text, int measureWidth, out int extent, out int count)
+    {
+        int result = SDLTtf.TTF_MeasureUTF8(FontPtr, text, measureWidth, out extent, out count);
+        if (result != 0)
+        {
+            throw new FontException("Unable to measure the text");
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets a value that indicates whether Signed Distance Field is enabled
+    /// </summary>
+    public bool SignedDistanceField
+    {
+        get => SDLTtf.TTF_GetFontSDF(FontPtr);
+        set => SDLTtf.TTF_SetFontSDF(FontPtr, value);
+    }
+
 
     /// <summary>
     /// Gets or Sets the size of the font's points
@@ -47,7 +227,9 @@ public class Font : IDisposable
 
     private int _fontStyle;
 
-
+    /// <summary>
+    /// Gets a value which indicates the font's index inside the file. 
+    /// </summary>
     public long FontIndex => _fontIndex;
 
     public uint HorizontalDPI => _horizontalDpi;
