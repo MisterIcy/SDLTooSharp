@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDLTooSharp", "SDLTooSharp\SDLTooSharp.csproj", "{2FCF3BBA-DA2F-4E72-BB54-5078EA92305A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooSharpTests", "TooSharpTests\TooSharpTests.csproj", "{01C68590-9760-4735-A3CB-BC7BCEC33807}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2FCF3BBA-DA2F-4E72-BB54-5078EA92305A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FCF3BBA-DA2F-4E72-BB54-5078EA92305A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FCF3BBA-DA2F-4E72-BB54-5078EA92305A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
