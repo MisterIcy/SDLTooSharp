@@ -15,4 +15,9 @@ public class FontException : SDLException
     {
         return new FontException($"Unable to open the font ${filename}.");
     }
+
+    public static FontException UnableToRenderText()
+    {
+        return new FontException("Unable to render text.");
+    }
 }

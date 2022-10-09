@@ -1,4 +1,5 @@
-﻿using SDLTooSharp.Bindings.SDL2Ttf;
+﻿using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2Ttf;
 using SDLTooSharp.Managed.Exception.Font;
 
 namespace SDLTooSharp.Managed.Font;
@@ -368,6 +369,149 @@ public class Font : IDisposable
     ~Font()
     {
         Dispose(false);
+    }
+
+#endregion
+
+#region Rendering
+
+    public IntPtr RenderSolid(string text, SDL.SDL_Color foreground)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Solid(FontPtr, text, foreground);
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderSolid(string text, SDL.SDL_Color foreground, uint wrapLength)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Solid_Wrapped(FontPtr, text, foreground, wrapLength);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderShaded(string text, SDL.SDL_Color foreground, SDL.SDL_Color background)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Shaded(FontPtr, text, foreground, background);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderShaded(string text, SDL.SDL_Color foreground, SDL.SDL_Color background, uint wrapLength)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Shaded_Wrapped(FontPtr, text, foreground, background, wrapLength);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderBlended(string text, SDL.SDL_Color foreground)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Blended(FontPtr, text, foreground);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderShaded(string text, SDL.SDL_Color foreground, uint wrapLength)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_Blended_Wrapped(FontPtr, text, foreground, wrapLength);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderLCD(string text, SDL.SDL_Color foreground, SDL.SDL_Color background)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_LCD(FontPtr, text, foreground, background);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderLCD(string text, SDL.SDL_Color foreground, SDL.SDL_Color background, uint wrapLength)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderUTF8_LCD_Wrapped(FontPtr, text, foreground, background, wrapLength);
+
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderGlyphSolid(uint glyph, SDL.SDL_Color foreground)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderGlyph32_Solid(FontPtr, glyph, foreground);
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderGlyphBlended(uint glyph, SDL.SDL_Color foreground)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderGlyph32_Blended(FontPtr, glyph, foreground);
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderGlyphShaded(uint glyph, SDL.SDL_Color foreground, SDL.SDL_Color background)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderGlyph32_Shaded(FontPtr, glyph, foreground, background);
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
+    }
+
+    public IntPtr RenderGlyphLCD(uint glyph, SDL.SDL_Color foreground, SDL.SDL_Color background)
+    {
+        IntPtr surface = SDLTtf.TTF_RenderGlyph32_LCD(FontPtr, glyph, foreground, background);
+        if (surface == IntPtr.Zero)
+        {
+            throw FontException.UnableToRenderText();
+        }
+
+        return surface;
     }
 
 #endregion
