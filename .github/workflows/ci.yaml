@@ -11,6 +11,11 @@ on:
       - reopened
       - synchronize
 
+permissions:
+  contents: write
+  checks: write
+  pull-requests: write
+
 jobs:
   build:
     name: "Build and Test"
@@ -53,8 +58,7 @@ jobs:
           fi
 
       - name: Test PR
-        run: dotnet test --no-restore --no-build --configuration ${{matrix.configuration}} \
-          --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
+        run: dotnet test --no-restore --no-build --configuration ${{matrix.configuration}} --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
