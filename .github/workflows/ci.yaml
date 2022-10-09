@@ -41,7 +41,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration ${{matrix.configuration}} --framework ${{matrix.dotnet_versions}} --no-restore
+        run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore
 
       - name: Set PR Number
         id: prNumber
