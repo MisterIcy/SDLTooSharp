@@ -54,7 +54,7 @@ public class FontStyle : IEquatable<FontStyle>
     /// <remarks>Set this to true to eliminate all styling.</remarks>
     public bool Normal
     {
-        get => !(_isBold && _isItalic && _isUnderline && _isStrikethrough);
+        get => !(_isBold || _isItalic || _isUnderline || _isStrikethrough);
         set
         {
             if (value)
