@@ -271,6 +271,7 @@ public class SizeTest
         Assert.Equal(10, s2.Height);
     }
 
+    [Fact]
     public void TestDivideScalarByZeroSize()
     {
         Size s1 = new Size(20, 0);
