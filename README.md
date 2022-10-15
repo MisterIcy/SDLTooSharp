@@ -3,6 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/MisterIcy/SDLTooSharp)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/MisterIcy/SDLTooSharp)
 ![Nuget](https://img.shields.io/nuget/v/SDLTooSharp)
+[![SDLTooSharp Continuous Integration](https://github.com/MisterIcy/SDLTooSharp/actions/workflows/ci.yaml/badge.svg)](https://github.com/MisterIcy/SDLTooSharp/actions/workflows/ci.yaml)
 
 SDL2 Bindings for .NET Core
 
