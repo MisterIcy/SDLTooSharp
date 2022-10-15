@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace SDLTooSharp.Managed.Common;
 
@@ -66,61 +67,73 @@ public class Size : IEquatable<Size>
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(Size left, Size right)
     {
-        return left.Width == right._width && left.Height == right.Height;
+        return left.Width == right.Width && left.Height == right.Height;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(Size left, Size right)
     {
         return !(left == right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator +(Size left, Size right)
     {
         return new Size(left.Width + right.Width, left.Height + right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator +(Size left, int right)
     {
         return left + new Size(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator +(int left, Size right)
     {
         return right + left;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator -(Size left, Size right)
     {
         return new Size(left.Width - right.Width, left.Height - right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator -(Size left, int right)
     {
         return left - new Size(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator -(int left, Size right)
     {
         return new Size(left) - right;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator *(Size left, Size right)
     {
         return new Size(left.Width * right.Width, left.Height * right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator *(Size left, int right)
     {
         return left * new Size(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator *(int left, Size right)
     {
         return right * left;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator /(Size left, Size right)
     {
         if (right.Width == 0 || right.Height == 0)
@@ -131,11 +144,13 @@ public class Size : IEquatable<Size>
         return new Size(left.Width / right.Width, left.Height / right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator /(Size left, int right)
     {
         return left / new Size(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Size operator /(int left, Size right)
     {
         return new Size(left) / right;

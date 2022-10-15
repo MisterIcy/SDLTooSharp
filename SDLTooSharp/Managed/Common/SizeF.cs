@@ -1,6 +1,8 @@
-﻿namespace SDLTooSharp.Managed.Common;
+﻿using System.Runtime.CompilerServices;
 
-public class SizeF: IEquatable<SizeF>
+namespace SDLTooSharp.Managed.Common;
+
+public class SizeF : IEquatable<SizeF>
 {
     private float _width;
 
@@ -55,62 +57,74 @@ public class SizeF: IEquatable<SizeF>
     {
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(SizeF left, SizeF right)
     {
-        return Math.Abs(left.Width - right._width) < float.Epsilon && 
+        return Math.Abs(left.Width - right._width) < float.Epsilon &&
                Math.Abs(left.Height - right.Height) < float.Epsilon;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(SizeF left, SizeF right)
     {
         return !(left == right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator +(SizeF left, SizeF right)
     {
         return new SizeF(left.Width + right.Width, left.Height + right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator +(SizeF left, float right)
     {
         return left + new SizeF(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator +(float left, SizeF right)
     {
         return right + left;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator -(SizeF left, SizeF right)
     {
         return new SizeF(left.Width - right.Width, left.Height - right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator -(SizeF left, float right)
     {
         return left - new SizeF(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator -(float left, SizeF right)
     {
         return new SizeF(left) - right;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator *(SizeF left, SizeF right)
     {
         return new SizeF(left.Width * right.Width, left.Height * right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator *(SizeF left, float right)
     {
         return left * new SizeF(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator *(float left, SizeF right)
     {
         return right * left;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator /(SizeF left, SizeF right)
     {
         if (right.Width == 0 || right.Height == 0)
@@ -121,11 +135,13 @@ public class SizeF: IEquatable<SizeF>
         return new SizeF(left.Width / right.Width, left.Height / right.Height);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator /(SizeF left, float right)
     {
         return left / new SizeF(right);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator /(float left, SizeF right)
     {
         return new SizeF(left) / right;
