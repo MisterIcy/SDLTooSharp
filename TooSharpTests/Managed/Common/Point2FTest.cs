@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
+﻿using System.Drawing;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
@@ -91,58 +92,127 @@ public class Point2FTest
         Assert.Equal(0.9f - 3.2f, p4.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestSubtractScalarFromPoint()
     {
+        Point2F p1 = new Point2F(2.3f, 4.29f);
+        float v = 3.14159f;
+
+        Point2F p2 = p1 - v;
+        Assert.Equal(2.3f - 3.14159f, p2.X);
+        Assert.Equal(4.29f - 3.14159f, p2.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestSubtractPointFromScalar()
     {
+        Point2F p1 = new Point2F(2.3f, 4.29f);
+        float v = 3.14159f;
+
+        Point2F p2 = v - p1;
+        Assert.Equal(3.14159f - 2.3f, p2.X);
+        Assert.Equal(3.14159f - 4.29f, p2.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestMultiplyPoints()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        Point2F p2 = new Point2F(3.2f, 2.3f);
+
+        Point2F p3 = p1 * p2;
+        Assert.Equal(2.2f * 3.2f, p3.X);
+        Assert.Equal(3.3f * 2.3f, p3.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestMultiplyPointWithScalar()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        float v = 3.14159f;
+
+        Point2F p2 = p1 * v;
+        Assert.Equal(2.2f * v, p2.X);
+        Assert.Equal(3.3f * v, p2.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestMultiplyScalarWithPoint()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        float v = 3.14159f;
+
+        Point2F p2 = v * p1;
+        Assert.Equal(v * 2.2f, p2.X);
+        Assert.Equal(v * 3.3f, p2.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDividePoints()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        Point2F p2 = new Point2F(3.2f, 2.3f);
+
+        Point2F p3 = p1 / p2;
+        Assert.Equal(2.2f / 3.2f, p3.X);
+        Assert.Equal(3.3f / 2.3f, p3.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDividePointsWithZero()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        Point2F p2 = new Point2F(3.2f, 0.0f);
+
+        Assert.Throws<DivideByZeroException>(() =>
+        {
+            Point2F p3 = p1 / p2;
+        });
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDividePointWithScalar()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        float v = 3.14159f;
+
+        Point2F p2 = p1 / v;
+        Assert.Equal(2.2f / v, p2.X);
+        Assert.Equal(3.3f / v, p2.Y);
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDividePointWithZeroScalar()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        float v = 0;
+
+        Assert.Throws<DivideByZeroException>(() =>
+        {
+            Point2F pt2 = p1 / v;
+        });
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDivideScalarWithZeroPoint()
     {
+        Point2F p1 = new Point2F(2.2f, 0);
+        float v = 3.14159f;
+
+        Assert.Throws<DivideByZeroException>(() =>
+        {
+            Point2F pt2 = v / p1;
+        });
     }
 
-    [Fact(Skip = "Needs to be implemented")]
+    [Fact]
     public void TestDivideScalarWithPoint()
     {
+        Point2F p1 = new Point2F(2.2f, 3.3f);
+        float v = 3.14159f;
+
+        Point2F p2 = v / p1;
+        Assert.Equal(v / 2.2f, p2.X);
+        Assert.Equal(v / 3.3f, p2.Y);
     }
 }
