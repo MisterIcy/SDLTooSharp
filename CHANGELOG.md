@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added a [class](SDLTooSharp/Managed/Font/Font.cs) for performing font operations in a more managed way. 
+- Added a [class](SDLTooSharp/Managed/Font/Font.cs) for performing font operations in a more managed way.
+- Added classes for [Point2](SDLTooSharp/Managed/Common/Point2.cs) and [Point2F](SDLTooSharp/Managed/Common/Point2.cs).
 
 ## [0.2.0] - 2022-09-25
 ### Added
