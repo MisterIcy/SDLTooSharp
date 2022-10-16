@@ -212,4 +212,26 @@ public class RectangleTest
         
         Assert.True(r1.Equals(r2));
     }
+
+    [Fact]
+    public void TestIntersectionRectangleForIntersectingRects()
+    {
+        Rectangle r1 = new Rectangle(10, 10, 10, 10);
+        Rectangle r2 = new Rectangle(18, 18, 20, 20);
+
+        Rectangle intersection = new Rectangle(18, 18, 2, 2);
+        
+        Assert.Equal(intersection, r1.Intersection(r2));
+    }
+
+    [Fact]
+    public void TestIntersectionRectangleForNonIntersectingRects()
+    {
+        Rectangle r1 = new Rectangle(10, 10, 10, 10);
+        Rectangle r2 = new Rectangle(0, 0, 2, 3);
+
+        Rectangle intersection = new Rectangle(0, 0, 0, 0);
+        
+        Assert.Equal(intersection, r1.Intersection(r2));
+    }
 }

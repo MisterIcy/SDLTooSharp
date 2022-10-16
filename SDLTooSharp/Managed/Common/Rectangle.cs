@@ -138,7 +138,17 @@ public class Rectangle : IEquatable<Rectangle>
 
     public Rectangle Intersection(Rectangle other)
     {
-        throw new NotImplementedException();
+        if (!IntersectsWith(other))
+        {
+            return new Rectangle();
+        }
+
+        int left = Math.Max(Left, other.Left);
+        int right = Math.Min(Right, other.Right);
+        int top = Math.Max(Top, other.Top);
+        int bottom = Math.Min(Bottom, other.Bottom);
+        
+        return new Rectangle(left, top, right - left, bottom - top);
     }
 
     public Rectangle Union(Rectangle other)
@@ -150,12 +160,12 @@ public class Rectangle : IEquatable<Rectangle>
     {
         throw new NotImplementedException();
     }
-    
+
     public Rectangle Inflate(Size size)
     {
         throw new NotImplementedException();
     }
-    
+
     public bool Equals(Rectangle? other)
     {
         if (ReferenceEquals(null, other)) return false;
