@@ -1,8 +1,10 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
+[ExcludeFromCodeCoverage]
 public static partial class SDL
 {
     private const string dllName = "SDL2";

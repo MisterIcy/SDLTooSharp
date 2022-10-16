@@ -1,9 +1,11 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Bindings.SDL2Mixer;
 
+[ExcludeFromCodeCoverage]
 public static partial class SDLMixer
 {
     private const string dllName = "SDL2_mixer";

@@ -1,8 +1,10 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Bindings.SDL2Image;
 
+[ExcludeFromCodeCoverage]
 public static partial class SDLImage
 {
     private const string dllName = "SDL2_image";
