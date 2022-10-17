@@ -1,4 +1,5 @@
-﻿using SDLTooSharp.Bindings.SDL2;
+﻿using System.Security.Cryptography;
+using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
@@ -233,5 +234,55 @@ public class RectangleTest
         Rectangle intersection = new Rectangle(0, 0, 0, 0);
         
         Assert.Equal(intersection, r1.Intersection(r2));
+    }
+
+    [Fact]
+    public void TestOffset()
+    {
+        Rectangle r1 = new Rectangle(5, 2, 2, 2);
+        Point2 pt = new Point2(3, 7);
+        
+        r1.Offset(pt);
+        
+        Assert.Equal(8, r1.Origin.X);
+        Assert.Equal(9, r1.Origin.Y);
+    }
+
+    [Fact]
+    public void TestInflate()
+    {
+        Rectangle r1 = new Rectangle(10, 10, 10, 10);
+        Size sz = new Size(4, 4);
+
+        Rectangle inflated = r1.Inflate(sz);
+        
+        Assert.Equal(8, inflated.X);
+        Assert.Equal(8, inflated.Y);
+        Assert.Equal(14, inflated.Width);
+        Assert.Equal(14, inflated.Height);
+    }
+
+    [Fact]
+    public void TestFromLTRB()
+    {
+        Rectangle r1 = Rectangle.FromLTRB(10, 10, 20, 20);
+        Assert.Equal(10, r1.Left);
+        Assert.Equal(10, r1.Top);
+        Assert.Equal(10, r1.Width);
+        Assert.Equal(10, r1.Height);
+    }
+
+    [Fact]
+    public void TestUnionRectangle()
+    {
+        Rectangle r1 = new Rectangle(2, 3, 10, 12);
+        Rectangle r2 = new Rectangle(5, 1, 21, 8);
+
+        Rectangle union = r1.Union(r2);
+        
+        Assert.Equal(2, union.Left);
+        Assert.Equal(1, union.Top);
+        Assert.Equal(26, union.Right);
+        Assert.Equal(15, union.Bottom);
     }
 }

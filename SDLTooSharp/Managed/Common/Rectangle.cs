@@ -52,6 +52,11 @@ public class Rectangle : IEquatable<Rectangle>
     {
     }
 
+    public static Rectangle FromLTRB(int left, int top, int right, int bottom)
+    {
+        return new Rectangle(left, top, right - left, bottom - top);
+    }
+
 #region Casting Operators
 
     public static explicit operator SDL.SDL_Rect(Rectangle r)
@@ -147,23 +152,33 @@ public class Rectangle : IEquatable<Rectangle>
         int right = Math.Min(Right, other.Right);
         int top = Math.Max(Top, other.Top);
         int bottom = Math.Min(Bottom, other.Bottom);
-        
+
         return new Rectangle(left, top, right - left, bottom - top);
     }
 
     public Rectangle Union(Rectangle other)
     {
-        throw new NotImplementedException();
+        var left = Math.Min(Left, other.Left);
+        var top = Math.Min(Top, other.Top);
+        var right = Math.Max(Right, other.Right);
+        var bottom = Math.Max(Bottom, other.Bottom);
+
+        return Rectangle.FromLTRB(left, top, right, bottom);
     }
 
-    public Rectangle Offset(Point2 offset)
+    public void Offset(Point2 offset)
     {
-        throw new NotImplementedException();
+        Origin += offset;
     }
 
     public Rectangle Inflate(Size size)
     {
-        throw new NotImplementedException();
+        return new Rectangle(
+            X - (size.Width / 2),
+            Y - (size.Height / 2),
+            Width + size.Width,
+            Height + size.Height
+        );
     }
 
     public bool Equals(Rectangle? other)
