@@ -1,0 +1,36 @@
+﻿name: "Cleanup Repo"
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch: {}
+  
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v6
+        name: "Cleanup PRs/Issues"
+        with:
+          days-before-issue-stale: 30
+          days-before-pr-stale: 45
+          days-before-issue-close: 7
+          days-before-pr-close: 14
+          stale-issue-message: 'This issue is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 7 days.'
+          stale-pr-message: 'This PR is stale because it has been open 45 days with no activity. Remove stale label or comment or this will be closed in 14 days.'
+          close-issue-message: 'This issue has been closed due to inactivity. Feel free to re-open it once it is ready.'
+          close-pr-message: 'This PR has been closed due to inactivity. Feel free to re-open it once it is ready.'
+          close-issue-label: 'Staled'
+          delete-branch: true
+      - name: "Cleanup Branches"
+        uses: phpdocker-io/github-actions-delete-abandoned-branches@v1
+        with:
+          github_token: ${{ github.token }}
+          last_commit_age_days: 420
+          dry_run: no
+
+          
