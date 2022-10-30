@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL
 {
-    public const int SDLK_SCANCODE_MASK = (1 << 30);
+    public const int SDLK_SCANCODE_MASK = ( 1 << 30 );
 
     public static int SDL_SCANCODE_TO_KEYCODE(int x)
     {

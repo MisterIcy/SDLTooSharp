@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Managed.Common;
+using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
 
@@ -110,8 +110,7 @@ public class SizeFTest
     {
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = -1.9f;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = s1 + v;
         });
     }
@@ -134,8 +133,7 @@ public class SizeFTest
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = -1.9f;
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = v + s1;
         });
     }
@@ -169,8 +167,7 @@ public class SizeFTest
     {
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = -1.9f;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = s1 - v;
         });
     }
@@ -180,8 +177,7 @@ public class SizeFTest
     {
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = 2.3f;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = s1 - v;
         });
     }
@@ -203,8 +199,7 @@ public class SizeFTest
     {
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = -8.9f;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = v - s1;
         });
     }
@@ -214,8 +209,7 @@ public class SizeFTest
     {
         SizeF s1 = new SizeF(2.2f, 3.3f);
         float v = 1.9f;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             SizeF s3 = v - s1;
         });
     }
@@ -274,8 +268,7 @@ public class SizeFTest
         SizeF s1 = new SizeF(2.2f, 3.3f);
         SizeF s2 = new SizeF(1.3f, 0.0f);
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             SizeF s3 = s1 / s2;
         });
     }
@@ -298,8 +291,7 @@ public class SizeFTest
         SizeF s1 = new SizeF(2.2f, 3.3f);
         SizeF s2 = new SizeF(1.3f, 0.0f);
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             SizeF s3 = s1 / 0;
         });
     }
@@ -322,8 +314,7 @@ public class SizeFTest
         SizeF s1 = new SizeF(2.2f, 0.0f);
 
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             SizeF s3 = 4.92f / s1;
         });
     }

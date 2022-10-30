@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
@@ -218,10 +218,10 @@ public static partial class SDL
     public const byte SDL_HAT_RIGHT = 0x02;
     public const byte SDL_HAT_DOWN = 0x04;
     public const byte SDL_HAT_LEFT = 0x08;
-    public const byte SDL_HAT_RIGHTUP = (SDL_HAT_RIGHT | SDL_HAT_UP);
-    public const byte SDL_HAT_RIGHTDOWN = (SDL_HAT_RIGHT | SDL_HAT_DOWN);
-    public const byte SDL_HAT_LEFTUP = (SDL_HAT_LEFT | SDL_HAT_UP);
-    public const byte SDL_HAT_LEFTDOWN = (SDL_HAT_LEFT | SDL_HAT_DOWN);
+    public const byte SDL_HAT_RIGHTUP = ( SDL_HAT_RIGHT | SDL_HAT_UP );
+    public const byte SDL_HAT_RIGHTDOWN = ( SDL_HAT_RIGHT | SDL_HAT_DOWN );
+    public const byte SDL_HAT_LEFTUP = ( SDL_HAT_LEFT | SDL_HAT_UP );
+    public const byte SDL_HAT_LEFTDOWN = ( SDL_HAT_LEFT | SDL_HAT_DOWN );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern byte SDL_JoystickGetHat(IntPtr joystick, int hat);

@@ -1,40 +1,40 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL
 {
-    public const uint SDL_HAPTIC_CONSTANT = (1u << 0);
+    public const uint SDL_HAPTIC_CONSTANT = ( 1u << 0 );
 
-    public const uint SDL_HAPTIC_SINE = (1u << 1);
+    public const uint SDL_HAPTIC_SINE = ( 1u << 1 );
 
-    public const uint SDL_HAPTIC_LEFTRIGHT = (1u << 2);
+    public const uint SDL_HAPTIC_LEFTRIGHT = ( 1u << 2 );
 
-    public const uint SDL_HAPTIC_TRIANGLE = (1u << 3);
+    public const uint SDL_HAPTIC_TRIANGLE = ( 1u << 3 );
 
-    public const uint SDL_HAPTIC_SAWTOOTHUP = (1u << 4);
+    public const uint SDL_HAPTIC_SAWTOOTHUP = ( 1u << 4 );
 
-    public const uint SDL_HAPTIC_SAWTOOTHDOWN = (1u << 5);
+    public const uint SDL_HAPTIC_SAWTOOTHDOWN = ( 1u << 5 );
 
-    public const uint SDL_HAPTIC_RAMP = (1u << 6);
+    public const uint SDL_HAPTIC_RAMP = ( 1u << 6 );
 
-    public const uint SDL_HAPTIC_SPRING = (1u << 7);
+    public const uint SDL_HAPTIC_SPRING = ( 1u << 7 );
 
-    public const uint SDL_HAPTIC_DAMPER = (1u << 8);
+    public const uint SDL_HAPTIC_DAMPER = ( 1u << 8 );
 
-    public const uint SDL_HAPTIC_INERTIA = (1u << 9);
+    public const uint SDL_HAPTIC_INERTIA = ( 1u << 9 );
 
-    public const uint SDL_HAPTIC_FRICTION = (1u << 10);
+    public const uint SDL_HAPTIC_FRICTION = ( 1u << 10 );
 
-    public const uint SDL_HAPTIC_CUSTOM = (1u << 11);
+    public const uint SDL_HAPTIC_CUSTOM = ( 1u << 11 );
 
-    public const uint SDL_HAPTIC_GAIN = (1u << 12);
+    public const uint SDL_HAPTIC_GAIN = ( 1u << 12 );
 
-    public const uint SDL_HAPTIC_AUTOCENTER = (1u << 13);
+    public const uint SDL_HAPTIC_AUTOCENTER = ( 1u << 13 );
 
-    public const uint SDL_HAPTIC_STATUS = (1u << 14);
+    public const uint SDL_HAPTIC_STATUS = ( 1u << 14 );
 
-    public const uint SDL_HAPTIC_PAUSE = (1u << 15);
+    public const uint SDL_HAPTIC_PAUSE = ( 1u << 15 );
 
     public const int SDL_HAPTIC_POLAR = 0;
     public const int SDL_HAPTIC_CARTESIAN = 1;

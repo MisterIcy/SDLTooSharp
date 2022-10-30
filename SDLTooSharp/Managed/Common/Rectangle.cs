@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Common;
@@ -57,12 +57,11 @@ public class Rectangle : IEquatable<Rectangle>
         return new Rectangle(left, top, right - left, bottom - top);
     }
 
-#region Casting Operators
+    #region Casting Operators
 
     public static explicit operator SDL.SDL_Rect(Rectangle r)
     {
-        SDL.SDL_Rect rect = new SDL.SDL_Rect()
-        {
+        SDL.SDL_Rect rect = new SDL.SDL_Rect() {
             X = r.X,
             Y = r.Y,
             W = r.Width,
@@ -78,8 +77,7 @@ public class Rectangle : IEquatable<Rectangle>
 
     public static explicit operator System.Drawing.Rectangle(Rectangle r)
     {
-        System.Drawing.Rectangle rect = new System.Drawing.Rectangle()
-        {
+        System.Drawing.Rectangle rect = new System.Drawing.Rectangle() {
             X = r.X,
             Y = r.Y,
             Width = r.Width,
@@ -94,7 +92,7 @@ public class Rectangle : IEquatable<Rectangle>
         return new Rectangle(r.X, r.Y, r.Width, r.Height);
     }
 
-#endregion
+    #endregion
 
     public static bool operator ==(Rectangle left, Rectangle right)
     {
@@ -106,7 +104,7 @@ public class Rectangle : IEquatable<Rectangle>
 
     public static bool operator !=(Rectangle left, Rectangle right)
     {
-        return !(left == right);
+        return !( left == right );
     }
 
     public bool ContainsPoint(Point2 pt)
@@ -131,7 +129,7 @@ public class Rectangle : IEquatable<Rectangle>
 
     public bool IntersectsWith(Rectangle other)
     {
-        if (IsEmpty || other.IsEmpty)
+        if ( IsEmpty || other.IsEmpty )
         {
             return false;
         }
@@ -143,7 +141,7 @@ public class Rectangle : IEquatable<Rectangle>
 
     public Rectangle Intersection(Rectangle other)
     {
-        if (!IntersectsWith(other))
+        if ( !IntersectsWith(other) )
         {
             return new Rectangle();
         }
@@ -174,8 +172,8 @@ public class Rectangle : IEquatable<Rectangle>
     public Rectangle Inflate(Size size)
     {
         return new Rectangle(
-            X - (size.Width / 2),
-            Y - (size.Height / 2),
+            X - ( size.Width / 2 ),
+            Y - ( size.Height / 2 ),
             Width + size.Width,
             Height + size.Height
         );
@@ -183,16 +181,21 @@ public class Rectangle : IEquatable<Rectangle>
 
     public bool Equals(Rectangle? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
+        if ( ReferenceEquals(null, other) )
+            return false;
+        if ( ReferenceEquals(this, other) )
+            return true;
         return _origin.Equals(other._origin) && _dimensions.Equals(other._dimensions);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if ( ReferenceEquals(null, obj) )
+            return false;
+        if ( ReferenceEquals(this, obj) )
+            return true;
+        if ( obj.GetType() != this.GetType() )
+            return false;
         return Equals((Rectangle)obj);
     }
 

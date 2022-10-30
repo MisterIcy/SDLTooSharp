@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -40,7 +40,7 @@ public static partial class SDL
 
     internal static string PtrToManaged(IntPtr str, bool mustFree = false)
     {
-        if (str == IntPtr.Zero)
+        if ( str == IntPtr.Zero )
         {
             return string.Empty;
         }
@@ -48,16 +48,16 @@ public static partial class SDL
         unsafe
         {
             byte* ptr = (byte*)str;
-            while (*ptr != 0)
+            while ( *ptr != 0 )
             {
                 ptr++;
             }
 
             var result = Encoding.UTF8.GetString(
-                (byte*)str, (int)(ptr - (byte*)str)
+                (byte*)str, (int)( ptr - (byte*)str )
             );
 
-            if (mustFree)
+            if ( mustFree )
             {
                 SDL_free(str);
             }

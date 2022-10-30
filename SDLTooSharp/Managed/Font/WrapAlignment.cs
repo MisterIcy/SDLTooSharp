@@ -1,6 +1,6 @@
-﻿namespace SDLTooSharp.Managed.Font;
+namespace SDLTooSharp.Managed.Font;
 
-public enum WrapAlignment: int
+public enum WrapAlignment : int
 {
     Left = 0,
     Center = 1,

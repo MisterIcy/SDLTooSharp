@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
@@ -207,7 +207,7 @@ public static partial class SDL
         public short Value;
         private short Padding4;
     }
-    
+
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_JoyBallEvent
     {
@@ -463,8 +463,13 @@ public static partial class SDL
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_PeepEvents(out SDL_Event[] events, int numEvents, SDL_eventaction action, uint minType,
-        uint maxType);
+    public static extern int SDL_PeepEvents(
+        out SDL_Event[] events,
+        int numEvents,
+        SDL_eventaction action,
+        uint minType,
+        uint maxType
+    );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool SDL_HasEvent(uint type);
@@ -494,19 +499,34 @@ public static partial class SDL
     public delegate int SDL_EventFilter(IntPtr userData, ref SDL_Event @event);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_SetEventFilter(SDL_EventFilter filter, IntPtr userData);
+    public static extern void SDL_SetEventFilter(
+        [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
+        IntPtr userData
+    );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern bool SDL_GetEventFilter(out SDL_EventFilter filter, out IntPtr userData);
+    public static extern bool SDL_GetEventFilter(
+        [MarshalAs(UnmanagedType.FunctionPtr)] out SDL_EventFilter filter,
+        out IntPtr userData
+    );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_AddEventWatch(SDL_EventFilter filter, IntPtr userData);
+    public static extern void SDL_AddEventWatch(
+        [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
+        IntPtr userData
+    );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_DelEventWatch(SDL_EventFilter filter, IntPtr userData);
+    public static extern void SDL_DelEventWatch(
+        [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
+        IntPtr userData
+    );
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_FilterEvents(SDL_EventFilter filter, IntPtr userData);
+    public static extern void SDL_FilterEvents(
+        [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
+        IntPtr userData
+    );
 
     public const int SDL_QUERY = -1;
     public const int SDL_IGNORE = 0;

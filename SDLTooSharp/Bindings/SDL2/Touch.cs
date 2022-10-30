@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -27,7 +27,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern long SDL_GetTouchDevice(int index);
 
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl,EntryPoint = "SDL_GetTouchName")]
+    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetTouchName")]
     private static extern IntPtr _SDL_GetTouchName(int index);
 
     public static string SDL_GetTouchName(int index) => PtrToManaged(_SDL_GetTouchName(index));

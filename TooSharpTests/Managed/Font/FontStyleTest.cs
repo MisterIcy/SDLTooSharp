@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Managed.Font;
+using SDLTooSharp.Managed.Font;
 
 namespace TooSharpTests.Managed.Font;
 
@@ -39,7 +39,7 @@ public class FontStyleTest
         Assert.False(style.Strikethrough);
         Assert.Equal(2, style.GetIntegerStyle());
     }
-    
+
     [Fact]
     public void TestUnderlineFontTest()
     {
@@ -51,7 +51,7 @@ public class FontStyleTest
         Assert.False(style.Strikethrough);
         Assert.Equal(4, style.GetIntegerStyle());
     }
-    
+
     [Fact]
     public void TestStrikethroughFontStyle()
     {

@@ -1,4 +1,4 @@
-﻿namespace SDLTooSharp.Bindings.SDL2;
+namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL
 {

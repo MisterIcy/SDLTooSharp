@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Bindings.SDL2Ttf;
+using SDLTooSharp.Bindings.SDL2Ttf;
 
 namespace SDLTooSharp.Managed.Font;
 
@@ -54,10 +54,9 @@ public class FontStyle : IEquatable<FontStyle>
     /// <remarks>Set this to true to eliminate all styling.</remarks>
     public bool Normal
     {
-        get => !(_isBold || _isItalic || _isUnderline || _isStrikethrough);
-        set
-        {
-            if (value)
+        get => !( _isBold || _isItalic || _isUnderline || _isStrikethrough );
+        set {
+            if ( value )
             {
                 _isBold = _isItalic = _isUnderline = _isStrikethrough = false;
             }
@@ -87,15 +86,15 @@ public class FontStyle : IEquatable<FontStyle>
     public int GetIntegerStyle()
     {
         var result = 0x00;
-        if (Normal)
+        if ( Normal )
         {
             return result;
         }
 
-        result |= (_isBold ? 1 : 0) << 0;
-        result |= (_isItalic ? 1 : 0) << 1;
-        result |= (_isUnderline ? 1 : 0) << 2;
-        result |= (_isStrikethrough ? 1 : 0) << 3;
+        result |= ( _isBold ? 1 : 0 ) << 0;
+        result |= ( _isItalic ? 1 : 0 ) << 1;
+        result |= ( _isUnderline ? 1 : 0 ) << 2;
+        result |= ( _isStrikethrough ? 1 : 0 ) << 3;
 
         return result;
     }
@@ -109,27 +108,27 @@ public class FontStyle : IEquatable<FontStyle>
     public static FontStyle FromIntegerStyle(int integerStyle)
     {
         var style = new FontStyle();
-        if (integerStyle == 0x00)
+        if ( integerStyle == 0x00 )
         {
             return style;
         }
 
-        if ((integerStyle & (1 << 0)) != 0)
+        if ( ( integerStyle & ( 1 << 0 ) ) != 0 )
         {
             style.Bold = true;
         }
 
-        if ((integerStyle & (1 << 1)) != 0)
+        if ( ( integerStyle & ( 1 << 1 ) ) != 0 )
         {
             style.Italic = true;
         }
 
-        if ((integerStyle & (1 << 2)) != 0)
+        if ( ( integerStyle & ( 1 << 2 ) ) != 0 )
         {
             style.Underline = true;
         }
 
-        if ((integerStyle & (1 << 3)) != 0)
+        if ( ( integerStyle & ( 1 << 3 ) ) != 0 )
         {
             style.Strikethrough = true;
         }
@@ -139,17 +138,22 @@ public class FontStyle : IEquatable<FontStyle>
 
     public bool Equals(FontStyle? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
+        if ( ReferenceEquals(null, other) )
+            return false;
+        if ( ReferenceEquals(this, other) )
+            return true;
         return _isBold == other._isBold && _isItalic == other._isItalic && _isUnderline == other._isUnderline &&
                _isStrikethrough == other._isStrikethrough;
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if ( ReferenceEquals(null, obj) )
+            return false;
+        if ( ReferenceEquals(this, obj) )
+            return true;
+        if ( obj.GetType() != this.GetType() )
+            return false;
         return Equals((FontStyle)obj);
     }
 
