@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
 
@@ -8,7 +8,7 @@ namespace SDLTooSharp.Bindings.SDL2Ttf;
 public static partial class SDLTtf
 {
     private const string dllName = "SDL2_ttf";
-    
+
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "TTF_Linked_Version")]
     private static extern IntPtr _TTF_Linked_Version();
 

@@ -1,4 +1,4 @@
-﻿namespace SDLTooSharp.Managed.Font;
+namespace SDLTooSharp.Managed.Font;
 
 public struct GlyphMetrics
 {

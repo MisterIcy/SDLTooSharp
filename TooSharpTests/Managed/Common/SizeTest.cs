@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Managed.Common;
+using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
 
@@ -34,8 +34,7 @@ public class SizeTest
     [Fact]
     public void TestCreateSizeWithNegativeWidth()
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             var sz = new Size(-2, 2);
         });
     }
@@ -43,8 +42,7 @@ public class SizeTest
     [Fact]
     public void TestCreateSizeWithNegativeHeight()
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             var sz = new Size(2, -2);
         });
     }
@@ -94,8 +92,7 @@ public class SizeTest
     {
         Size s1 = new Size(2, 3);
         int v = -1;
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             Size s2 = s1 + v;
         });
     }
@@ -106,8 +103,7 @@ public class SizeTest
         Size s1 = new Size(2, 3);
         int v = -3;
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             Size s2 = s1 + v;
         });
     }
@@ -129,8 +125,7 @@ public class SizeTest
         Size s1 = new Size(3, 4);
         Size s2 = new Size(2, 3);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             Size s3 = s2 - s1;
         });
     }
@@ -152,8 +147,7 @@ public class SizeTest
         Size s1 = new Size(2, 3);
         int v = -12;
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             Size s2 = s1 - v;
         });
     }
@@ -164,8 +158,7 @@ public class SizeTest
         Size s1 = new Size(4, 1);
         int v = 2;
 
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
+        Assert.Throws<ArgumentOutOfRangeException>(() => {
             Size s2 = s1 - v;
         });
     }
@@ -231,8 +224,7 @@ public class SizeTest
         Size s1 = new Size(20, 10);
         Size s2 = new Size(4, 0);
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Size s3 = s1 / s2;
         });
     }
@@ -254,8 +246,7 @@ public class SizeTest
         Size s1 = new Size(20, 10);
         int v = 0;
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Size s2 = s1 / v;
         });
     }
@@ -277,8 +268,7 @@ public class SizeTest
         Size s1 = new Size(20, 0);
         int v = 20;
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Size s2 = v / s1;
         });
     }

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -11,7 +11,7 @@ public static partial class SDL
     [Conditional("DEBUG")]
     public static void SDL_TriggerBreakpoint()
     {
-        if (Debugger.IsAttached)
+        if ( Debugger.IsAttached )
         {
             Debugger.Break();
         }

@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Bindings.SDL2Ttf;
 using SDLTooSharp.Managed.Exception.Font;
 
@@ -174,7 +174,7 @@ public class Font : IDisposable
     {
         //TODO: Refactor this to a Size Oject
         int result = SDLTtf.TTF_SizeUTF8(FontPtr, text, out width, out height);
-        if (result != 0)
+        if ( result != 0 )
         {
             throw new FontException("Unable to get the size of the text!");
         }
@@ -191,7 +191,7 @@ public class Font : IDisposable
     public void MeasureText(string text, int measureWidth, out int extent, out int count)
     {
         int result = SDLTtf.TTF_MeasureUTF8(FontPtr, text, measureWidth, out extent, out count);
-        if (result != 0)
+        if ( result != 0 )
         {
             throw new FontException("Unable to measure the text");
         }
@@ -214,10 +214,9 @@ public class Font : IDisposable
     public int PointSize
     {
         get => _pointSize;
-        set
-        {
+        set {
             int result = SDLTtf.TTF_SetFontSize(FontPtr, value);
-            if (result != 0)
+            if ( result != 0 )
             {
                 throw new FontException($"Unable to change the size of the font to {value}");
             }
@@ -236,7 +235,7 @@ public class Font : IDisposable
     public uint HorizontalDPI => _horizontalDpi;
     public uint VerticalDPI => _verticalDpi;
 
-#region Constructors
+    #region Constructors
 
     /// <summary>
     /// Opens a font file and creates a font object
@@ -247,7 +246,7 @@ public class Font : IDisposable
     public Font(string file, int ptSize)
     {
         FontPtr = SDLTtf.TTF_OpenFont(file, ptSize);
-        if (FontPtr == IntPtr.Zero)
+        if ( FontPtr == IntPtr.Zero )
         {
             throw FontException.UnableToOpen(file);
         }
@@ -267,7 +266,7 @@ public class Font : IDisposable
     public Font(string file, int ptSize, long index)
     {
         FontPtr = SDLTtf.TTF_OpenFontIndex(file, ptSize, index);
-        if (FontPtr == IntPtr.Zero)
+        if ( FontPtr == IntPtr.Zero )
         {
             throw FontException.UnableToOpen(file);
         }
@@ -290,7 +289,7 @@ public class Font : IDisposable
     public Font(string file, int ptSize, uint horizontalDpi, uint verticalDpi)
     {
         FontPtr = SDLTtf.TTF_OpenFontDPI(file, ptSize, horizontalDpi, verticalDpi);
-        if (FontPtr == IntPtr.Zero)
+        if ( FontPtr == IntPtr.Zero )
         {
             throw FontException.UnableToOpen(file);
         }
@@ -318,7 +317,7 @@ public class Font : IDisposable
     public Font(string file, int ptSize, long index, uint horizontalDpi, uint verticalDpi)
     {
         FontPtr = SDLTtf.TTF_OpenFontIndexDPI(file, ptSize, index, horizontalDpi, verticalDpi);
-        if (FontPtr == IntPtr.Zero)
+        if ( FontPtr == IntPtr.Zero )
         {
             throw FontException.UnableToOpen(file);
         }
@@ -331,22 +330,22 @@ public class Font : IDisposable
         InitializeFont();
     }
 
-#endregion
+    #endregion
 
-#region Internals
+    #region Internals
 
     private void InitializeFont()
     {
         _fontStyle = SDLTtf.TTF_GetFontStyle(FontPtr);
     }
 
-#endregion
+    #endregion
 
-#region IDisposable Implementation
+    #region IDisposable Implementation
 
     private void ReleaseUnmanagedResources()
     {
-        if (FontPtr != IntPtr.Zero)
+        if ( FontPtr != IntPtr.Zero )
         {
             SDLTtf.TTF_CloseFont(FontPtr);
         }
@@ -355,7 +354,7 @@ public class Font : IDisposable
     protected virtual void Dispose(bool disposing)
     {
         ReleaseUnmanagedResources();
-        if (disposing)
+        if ( disposing )
         {
         }
     }
@@ -371,14 +370,14 @@ public class Font : IDisposable
         Dispose(false);
     }
 
-#endregion
+    #endregion
 
-#region Rendering
+    #region Rendering
 
     public IntPtr RenderSolid(string text, SDL.SDL_Color foreground)
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Solid(FontPtr, text, foreground);
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -390,7 +389,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Solid_Wrapped(FontPtr, text, foreground, wrapLength);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -402,7 +401,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Shaded(FontPtr, text, foreground, background);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -414,7 +413,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Shaded_Wrapped(FontPtr, text, foreground, background, wrapLength);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -426,7 +425,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Blended(FontPtr, text, foreground);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -438,7 +437,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_Blended_Wrapped(FontPtr, text, foreground, wrapLength);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -450,7 +449,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_LCD(FontPtr, text, foreground, background);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -462,7 +461,7 @@ public class Font : IDisposable
     {
         IntPtr surface = SDLTtf.TTF_RenderUTF8_LCD_Wrapped(FontPtr, text, foreground, background, wrapLength);
 
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -473,7 +472,7 @@ public class Font : IDisposable
     public IntPtr RenderGlyphSolid(uint glyph, SDL.SDL_Color foreground)
     {
         IntPtr surface = SDLTtf.TTF_RenderGlyph32_Solid(FontPtr, glyph, foreground);
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -484,7 +483,7 @@ public class Font : IDisposable
     public IntPtr RenderGlyphBlended(uint glyph, SDL.SDL_Color foreground)
     {
         IntPtr surface = SDLTtf.TTF_RenderGlyph32_Blended(FontPtr, glyph, foreground);
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -495,7 +494,7 @@ public class Font : IDisposable
     public IntPtr RenderGlyphShaded(uint glyph, SDL.SDL_Color foreground, SDL.SDL_Color background)
     {
         IntPtr surface = SDLTtf.TTF_RenderGlyph32_Shaded(FontPtr, glyph, foreground, background);
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -506,7 +505,7 @@ public class Font : IDisposable
     public IntPtr RenderGlyphLCD(uint glyph, SDL.SDL_Color foreground, SDL.SDL_Color background)
     {
         IntPtr surface = SDLTtf.TTF_RenderGlyph32_LCD(FontPtr, glyph, foreground, background);
-        if (surface == IntPtr.Zero)
+        if ( surface == IntPtr.Zero )
         {
             throw FontException.UnableToRenderText();
         }
@@ -514,5 +513,5 @@ public class Font : IDisposable
         return surface;
     }
 
-#endregion
+    #endregion
 }

@@ -1,4 +1,4 @@
-﻿namespace SDLTooSharp.Managed.Font;
+namespace SDLTooSharp.Managed.Font;
 
 /// <summary>
 /// Enumeration of font hintings

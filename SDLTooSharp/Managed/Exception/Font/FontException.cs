@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Bindings.SDL2Ttf;
+using SDLTooSharp.Bindings.SDL2Ttf;
 
 namespace SDLTooSharp.Managed.Exception.Font;
 

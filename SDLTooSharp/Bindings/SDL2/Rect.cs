@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
@@ -40,20 +40,20 @@ public static partial class SDL
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool SDL_PointInRect(SDL_Point p, SDL_Rect r)
     {
-        return (p.X >= r.X) && (p.X < (r.X + r.W)) &&
-               (p.Y >= r.Y) && (p.Y < (r.Y + r.H));
+        return ( p.X >= r.X ) && ( p.X < ( r.X + r.W ) ) &&
+               ( p.Y >= r.Y ) && ( p.Y < ( r.Y + r.H ) );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool SDL_RectEmpty(SDL_Rect r)
     {
-        return (r.W <= 0 || r.H <= 0);
+        return ( r.W <= 0 || r.H <= 0 );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool SDL_RectEquals(SDL_Rect a, SDL_Rect b)
     {
-        return (a.X == b.X && a.Y == b.Y && a.W == b.W && a.H == b.H);
+        return ( a.X == b.X && a.Y == b.Y && a.W == b.W && a.H == b.H );
     }
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -74,14 +74,14 @@ public static partial class SDL
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool SDL_PointInFRect(SDL_FPoint p, SDL_FRect r)
     {
-        return (p.X >= r.X) && (p.X < (r.X + r.W)) &&
-               (p.Y >= r.Y) && (p.Y < (r.Y + r.H));
+        return ( p.X >= r.X ) && ( p.X < ( r.X + r.W ) ) &&
+               ( p.Y >= r.Y ) && ( p.Y < ( r.Y + r.H ) );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool SDL_FRectEmpty(SDL_FRect r)
     {
-        return (r.W <= 0.0f || r.H <= 0.0f);
+        return ( r.W <= 0.0f || r.H <= 0.0f );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

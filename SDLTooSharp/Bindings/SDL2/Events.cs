@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
@@ -207,7 +207,7 @@ public static partial class SDL
         public short Value;
         private short Padding4;
     }
-    
+
     [StructLayout(LayoutKind.Sequential)]
     public struct SDL_JoyBallEvent
     {
