@@ -167,3 +167,5 @@ dotnet_naming_rule.public_static_readonly_fields_rule.severity = warning
 dotnet_naming_rule.match_all_fields_rule.symbols  = match_all_fields
 dotnet_naming_rule.match_all_fields_rule.style    = invalid_style
 dotnet_naming_rule.match_all_fields_rule.severity = error
+
+dotnet_diagnostic.CA1420.severity = none
