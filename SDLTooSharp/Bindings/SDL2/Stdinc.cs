@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -6,10 +6,10 @@ public static partial class SDL
 {
     public static uint SDL_FOURCC(uint a, uint b, uint c, uint d)
     {
-        return (uint)(((byte)(a) << 0) |
-                      ((byte)(b) << 8) |
-                      ((byte)(c) << 16) |
-                      ((byte)(d) << 24));
+        return (uint)( ( (byte)( a ) << 0 ) |
+                      ( (byte)( b ) << 8 ) |
+                      ( (byte)( c ) << 16 ) |
+                      ( (byte)( d ) << 24 ) );
     }
 
     public const int SDL_FALSE = 0;

@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using SDLTooSharp.Bindings.SDL2;
 
@@ -23,7 +23,7 @@ public class Point2F : IEquatable<Point2F>
     {
     }
 
-#region Casting Operators
+    #region Casting Operators
 
     public static explicit operator SDL.SDL_FPoint(Point2F pt)
     {
@@ -62,7 +62,7 @@ public class Point2F : IEquatable<Point2F>
         return new Point2F(pt.X, pt.Y);
     }
 
-#endregion
+    #endregion
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator ==(Point2F left, Point2F right)
@@ -74,7 +74,7 @@ public class Point2F : IEquatable<Point2F>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(Point2F left, Point2F right)
     {
-        return !(left == right);
+        return !( left == right );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -152,7 +152,7 @@ public class Point2F : IEquatable<Point2F>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Point2F operator /(Point2F left, Point2F right)
     {
-        if (right.X == 0 || right.Y == 0)
+        if ( right.X == 0 || right.Y == 0 )
         {
             throw new DivideByZeroException();
         }
@@ -175,16 +175,21 @@ public class Point2F : IEquatable<Point2F>
 
     public bool Equals(Point2F? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
+        if ( ReferenceEquals(null, other) )
+            return false;
+        if ( ReferenceEquals(this, other) )
+            return true;
         return X.Equals(other.X) && Y.Equals(other.Y);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if ( ReferenceEquals(null, obj) )
+            return false;
+        if ( ReferenceEquals(this, obj) )
+            return true;
+        if ( obj.GetType() != this.GetType() )
+            return false;
         return Equals((Point2F)obj);
     }
 

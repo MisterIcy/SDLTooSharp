@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 
 namespace SDLTooSharp.Managed.Common;
 
@@ -9,9 +9,8 @@ public class SizeF : IEquatable<SizeF>
     public float Width
     {
         get => _width;
-        set
-        {
-            if (value < 0)
+        set {
+            if ( value < 0 )
             {
                 throw new ArgumentOutOfRangeException(nameof(value), value,
                     "Width must be greater than or equal to zero");
@@ -26,9 +25,8 @@ public class SizeF : IEquatable<SizeF>
     public float Height
     {
         get => _height;
-        set
-        {
-            if (value < 0)
+        set {
+            if ( value < 0 )
             {
                 throw new ArgumentOutOfRangeException(
                     nameof(value),
@@ -67,7 +65,7 @@ public class SizeF : IEquatable<SizeF>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool operator !=(SizeF left, SizeF right)
     {
-        return !(left == right);
+        return !( left == right );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -127,7 +125,7 @@ public class SizeF : IEquatable<SizeF>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static SizeF operator /(SizeF left, SizeF right)
     {
-        if (right.Width == 0 || right.Height == 0)
+        if ( right.Width == 0 || right.Height == 0 )
         {
             throw new DivideByZeroException();
         }
@@ -149,16 +147,21 @@ public class SizeF : IEquatable<SizeF>
 
     public bool Equals(SizeF? other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
+        if ( ReferenceEquals(null, other) )
+            return false;
+        if ( ReferenceEquals(this, other) )
+            return true;
         return _width.Equals(other._width) && _height.Equals(other._height);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if ( ReferenceEquals(null, obj) )
+            return false;
+        if ( ReferenceEquals(this, obj) )
+            return true;
+        if ( obj.GetType() != this.GetType() )
+            return false;
         return Equals((SizeF)obj);
     }
 

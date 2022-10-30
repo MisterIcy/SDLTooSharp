@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 using SDLTooSharp.Managed.Common;
 
@@ -164,8 +164,7 @@ public class Point2FTest
         Point2F p1 = new Point2F(2.2f, 3.3f);
         Point2F p2 = new Point2F(3.2f, 0.0f);
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Point2F p3 = p1 / p2;
         });
     }
@@ -187,8 +186,7 @@ public class Point2FTest
         Point2F p1 = new Point2F(2.2f, 3.3f);
         float v = 0;
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Point2F pt2 = p1 / v;
         });
     }
@@ -199,8 +197,7 @@ public class Point2FTest
         Point2F p1 = new Point2F(2.2f, 0);
         float v = 3.14159f;
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             Point2F pt2 = v / p1;
         });
     }

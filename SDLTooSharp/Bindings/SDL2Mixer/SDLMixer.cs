@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
@@ -9,7 +9,7 @@ namespace SDLTooSharp.Bindings.SDL2Mixer;
 public static partial class SDLMixer
 {
     private const string dllName = "SDL2_mixer";
-    
+
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Mix_Linked_Version")]
     private static extern IntPtr _Mix_Linked_Version();
 
@@ -18,7 +18,7 @@ public static partial class SDLMixer
         IntPtr version = _Mix_Linked_Version();
         return Marshal.PtrToStructure<SDL.SDL_version>(version);
     }
-    
+
     public enum MIX_InitFlags
     {
         MIX_INIT_FLAC = 0x00000001,

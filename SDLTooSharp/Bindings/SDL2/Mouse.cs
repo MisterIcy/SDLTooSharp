@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -80,7 +80,7 @@ public static partial class SDL
 
     public static int SDL_BUTTON(int x)
     {
-        return (int)(1 << (x - 1));
+        return (int)( 1 << ( x - 1 ) );
     }
 
 
@@ -89,9 +89,9 @@ public static partial class SDL
     public const int SDL_BUTTON_RIGHT = 3;
     public const int SDL_BUTTON_X1 = 4;
     public const int SDL_BUTTON_X2 = 5;
-    public const int SDL_BUTTON_LMASK = 1 << (SDL_BUTTON_LEFT - 1);
-    public const int SDL_BUTTON_MMASK = 1 << (SDL_BUTTON_MIDDLE - 1);
-    public const int SDL_BUTTON_RMASK = 1 << (SDL_BUTTON_RIGHT - 1);
-    public const int SDL_BUTTON_X1MASK = 1 << (SDL_BUTTON_X1 - 1);
-    public const int SDL_BUTTON_X2MASK = 1 << (SDL_BUTTON_X2 - 1);
+    public const int SDL_BUTTON_LMASK = 1 << ( SDL_BUTTON_LEFT - 1 );
+    public const int SDL_BUTTON_MMASK = 1 << ( SDL_BUTTON_MIDDLE - 1 );
+    public const int SDL_BUTTON_RMASK = 1 << ( SDL_BUTTON_RIGHT - 1 );
+    public const int SDL_BUTTON_X1MASK = 1 << ( SDL_BUTTON_X1 - 1 );
+    public const int SDL_BUTTON_X2MASK = 1 << ( SDL_BUTTON_X2 - 1 );
 }

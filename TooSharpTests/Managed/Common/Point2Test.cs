@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
 
@@ -52,7 +52,7 @@ public class Point2Test
         var pt2 = new Point2(4, 5);
 
         var testPoint = new Point2(3 + 4, 4 + 5);
-        Assert.Equal(testPoint, (pt1 + pt2));
+        Assert.Equal(testPoint, ( pt1 + pt2 ));
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class Point2Test
         var pt1 = new Point2(3, 4);
         var testPoint = new Point2(3 + 5, 4 + 5);
 
-        Assert.Equal(testPoint, (pt1 + 5));
+        Assert.Equal(testPoint, ( pt1 + 5 ));
     }
 
     [Fact]
@@ -70,7 +70,7 @@ public class Point2Test
         var pt1 = new Point2(3, 4);
         var testPoint = new Point2(3 + 8, 4 + 8);
 
-        Assert.Equal(testPoint, (8 + pt1));
+        Assert.Equal(testPoint, ( 8 + pt1 ));
     }
 
     [Fact]
@@ -80,7 +80,7 @@ public class Point2Test
         var pt2 = new Point2(2);
 
         var testPoint = new Point2(3 - 2);
-        Assert.Equal(testPoint, (pt1 - pt2));
+        Assert.Equal(testPoint, ( pt1 - pt2 ));
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public class Point2Test
         var pt1 = new Point2(4, 5);
 
         var testPoint = new Point2(4 - 4, 5 - 4);
-        Assert.Equal(testPoint, (pt1 - 4));
+        Assert.Equal(testPoint, ( pt1 - 4 ));
     }
 
     [Fact]
@@ -98,7 +98,7 @@ public class Point2Test
         var pt1 = new Point2(8, 5);
 
         var testPoint = new Point2(3 - 8, 3 - 5);
-        Assert.Equal(testPoint, (3 - pt1));
+        Assert.Equal(testPoint, ( 3 - pt1 ));
     }
 
     [Fact]
@@ -152,7 +152,7 @@ public class Point2Test
         var pt2 = new Point2(4, 5);
 
         var testPoint = new Point2(3 * 4, 4 * 5);
-        Assert.Equal(testPoint, (pt1 * pt2));
+        Assert.Equal(testPoint, ( pt1 * pt2 ));
     }
 
     [Fact]
@@ -161,7 +161,7 @@ public class Point2Test
         var pt1 = new Point2(3, 4);
         var testPoint = new Point2(3 * 9, 4 * 9);
 
-        Assert.Equal(testPoint, (pt1 * 9));
+        Assert.Equal(testPoint, ( pt1 * 9 ));
     }
 
     [Fact]
@@ -170,7 +170,7 @@ public class Point2Test
         var pt1 = new Point2(3, 4);
         var testPoint = new Point2(3 * 3, 3 * 4);
 
-        Assert.Equal(testPoint, (3 * pt1));
+        Assert.Equal(testPoint, ( 3 * pt1 ));
     }
 
     [Fact]
@@ -181,7 +181,7 @@ public class Point2Test
 
         var testPoint = new Point2(5, 5);
 
-        Assert.Equal(testPoint, (pt1 / pt2));
+        Assert.Equal(testPoint, ( pt1 / pt2 ));
     }
 
     [Fact]
@@ -191,15 +191,14 @@ public class Point2Test
 
         var testPoint = new Point2(10, 5);
 
-        Assert.Equal(testPoint, (pt1 / 2));
+        Assert.Equal(testPoint, ( pt1 / 2 ));
     }
 
     [Fact]
     public void TestDividePointByZeroInt()
     {
         var pt1 = new Point2(10, 20);
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             var result = pt1 / 0;
         });
     }
@@ -210,8 +209,7 @@ public class Point2Test
         var pt1 = new Point2(3);
         var pt2 = new Point2();
 
-        Assert.Throws<DivideByZeroException>(() =>
-        {
+        Assert.Throws<DivideByZeroException>(() => {
             var result = pt1 / pt2;
         });
     }
@@ -222,7 +220,7 @@ public class Point2Test
         var pt1 = new Point2(5, 10);
 
         var testPoint = new Point2(20, 10);
-        Assert.Equal(testPoint, (100 /pt1));
+        Assert.Equal(testPoint, ( 100 / pt1 ));
 
     }
 }

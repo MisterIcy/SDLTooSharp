@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
 
@@ -11,14 +11,14 @@ public static partial class SDL
 
     public static byte SDL_AUDIO_BITSIZE(ushort x)
     {
-        return (byte)(x & SDL_AUDIO_MASK_BITSIZE);
+        return (byte)( x & SDL_AUDIO_MASK_BITSIZE );
     }
 
-    public static bool SDL_AUDIO_ISFLOAT(ushort x) => (x & SDL_AUDIO_MASK_DATATYPE) == SDL_AUDIO_MASK_DATATYPE;
+    public static bool SDL_AUDIO_ISFLOAT(ushort x) => ( x & SDL_AUDIO_MASK_DATATYPE ) == SDL_AUDIO_MASK_DATATYPE;
     public static bool SDL_AUDIO_ISINT(ushort x) => !SDL_AUDIO_ISFLOAT(x);
-    public static bool SDL_AUDIO_ISBIGENDIAN(ushort x) => (x & SDL_AUDIO_MASK_ENDIAN) == SDL_AUDIO_MASK_ENDIAN;
+    public static bool SDL_AUDIO_ISBIGENDIAN(ushort x) => ( x & SDL_AUDIO_MASK_ENDIAN ) == SDL_AUDIO_MASK_ENDIAN;
     public static bool SDL_AUDIO_ISLITTLEENDIAN(ushort x) => !SDL_AUDIO_ISBIGENDIAN(x);
-    public static bool SDL_AUDIO_ISSIGNED(ushort x) => (x & SDL_AUDIO_MASK_SIGNED) == SDL_AUDIO_MASK_SIGNED;
+    public static bool SDL_AUDIO_ISSIGNED(ushort x) => ( x & SDL_AUDIO_MASK_SIGNED ) == SDL_AUDIO_MASK_SIGNED;
     public static bool SDL_AUDIO_ISUNSIGNED(ushort x) => !SDL_AUDIO_ISSIGNED(x);
 
     public const ushort AUDIO_U8 = 0x0008;
