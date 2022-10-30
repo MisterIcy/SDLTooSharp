@@ -3,6 +3,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 
 namespace SDLTooSharp.Managed.Exception.Events;
+
 [ExcludeFromCodeCoverage]
 public sealed class InvalidEventTypeException : EventException
 {
