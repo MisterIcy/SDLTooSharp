@@ -1,8 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events.Application;
-
+[ExcludeFromCodeCoverage]
 public sealed class ApplicationLowMemoryEventArgs : ApplicationEventArgs
 {
 

@@ -1,9 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
-using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Exception.Events;
 
-namespace SDLTooSharp.Managed.Events;
-
+namespace SDLTooSharp.Managed.Events.Display;
+[ExcludeFromCodeCoverage]
 public abstract class DisplayEventArgs : CommonEventArgs
 {
     public DisplayEventType DisplayEventType { get; }
