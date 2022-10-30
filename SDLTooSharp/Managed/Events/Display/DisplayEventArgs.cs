@@ -1,8 +1,8 @@
 using SDLTooSharp.Bindings.SDL2;
-using SDLTooSharp.Managed.Common.Events.Display;
+using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Exception.Events;
 
-namespace SDLTooSharp.Managed.Common.Events;
+namespace SDLTooSharp.Managed.Events;
 
 public abstract class DisplayEventArgs : CommonEventArgs
 {

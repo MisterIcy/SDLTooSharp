@@ -1,6 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 
-namespace SDLTooSharp.Managed.Common.Events;
+namespace SDLTooSharp.Managed.Events;
 
 public enum EventType : uint
 {

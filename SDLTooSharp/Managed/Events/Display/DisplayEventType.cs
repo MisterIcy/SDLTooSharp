@@ -1,6 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 
-namespace SDLTooSharp.Managed.Common.Events.Display;
+namespace SDLTooSharp.Managed.Events.Display;
 
 public enum DisplayEventType
 {
