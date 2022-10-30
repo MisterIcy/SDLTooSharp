@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common.Events.Display;
 using SDLTooSharp.Managed.Exception.Events;
 
@@ -14,7 +14,7 @@ public abstract class DisplayEventArgs : CommonEventArgs
 
     protected DisplayEventArgs(SDL.SDL_Event ev) : base(ev)
     {
-        if (EventType != EventType.DisplayEvent)
+        if ( EventType != EventType.DisplayEvent )
         {
             throw new InvalidEventTypeException(
                 EventType.DisplayEvent,

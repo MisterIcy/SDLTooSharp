@@ -1,4 +1,4 @@
-﻿using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Common.Events.Display;
 
