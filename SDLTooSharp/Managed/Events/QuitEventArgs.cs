@@ -6,7 +6,7 @@ public sealed class QuitEventArgs : AbstractEventArgs
 {
     public QuitEventArgs(SDL.SDL_Event ev) : base(ev)
     {
-        if ( ev.Type == (uint)EventType.Quit )
+        if ( ev.Type != (uint)EventType.Quit )
         {
             throw new ArgumentException(
                 "Not a QuitEvent", nameof(ev)
