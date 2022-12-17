@@ -2,7 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Events.Window;
 
-public enum WindowEventType: byte
+public enum WindowEventType : byte
 {
     None = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_NONE,
     Shown = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN,
@@ -21,6 +21,6 @@ public enum WindowEventType: byte
     Close = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE,
     TakeFocus = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS,
     HitTest = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST,
-    IccProfChanged = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED,
+    IccProfileChanged = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED,
     DisplayChanged = SDL.SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED
 }

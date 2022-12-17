@@ -12,7 +12,7 @@ public sealed class DisplayDisconnectedEventArgs : AbstractDisplayEvent
             throw new ArgumentException("Not a DisplayDisconnected event", nameof(@event));
         }
     }
-    
+
     /// <summary>
     /// Not supported in Disconnected Event
     /// </summary>

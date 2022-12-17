@@ -2,7 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Events.Window;
 
-public sealed class WindowShownEventArgs: AbstractWindowEventArgs
+public sealed class WindowShownEventArgs : AbstractWindowEventArgs
 {
     public WindowShownEventArgs(SDL.SDL_Event @event) : base(@event)
     {
