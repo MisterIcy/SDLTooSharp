@@ -3,17 +3,17 @@ using SDLTooSharp.Managed.Events;
 
 namespace TooSharpTests.Managed.Events;
 
-public class QuitEventArgsTest
+public class AppDidEnterForegroundEventArgsTest
 {
     [Fact]
     public void CreateEvent()
     {
         SDL.SDL_Event ev = default;
-        ev.Type = (uint)EventType.Quit;
+        ev.Type = (uint)EventType.AppDidEnterForeground;
         ev.Quit.Timestamp = 0;
 
-        var args = new QuitEventArgs(ev);
-        Assert.Equal(EventType.Quit, args.GetType());
+        var args = new AppDidEnterForegroundEventArgs(ev);
+        Assert.Equal(EventType.AppDidEnterForeground, args.GetType());
         Assert.Equal((uint)0, args.GetTimestamp());
     }
 
@@ -25,7 +25,7 @@ public class QuitEventArgsTest
         ev.Quit.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
-            var args = new QuitEventArgs(ev);
+            var args = new AppDidEnterForegroundEventArgs(ev);
         });
     }
 }
