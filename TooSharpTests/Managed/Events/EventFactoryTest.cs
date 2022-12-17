@@ -32,7 +32,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<AppDidEnterBackgroundEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateAppLowMemoryEvent()
     {
@@ -42,7 +42,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<AppLowMemoryEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateAppTerminatingEventArgs()
     {
@@ -52,7 +52,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<AppTerminatingEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateAppWillEnterBackgroundEventArgs()
     {
@@ -62,7 +62,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<AppWillEnterBackgroundEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateAppWillEnterForegroundEventArgs()
     {
@@ -72,7 +72,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<AppWillEnterForegroundEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateLocaleChangedEventArgs()
     {
@@ -82,7 +82,7 @@ public class EventFactoryTest
         var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         Assert.IsType<LocaleChangedEventArgs>(args);
     }
-    
+
     [Fact]
     public void CreateUnknownEvent()
     {
@@ -92,6 +92,6 @@ public class EventFactoryTest
         Assert.Throws<ArgumentException>(() => {
             var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         });
-        
+
     }
 }
