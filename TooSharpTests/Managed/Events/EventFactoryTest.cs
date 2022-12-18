@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
+using SDLTooSharp.Managed.Events.Display;
 
 namespace TooSharpTests.Managed.Events;
 
@@ -92,6 +93,51 @@ public class EventFactoryTest
         Assert.Throws<ArgumentException>(() => {
             var args = ( new EventFactory() ).CreateFromSDLEvent(ev);
         });
+    }
 
+    [Fact]
+    public void CreateDisplayConnectedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.DisplayEvent;
+        ev.Display.Event = (byte)DisplayEventType.Connected;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<DisplayConnectedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateDisplayDisconnectedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.DisplayEvent;
+        ev.Display.Event = (byte)DisplayEventType.Disconnected;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<DisplayDisconnectedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateDisplayOrientationChangedEvent()
+    {
+
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.DisplayEvent;
+        ev.Display.Event = (byte)DisplayEventType.OrientationChanged;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<DisplayOrientationChangedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateUnknownDisplayEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.DisplayEvent;
+        ev.Display.Event = 0;
+
+        Assert.Throws<ArgumentException>(() => {
+            ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        });
     }
 }

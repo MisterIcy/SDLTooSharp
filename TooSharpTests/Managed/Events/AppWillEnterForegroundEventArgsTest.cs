@@ -10,7 +10,7 @@ public class AppWillEnterForegroundEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.AppWillEnterForeground;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         var args = new AppWillEnterForegroundEventArgs(ev);
         Assert.Equal(EventType.AppWillEnterForeground, args.GetType());
@@ -22,7 +22,7 @@ public class AppWillEnterForegroundEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.DisplayEvent;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
             var args = new AppWillEnterForegroundEventArgs(ev);

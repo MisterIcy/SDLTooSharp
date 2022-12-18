@@ -10,7 +10,7 @@ public class AppDidEnterBackgroundEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.AppDidEnterBackground;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         var args = new AppDidEnterBackgroundEventArgs(ev);
         Assert.Equal(EventType.AppDidEnterBackground, args.GetType());
@@ -22,7 +22,7 @@ public class AppDidEnterBackgroundEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.DisplayEvent;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
             var args = new AppDidEnterBackgroundEventArgs(ev);

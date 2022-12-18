@@ -10,7 +10,7 @@ public class AppLowMemoryEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.AppLowMemory;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         var args = new AppLowMemoryEventArgs(ev);
         Assert.Equal(EventType.AppLowMemory, args.GetType());
@@ -22,7 +22,7 @@ public class AppLowMemoryEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.DisplayEvent;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
             var args = new AppLowMemoryEventArgs(ev);

@@ -10,7 +10,7 @@ public class QuitEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.Quit;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         var args = new QuitEventArgs(ev);
         Assert.Equal(EventType.Quit, args.GetType());
@@ -22,7 +22,7 @@ public class QuitEventArgsTest
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.DisplayEvent;
-        ev.Quit.Timestamp = 0;
+        ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
             var args = new QuitEventArgs(ev);
