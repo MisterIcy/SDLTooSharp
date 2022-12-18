@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Events.Joystick;
 using SDLTooSharp.Managed.Events.Keyboard;
 using SDLTooSharp.Managed.Events.Mouse;
 using SDLTooSharp.Managed.Events.Text;
@@ -30,6 +31,14 @@ public class EventFactory
             (uint)EventType.MouseButtonDown => new MouseButtonDownEventArgs(ev),
             (uint)EventType.MouseButtonUp => new MouseButtonUpEventArgs(ev),
             (uint)EventType.MouseWheel => new MouseWheelEventArgs(ev),
+            (uint)EventType.JoyAxisMotion => new JoystickAxisMotionEventArgs(ev),
+            (uint)EventType.JoyBallMotion => new JoystickBallMotionEventArgs(ev),
+            (uint)EventType.JoyBatteryUpdated => new JoystickBatteryChangedEventArgs(ev),
+            (uint)EventType.JoyButtonDown => new JoystickButtonDownEventArgs(ev),
+            (uint)EventType.JoyButtonUp => new JoystickButtonUpEventArgs(ev),
+            (uint)EventType.JoyDeviceAdded => new JoystickDeviceAddedEventArgs(ev),
+            (uint)EventType.JoyDeviceRemoved => new JoystickDeviceRemovedEventArgs(ev),
+            (uint)EventType.JoyHatMotion => new JoystickHatPositionChangeEventArgs(ev),
             _ => throw new ArgumentException("Test")
         };
 

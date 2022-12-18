@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Events.Joystick;
 using SDLTooSharp.Managed.Events.Keyboard;
 using SDLTooSharp.Managed.Events.Mouse;
 using SDLTooSharp.Managed.Events.Text;
@@ -444,4 +445,85 @@ public class EventFactoryTest
         ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
         Assert.IsType<MouseWheelEventArgs>(args);
     }
+
+    [Fact]
+    public void CreateJoystickAxisMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyAxisMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickAxisMotionEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickBallMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyBallMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickBallMotionEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickBatteryUpdatedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyBatteryUpdated;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickBatteryChangedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickButtonDownEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyButtonDown;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickButtonDownEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickButtonUpEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyButtonUp;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickButtonUpEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickDeviceAddedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyDeviceAdded;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickDeviceAddedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickDeviceRemovedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyDeviceRemoved;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickDeviceRemovedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateJoystickHatMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.JoyHatMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<JoystickHatPositionChangeEventArgs>(args);
+    }
+
 }
