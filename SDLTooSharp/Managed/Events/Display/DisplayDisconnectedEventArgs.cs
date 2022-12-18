@@ -18,6 +18,6 @@ public sealed class DisplayDisconnectedEventArgs : AbstractDisplayEvent
     /// Not supported in Disconnected Event
     /// </summary>
     /// <returns></returns>
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")] 
+    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
     private new int GetEventData() => 0;
 }
