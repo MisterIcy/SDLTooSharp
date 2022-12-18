@@ -3,7 +3,7 @@ using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Events.Window;
 
-public sealed class WindowMinimizedEventArgs : AbstractEventArgs
+public sealed class WindowMinimizedEventArgs : AbstractWindowEventArgs
 {
 
     public WindowMinimizedEventArgs(SDL.SDL_Event @event) : base(@event)

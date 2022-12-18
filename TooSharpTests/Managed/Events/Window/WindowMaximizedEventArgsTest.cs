@@ -4,22 +4,20 @@ using SDLTooSharp.Managed.Events.Window;
 
 namespace TooSharpTests.Managed.Events.Window;
 
-public class WindowCloseEventArgsTest
+public class WindowMaximizedEventArgsTest
 {
     [Fact]
     public void CreateEvent()
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.WindowEvent;
-        ev.Window.Event = (byte)WindowEventType.Close;
-        ev.Window.WindowID = 1;
+        ev.Window.Event = (byte)WindowEventType.Maximized;
         ev.Common.Timestamp = 0;
 
-        WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+        WindowMaximizedEventArgs args = new WindowMaximizedEventArgs(ev);
         Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Close, args.GetEventType());
+        Assert.Equal(WindowEventType.Maximized, args.GetEventType());
         Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal((uint)1, args.GetWindowID());
     }
 
     [Fact]
@@ -30,7 +28,7 @@ public class WindowCloseEventArgsTest
         ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
-            WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+            WindowMaximizedEventArgs args = new WindowMaximizedEventArgs(ev);
         });
     }
 
@@ -43,7 +41,7 @@ public class WindowCloseEventArgsTest
         ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
-            WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+            WindowMaximizedEventArgs args = new WindowMaximizedEventArgs(ev);
         });
     }
 }

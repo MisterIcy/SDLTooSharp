@@ -1,25 +1,27 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Common;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Window;
 
 namespace TooSharpTests.Managed.Events.Window;
 
-public class WindowCloseEventArgsTest
+public class WindowSizeChangedEventArgsTest
 {
     [Fact]
     public void CreateEvent()
     {
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.WindowEvent;
-        ev.Window.Event = (byte)WindowEventType.Close;
-        ev.Window.WindowID = 1;
+        ev.Window.Event = (byte)WindowEventType.SizeChanged;
         ev.Common.Timestamp = 0;
+        ev.Window.Data1 = 10;
+        ev.Window.Data2 = 20;
 
-        WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+        WindowSizeChangedEventArgs args = new WindowSizeChangedEventArgs(ev);
         Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Close, args.GetEventType());
+        Assert.Equal(WindowEventType.SizeChanged, args.GetEventType());
         Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal((uint)1, args.GetWindowID());
+        Assert.Equal(new Size(10, 20), args.GetSize());
     }
 
     [Fact]
@@ -30,7 +32,7 @@ public class WindowCloseEventArgsTest
         ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
-            WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+            WindowSizeChangedEventArgs args = new WindowSizeChangedEventArgs(ev);
         });
     }
 
@@ -43,7 +45,7 @@ public class WindowCloseEventArgsTest
         ev.Common.Timestamp = 0;
 
         Assert.Throws<ArgumentException>(() => {
-            WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
+            WindowSizeChangedEventArgs args = new WindowSizeChangedEventArgs(ev);
         });
     }
 }
