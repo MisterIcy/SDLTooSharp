@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Keyboard;
+using SDLTooSharp.Managed.Events.Mouse;
 using SDLTooSharp.Managed.Events.Text;
 using SDLTooSharp.Managed.Events.Window;
 
@@ -25,6 +26,10 @@ public class EventFactory
             (uint)EventType.TextEditing => new TextEditingEventArgs(ev),
             (uint)EventType.TextEditingExt => new TextEditingExtEventArgs(ev),
             (uint)EventType.TextInput => new TextInputEventArgs(ev),
+            (uint)EventType.MouseMotion => new MouseMotionEventArgs(ev),
+            (uint)EventType.MouseButtonDown => new MouseButtonDownEventArgs(ev),
+            (uint)EventType.MouseButtonUp => new MouseButtonUpEventArgs(ev),
+            (uint)EventType.MouseWheel => new MouseWheelEventArgs(ev),
             _ => throw new ArgumentException("Test")
         };
 

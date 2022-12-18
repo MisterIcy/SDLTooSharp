@@ -28,7 +28,6 @@
       <Folder Include="Managed\Events\Controller" />
       <Folder Include="Managed\Events\Drop" />
       <Folder Include="Managed\Events\Joystick" />
-      <Folder Include="Managed\Events\Mouse" />
       <Folder Include="Managed\Events\Sensor" />
       <Folder Include="Managed\Events\Touch" />
     </ItemGroup>

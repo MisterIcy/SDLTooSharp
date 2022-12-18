@@ -2,6 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Keyboard;
+using SDLTooSharp.Managed.Events.Mouse;
 using SDLTooSharp.Managed.Events.Text;
 using SDLTooSharp.Managed.Events.Window;
 
@@ -402,5 +403,45 @@ public class EventFactoryTest
 
         ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
         Assert.IsType<TextInputEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateMouseMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.MouseMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<MouseMotionEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateMouseDownEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.MouseButtonDown;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<MouseButtonDownEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateMouseUpEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.MouseButtonUp;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<MouseButtonUpEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateMouseWheelEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.MouseWheel;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<MouseWheelEventArgs>(args);
     }
 }
