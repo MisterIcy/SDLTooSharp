@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Events.Keyboard;
 using SDLTooSharp.Managed.Events.Window;
 
 namespace SDLTooSharp.Managed.Events;
@@ -18,6 +19,8 @@ public class EventFactory
             (uint)EventType.LocaleChanged => new LocaleChangedEventArgs(ev),
             (uint)EventType.DisplayEvent => CreateFromSDLDisplayEvent(ev),
             (uint)EventType.WindowEvent => CreateFromSDLWindowEvent(ev),
+            (uint)EventType.KeyDown => new KeyDownEventArgs(ev),
+            (uint)EventType.KeyUp => new KeyUpEventArgs(ev),
             _ => throw new ArgumentException("Test")
         };
 
