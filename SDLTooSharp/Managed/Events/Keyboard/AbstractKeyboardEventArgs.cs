@@ -12,7 +12,7 @@ public abstract class AbstractKeyboardEventArgs : AbstractEventArgs
 
     protected AbstractKeyboardEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        if ( @event.Type is not ((uint)EventType.KeyDown or (uint)EventType.KeyUp) )
+        if ( @event.Type is not ( (uint)EventType.KeyDown or (uint)EventType.KeyUp ) )
         {
             throw new InvalidEventTypeException(
                 "KeyDown or KeyUp",
