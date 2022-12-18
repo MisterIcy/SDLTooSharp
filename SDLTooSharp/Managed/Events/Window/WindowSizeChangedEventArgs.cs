@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
 
@@ -8,13 +9,15 @@ public sealed class WindowSizeChangedEventArgs : AbstractWindowEventArgs
 
     public WindowSizeChangedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        if ( @event.Window.Type != (byte)WindowEventType.SizeChanged )
+        if ( @event.Window.Event != (byte)WindowEventType.SizeChanged )
         {
             throw new ArgumentException("Not a SizeChanged event", nameof(@event));
         }
     }
 
+    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
     private new int GetData1() => 0;
+    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
     private new int GetData2() => 0;
 
     public Size GetSize()

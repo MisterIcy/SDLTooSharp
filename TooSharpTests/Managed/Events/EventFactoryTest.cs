@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Events.Window;
 
 namespace TooSharpTests.Managed.Events;
 
@@ -135,6 +136,216 @@ public class EventFactoryTest
         SDL.SDL_Event ev = default;
         ev.Type = (uint)EventType.DisplayEvent;
         ev.Display.Event = 0;
+
+        Assert.Throws<ArgumentException>(() => {
+            ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        });
+    }
+
+    [Fact]
+    public void CreateWindowShownEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Shown;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowShownEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowHiddenEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Hidden;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowHiddenEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowExposedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Exposed;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowExposedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowMovedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Moved;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowMovedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowResizedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Resized;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowResizedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowSizeChangedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.SizeChanged;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowSizeChangedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowMinimizedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Minimized;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowMinimizedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowMaximizedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Maximized;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowMaximizedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowRestoredEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Restored;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowRestoredEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowEnterEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Enter;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowEnterEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowLeaveEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Leave;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowLeaveEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowFocusGainedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.FocusGained;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowFocusGainedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowFocusLostEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.FocusLost;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowFocusLostEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowCloseEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.Close;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowCloseEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowTakeFocusEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.TakeFocus;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowTakeFocusEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowHitTestEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.HitTest;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowHitTestEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowIccProfileChangedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.IccProfileChanged;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowIccProfileChangedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateWindowDisplayChangedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = (byte)WindowEventType.DisplayChanged;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<WindowDisplayChangedEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateUnknownWindowEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.WindowEvent;
+        ev.Window.Event = 0;
 
         Assert.Throws<ArgumentException>(() => {
             ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);

@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
 
 namespace SDLTooSharp.Managed.Events.Window;
@@ -7,12 +8,14 @@ public sealed class WindowIccProfileChangedEventArgs : AbstractWindowEventArgs
 
     public WindowIccProfileChangedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        if ( @event.Window.Type != (byte)WindowEventType.IccProfileChanged )
+        if ( @event.Window.Event != (byte)WindowEventType.IccProfileChanged )
         {
             throw new ArgumentException("Not an IccProfileChanged event", nameof(@event));
         }
     }
 
+    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
     private new int GetData1() => 0;
+    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
     private new int GetData2() => 0;
 }
