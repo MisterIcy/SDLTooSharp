@@ -25,7 +25,6 @@
 
     <ItemGroup>
       <Folder Include="Managed\Events\Audio" />
-      <Folder Include="Managed\Events\Controller" />
       <Folder Include="Managed\Events\Drop" />
       <Folder Include="Managed\Events\Sensor" />
       <Folder Include="Managed\Events\Touch" />

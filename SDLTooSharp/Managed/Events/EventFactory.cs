@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Events.Controller;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Joystick;
 using SDLTooSharp.Managed.Events.Keyboard;
@@ -39,6 +40,16 @@ public class EventFactory
             (uint)EventType.JoyDeviceAdded => new JoystickDeviceAddedEventArgs(ev),
             (uint)EventType.JoyDeviceRemoved => new JoystickDeviceRemovedEventArgs(ev),
             (uint)EventType.JoyHatMotion => new JoystickHatPositionChangeEventArgs(ev),
+            (uint)EventType.ControllerAxisMotion => new ControllerAxisMotionEventArgs(ev),
+            (uint)EventType.ControllerButtonDown => new ControllerButtonDownEventArgs(ev),
+            (uint)EventType.ControllerButtonUp => new ControllerButtonUpEventArgs(ev),
+            (uint)EventType.ControllerDeviceAdded => new ControllerDeviceAddedEventArgs(ev),
+            (uint)EventType.ControllerDeviceRemapped => new ControllerDeviceRemappedEventArgs(ev),
+            (uint)EventType.ControllerDeviceRemoved => new ControllerDeviceRemovedEventArgs(ev),
+            (uint)EventType.ControllerTouchPadDown => new ControllerTouchPadDownEventArgs(ev),
+            (uint)EventType.ControllerTouchPadMotion => new ControllerTouchPadMotionEventArgs(ev),
+            (uint)EventType.ControllerTouchPadUp => new ControllerTouchPadUpEventArgs(ev),
+            (uint)EventType.ControllerSensorUpdate => new ControllerSensorUpdatedEventArgs(ev),
             _ => throw new ArgumentException("Test")
         };
 

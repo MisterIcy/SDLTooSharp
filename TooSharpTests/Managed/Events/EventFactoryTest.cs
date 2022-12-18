@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
+using SDLTooSharp.Managed.Events.Controller;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Joystick;
 using SDLTooSharp.Managed.Events.Keyboard;
@@ -526,4 +527,110 @@ public class EventFactoryTest
         Assert.IsType<JoystickHatPositionChangeEventArgs>(args);
     }
 
+    [Fact]
+    public void CreateControllerAxisMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerAxisMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerAxisMotionEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateControllerButtonDownEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerButtonDown;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerButtonDownEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateControllerButtonUpEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerButtonUp;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerButtonUpEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerDeviceAddedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerDeviceAdded;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerDeviceAddedEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerDeviceRemappedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerDeviceRemapped;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerDeviceRemappedEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerDeviceRemovedEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerDeviceRemoved;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerDeviceRemovedEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerTouchPadDownEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerTouchPadDown;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerTouchPadDownEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerTouchPadMotionEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerTouchPadMotion;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerTouchPadMotionEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerTouchPadUpEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerTouchPadUp;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerTouchPadUpEventArgs>(args);
+    }
+
+
+    [Fact]
+    public void CreateControllerSensorUpdateEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.ControllerSensorUpdate;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<ControllerSensorUpdatedEventArgs>(args);
+    }
 }
