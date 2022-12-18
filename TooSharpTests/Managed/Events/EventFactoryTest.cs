@@ -2,6 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Keyboard;
+using SDLTooSharp.Managed.Events.Text;
 using SDLTooSharp.Managed.Events.Window;
 
 namespace TooSharpTests.Managed.Events;
@@ -371,5 +372,35 @@ public class EventFactoryTest
 
         ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
         Assert.IsType<KeyUpEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateTextEditingEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.TextEditing;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<TextEditingEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateTextEditingExtEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.TextEditingExt;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<TextEditingExtEventArgs>(args);
+    }
+
+    [Fact]
+    public void CreateTextInputEvent()
+    {
+        SDL.SDL_Event ev = default;
+        ev.Type = (uint)EventType.TextInput;
+
+        ISDLEvent args = new EventFactory().CreateFromSDLEvent(ev);
+        Assert.IsType<TextInputEventArgs>(args);
     }
 }

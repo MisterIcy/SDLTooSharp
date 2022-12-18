@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events.Display;
 using SDLTooSharp.Managed.Events.Keyboard;
+using SDLTooSharp.Managed.Events.Text;
 using SDLTooSharp.Managed.Events.Window;
 
 namespace SDLTooSharp.Managed.Events;
@@ -21,6 +22,9 @@ public class EventFactory
             (uint)EventType.WindowEvent => CreateFromSDLWindowEvent(ev),
             (uint)EventType.KeyDown => new KeyDownEventArgs(ev),
             (uint)EventType.KeyUp => new KeyUpEventArgs(ev),
+            (uint)EventType.TextEditing => new TextEditingEventArgs(ev),
+            (uint)EventType.TextEditingExt => new TextEditingExtEventArgs(ev),
+            (uint)EventType.TextInput => new TextInputEventArgs(ev),
             _ => throw new ArgumentException("Test")
         };
 
