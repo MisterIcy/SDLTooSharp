@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Managed [Events](SDLTooSharp/Managed/Events) as well as an [EventFactory](SDLTooSharp/Managed/Events/EventFactory.cs)
 - Added a [class](SDLTooSharp/Managed/Font/Font.cs) for performing font operations in a more managed way.
 - Added classes for [Point2](SDLTooSharp/Managed/Common/Point2.cs) and [Point2F](SDLTooSharp/Managed/Common/Point2.cs).
 - Added classes for [Size](SDLTooSharp/Managed/Common/Size.cs) and [SizeF](SDLTooSharp/Managed/Common/Size.cs).
