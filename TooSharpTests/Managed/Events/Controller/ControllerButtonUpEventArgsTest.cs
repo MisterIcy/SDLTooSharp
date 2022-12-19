@@ -17,10 +17,10 @@ public class ControllerButtonUpEventArgsTest
         ev.CButton.State = (byte)ControllerButtonState.Released;
 
         var args = new ControllerButtonUpEventArgs(ev);
-        Assert.Equal(EventType.ControllerButtonUp, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
-        Assert.Equal(ControllerButton.A, args.GetButton());
-        Assert.Equal(ControllerButtonState.Released, args.GetState());
+        Assert.Equal(EventType.ControllerButtonUp, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(ControllerButton.A, args.Button);
+        Assert.Equal(ControllerButtonState.Released, args.State);
     }
 
     [Fact]

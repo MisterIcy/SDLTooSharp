@@ -11,8 +11,8 @@ public sealed class ControllerDeviceRemovedEventArgs : ControllerDeviceEventArgs
         if ( @event.Type != (uint)EventType.ControllerDeviceRemoved )
         {
             throw new InvalidEventTypeException(
-                "ControllerDeviceRemoved",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerDeviceRemoved,
+                (EventType)@event.Type
             );
         }
     }

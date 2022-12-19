@@ -17,9 +17,9 @@ public class ControllerSensorUpdatedEventArgsTest
         ev.CSensor.Sensor = 1;
 
         var args = new ControllerSensorUpdatedEventArgs(ev);
-        Assert.Equal(EventType.ControllerSensorUpdate, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
-        Assert.Equal(1, args.GetSensorID());
+        Assert.Equal(EventType.ControllerSensorUpdate, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.SensorId);
     }
 
     [Fact]

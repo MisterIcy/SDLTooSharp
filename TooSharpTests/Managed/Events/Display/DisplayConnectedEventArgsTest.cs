@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace TooSharpTests.Managed.Events.Display;
 
@@ -16,10 +17,10 @@ public class DisplayConnectedEventArgsTest
         ev.Display.Display = 1;
 
         DisplayConnectedEventArgs args = new DisplayConnectedEventArgs(ev);
-        Assert.Equal(EventType.DisplayEvent, args.GetType());
-        Assert.Equal(DisplayEventType.Connected, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal((uint)1, args.GetDisplayId());
+        Assert.Equal(EventType.DisplayEvent, args.Type);
+        Assert.Equal(DisplayEventType.Connected, args.DisplayEventType);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal(1, args.Data);
     }
 
     [Fact]
@@ -29,7 +30,7 @@ public class DisplayConnectedEventArgsTest
         ev.Type = (uint)EventType.WindowEvent;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidEventTypeException>(() => {
             DisplayConnectedEventArgs args = new DisplayConnectedEventArgs(ev);
         });
     }
@@ -42,7 +43,7 @@ public class DisplayConnectedEventArgsTest
         ev.Display.Event = 0;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidDisplaySubtypeEventException>(() => {
             DisplayConnectedEventArgs args = new DisplayConnectedEventArgs(ev);
         });
     }

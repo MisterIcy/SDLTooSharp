@@ -1,9 +1,11 @@
+using SDLTooSharp.Managed.Events;
+
 namespace SDLTooSharp.Managed.Exception.Events;
 
 public sealed class InvalidEventTypeException : AbstractEventException
 {
-    public InvalidEventTypeException(string expected, string actual) : base(
-        $"Invalid event: Expected {expected} and got {actual}")
+    public InvalidEventTypeException(EventType expected, EventType actual) : base(
+        $"Invalid event: Expected {expected.ToString()} and got {actual.ToString()}")
     {
 
     }

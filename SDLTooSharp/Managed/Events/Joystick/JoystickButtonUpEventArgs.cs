@@ -11,8 +11,8 @@ public sealed class JoystickButtonUpEventArgs : JoystickButtonPressedEventArgs
         if ( @event.Type != (uint)EventType.JoyButtonUp )
         {
             throw new InvalidEventTypeException(
-                "JoyButtonUp",
-                ( (EventType)@event.Type ).ToString()
+                EventType.JoyButtonUp,
+                (EventType)@event.Type
             );
         }
     }

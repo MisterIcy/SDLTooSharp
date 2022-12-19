@@ -11,16 +11,16 @@ public sealed class TextInputEventArgs : AbstractTextEventArgs
         if ( @event.Type != (uint)EventType.TextInput )
         {
             throw new InvalidEventTypeException(
-                "TextInput",
-                ( (EventType)@event.Type ).ToString()
+                EventType.TextInput,
+                (EventType)@event.Type
             );
         }
 
         unsafe
         {
-            _text = new string(@event.Text.Text);
+            Text = new string(@event.Text.Text);
         }
 
-        _windowId = @event.Text.WindowID;
+        WindowId = @event.Text.WindowID;
     }
 }

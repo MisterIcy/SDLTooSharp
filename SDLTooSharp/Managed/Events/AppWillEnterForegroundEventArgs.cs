@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events;
 
@@ -9,7 +10,10 @@ public class AppWillEnterForegroundEventArgs : AbstractEventArgs
     {
         if ( @event.Type != (uint)EventType.AppWillEnterForeground )
         {
-            throw new ArgumentException("Not an AppWillEnterForeground event", nameof(@event));
+            throw new InvalidEventTypeException(
+                EventType.AppWillEnterForeground,
+                (EventType)@event.Type
+            );
         }
     }
 }

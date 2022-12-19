@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace TooSharpTests.Managed.Events.Display;
 
@@ -17,11 +18,11 @@ public class DisplayOrientationChangedEventArgsTest
         ev.Display.Data1 = (int)DisplayOrientation.Portrait;
 
         DisplayOrientationChangedEventArgs args = new DisplayOrientationChangedEventArgs(ev);
-        Assert.Equal(EventType.DisplayEvent, args.GetType());
-        Assert.Equal(DisplayEventType.OrientationChanged, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal((uint)1, args.GetDisplayId());
-        Assert.Equal(DisplayOrientation.Portrait, args.GetDisplayOrientation());
+        Assert.Equal(EventType.DisplayEvent, args.Type);
+        Assert.Equal(DisplayEventType.OrientationChanged, args.DisplayEventType);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal((uint)1, args.DisplayId);
+        Assert.Equal(DisplayOrientation.Portrait, args.DisplayOrientation);
     }
 
     [Fact]
@@ -31,7 +32,7 @@ public class DisplayOrientationChangedEventArgsTest
         ev.Type = (uint)EventType.WindowEvent;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidEventTypeException>(() => {
             DisplayOrientationChangedEventArgs args = new DisplayOrientationChangedEventArgs(ev);
         });
     }
@@ -44,7 +45,7 @@ public class DisplayOrientationChangedEventArgsTest
         ev.Display.Event = 0;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidDisplaySubtypeEventException>(() => {
             DisplayOrientationChangedEventArgs args = new DisplayOrientationChangedEventArgs(ev);
         });
     }

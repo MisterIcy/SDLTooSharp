@@ -6,23 +6,20 @@ namespace SDLTooSharp.Managed.Events.Joystick;
 public sealed class JoystickAxisMotionEventArgs : AbstractJoysticEventArgs
 {
 
-    private byte _axisID;
-    private short _value;
+    public byte AxisID { get; }
+    public short Value { get; }
     public JoystickAxisMotionEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.JoyAxisMotion )
         {
             throw new InvalidEventTypeException(
-                "JoyAxisMotion",
-                ( (EventType)@event.Type ).ToString()
+                EventType.JoyAxisMotion,
+                (EventType)@event.Type
             );
         }
 
-        _axisID = @event.JAxis.Axis;
-        _value = @event.JAxis.Value;
-        _which = @event.JAxis.Which;
+        AxisID = @event.JAxis.Axis;
+        Value = @event.JAxis.Value;
+        Which = @event.JAxis.Which;
     }
-
-    public byte GetAxisID() => _axisID;
-    public short GetValue() => _value;
 }

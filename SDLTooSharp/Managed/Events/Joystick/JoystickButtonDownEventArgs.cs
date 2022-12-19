@@ -11,8 +11,8 @@ public sealed class JoystickButtonDownEventArgs : JoystickButtonPressedEventArgs
         if ( @event.Type != (uint)EventType.JoyButtonDown )
         {
             throw new InvalidEventTypeException(
-                "JoyButtonDown",
-                ( (EventType)@event.Type ).ToString()
+                EventType.JoyButtonDown,
+                (EventType)@event.Type
             );
         }
     }

@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events;
 
@@ -9,7 +10,10 @@ public sealed class LocaleChangedEventArgs : AbstractEventArgs
     {
         if ( @event.Type != (uint)EventType.LocaleChanged )
         {
-            throw new ArgumentException("Not a LocaleChanged event", nameof(@event));
+            throw new InvalidEventTypeException(
+                EventType.LocaleChanged,
+                (EventType)@event.Type
+            );
         }
     }
 }

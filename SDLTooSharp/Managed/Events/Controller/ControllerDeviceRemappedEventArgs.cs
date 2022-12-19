@@ -11,8 +11,8 @@ public sealed class ControllerDeviceRemappedEventArgs : ControllerDeviceEventArg
         if ( @event.Type != (uint)EventType.ControllerDeviceRemapped )
         {
             throw new InvalidEventTypeException(
-                "ControllerDeviceRemapped",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerDeviceRemapped,
+                (EventType)@event.Type
             );
         }
     }

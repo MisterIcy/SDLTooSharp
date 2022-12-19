@@ -11,8 +11,8 @@ public sealed class MouseButtonDownEventArgs : AbstractMouseButtonEventArgs
         if ( @event.Type != (uint)EventType.MouseButtonDown )
         {
             throw new InvalidEventTypeException(
-                "MouseButtonDown",
-                ( (EventType)@event.Type ).ToString()
+                EventType.MouseButtonDown,
+                (EventType)@event.Type
             );
         }
     }

@@ -11,8 +11,8 @@ public sealed class JoystickDeviceRemovedEventArgs : JoystickDeviceEventArgs
         if ( @event.Type != (uint)EventType.JoyDeviceRemoved )
         {
             throw new InvalidEventTypeException(
-                "JoyDeviceRemoved",
-                ( (EventType)@event.Type ).ToString()
+                EventType.JoyDeviceRemoved,
+                (EventType)@event.Type
             );
         }
     }

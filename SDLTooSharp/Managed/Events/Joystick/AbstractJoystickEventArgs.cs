@@ -4,12 +4,10 @@ namespace SDLTooSharp.Managed.Events.Joystick;
 
 public abstract class AbstractJoysticEventArgs : AbstractEventArgs
 {
-    protected int _which;
+    public int Which { get; protected set; }
 
     protected AbstractJoysticEventArgs(SDL.SDL_Event @event) : base(@event)
     {
 
     }
-
-    public virtual int GetJoystickID() => _which;
 }

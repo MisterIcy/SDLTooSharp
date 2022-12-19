@@ -11,8 +11,8 @@ public sealed class ControllerTouchPadDownEventArgs : ControllerTouchPadEventArg
         if ( @event.Type != (uint)EventType.ControllerTouchPadDown )
         {
             throw new InvalidEventTypeException(
-                "ControllerTouchPadDown",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerTouchPadDown,
+                (EventType)@event.Type
             );
         }
     }

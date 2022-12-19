@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events;
 
@@ -9,7 +10,10 @@ public sealed class AppLowMemoryEventArgs : AbstractEventArgs
     {
         if ( @event.Type != (uint)EventType.AppLowMemory )
         {
-            throw new ArgumentException("Not an AppLowMemory event", nameof(@event));
+            throw new InvalidEventTypeException(
+                EventType.AppLowMemory,
+                (EventType)@event.Type
+                );
         }
     }
 }

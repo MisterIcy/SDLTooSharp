@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events.Controller;
 using SDLTooSharp.Managed.Events.Display;
+using SDLTooSharp.Managed.Events.Finger;
 using SDLTooSharp.Managed.Events.Joystick;
 using SDLTooSharp.Managed.Events.Keyboard;
 using SDLTooSharp.Managed.Events.Mouse;
@@ -50,9 +51,9 @@ public class EventFactory
             (uint)EventType.ControllerTouchPadMotion => new ControllerTouchPadMotionEventArgs(ev),
             (uint)EventType.ControllerTouchPadUp => new ControllerTouchPadUpEventArgs(ev),
             (uint)EventType.ControllerSensorUpdate => new ControllerSensorUpdatedEventArgs(ev),
-            (uint)EventType.FingerDown => throw new NotImplementedException(),
-            (uint)EventType.FingerUp => throw new NotImplementedException(),
-            (uint)EventType.FingerMotion => throw new NotImplementedException(),
+            (uint)EventType.FingerDown => new FingerDownEventArgs(ev),
+            (uint)EventType.FingerUp => new FingerUpEventArgs(ev),
+            (uint)EventType.FingerMotion => new FingerMotionEventArgs(ev),
             (uint)EventType.DollarGesture => throw new NotImplementedException(),
             (uint)EventType.DollarRecord => throw new NotImplementedException(),
             (uint)EventType.Multigesture => throw new NotImplementedException(),

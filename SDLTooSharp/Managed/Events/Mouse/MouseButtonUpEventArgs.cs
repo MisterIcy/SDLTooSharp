@@ -11,8 +11,8 @@ public sealed class MouseButtonUpEventArgs : AbstractMouseButtonEventArgs
         if ( @event.Type != (uint)EventType.MouseButtonUp )
         {
             throw new InvalidEventTypeException(
-                "MouseButtonUp",
-                ( (EventType)@event.Type ).ToString()
+                EventType.MouseButtonUp,
+                (EventType)@event.Type
             );
         }
     }

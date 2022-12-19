@@ -11,8 +11,8 @@ public sealed class KeyDownEventArgs : AbstractKeyboardEventArgs
         if ( @event.Type != (uint)EventType.KeyDown )
         {
             throw new InvalidEventTypeException(
-                "KeyDown",
-                ( (EventType)@event.Type ).ToString()
+                EventType.KeyDown,
+                (EventType)@event.Type
             );
         }
     }

@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events;
 
@@ -8,8 +9,9 @@ public sealed class QuitEventArgs : AbstractEventArgs
     {
         if ( ev.Type != (uint)EventType.Quit )
         {
-            throw new ArgumentException(
-                "Not a QuitEvent", nameof(ev)
+            throw new InvalidEventTypeException(
+                EventType.Quit,
+                (EventType)ev.Type
             );
         }
     }

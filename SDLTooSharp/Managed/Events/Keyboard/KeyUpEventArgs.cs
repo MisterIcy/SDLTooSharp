@@ -11,8 +11,8 @@ public sealed class KeyUpEventArgs : AbstractKeyboardEventArgs
         if ( @event.Type != (uint)EventType.KeyUp )
         {
             throw new InvalidEventTypeException(
-                "KeyUp",
-                ( (EventType)@event.Type ).ToString()
+                EventType.KeyUp,
+                (EventType)@event.Type
             );
         }
     }

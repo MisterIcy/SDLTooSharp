@@ -11,8 +11,8 @@ public sealed class ControllerButtonUpEventArgs : ControllerButtonPressedEventAr
         if ( @event.Type != (uint)EventType.ControllerButtonUp )
         {
             throw new InvalidEventTypeException(
-                "ControllerButtonUp",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerButtonUp,
+                (EventType)@event.Type
             );
         }
     }

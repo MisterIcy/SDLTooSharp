@@ -7,25 +7,22 @@ namespace SDLTooSharp.Managed.Events.Text;
 
 public sealed class TextEditingExtEventArgs : AbstractTextEventArgs
 {
-    private int _start;
-    private int _length;
+    public int Start { get; }
+    public int Length { get; }
 
     public TextEditingExtEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.TextEditingExt )
         {
             throw new InvalidEventTypeException(
-                "TextEditingExt",
-                ( (EventType)@event.Type ).ToString()
+                EventType.TextEditingExt,
+                (EventType)@event.Type
             );
         }
 
-        _text = Marshal.PtrToStringUTF8(@event.EditExt.Text) ?? string.Empty;
-        _windowId = @event.EditExt.WindowID;
-        _start = @event.EditExt.Start;
-        _length = @event.EditExt.Length;
+        Text = Marshal.PtrToStringUTF8(@event.EditExt.Text) ?? string.Empty;
+        WindowId = @event.EditExt.WindowID;
+        Start = @event.EditExt.Start;
+        Length = @event.EditExt.Length;
     }
-
-    public int GetStart() => _start;
-    public int GetLength() => _length;
 }

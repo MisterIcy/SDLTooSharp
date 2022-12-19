@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events.Window;
 
@@ -10,11 +11,10 @@ public sealed class WindowCloseEventArgs : AbstractWindowEventArgs
     {
         if ( @event.Window.Event != (byte)WindowEventType.Close )
         {
-            throw new ArgumentException("Not a Close event", nameof(@event));
+            throw new InvalidWindowSubtypeEventException(
+                WindowEventType.Close,
+                (WindowEventType)@event.Window.Type
+            );
         }
     }
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
-    private new int GetData1() => 0;
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
-    private new int GetData2() => 0;
 }

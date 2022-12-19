@@ -21,14 +21,13 @@ public class ControllerTouchPadMotionEventArgsTest
         ev.CTouchPad.Pressure = 0.8f;
 
         var args = new ControllerTouchPadMotionEventArgs(ev);
-        Assert.Equal(EventType.ControllerTouchPadMotion, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
-        Assert.Equal(1, args.GetTouchPadID());
-        Assert.Equal(1, args.GetFingerId());
-        Assert.Equal(1.1f, args.GetX());
-        Assert.Equal(2.2f, args.GetY());
-        Assert.Equal(0.8f, args.GetPressure());
-        Assert.Equal(new Point2F(1.1f, 2.2f), args.GetPoint());
+        Assert.Equal(EventType.ControllerTouchPadMotion, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.TouchpadId);
+        Assert.Equal(1, args.FingerId);
+        Assert.Equal(1.1f, args.X);
+        Assert.Equal(2.2f, args.Y);
+        Assert.Equal(0.8f, args.Pressure);
     }
 
     [Fact]

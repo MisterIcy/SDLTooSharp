@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events;
 
@@ -9,7 +10,10 @@ public sealed class AppTerminatingEventArgs : AbstractEventArgs
     {
         if ( @event.Type != (uint)EventType.AppTerminating )
         {
-            throw new ArgumentException("Not an AppTerminating Event", nameof(@event));
+            throw new InvalidEventTypeException(
+                EventType.AppTerminating,
+                (EventType)@event.Type
+                );
         }
     }
 }

@@ -6,15 +6,12 @@ namespace SDLTooSharp.Managed.Events.Joystick;
 public abstract class JoystickButtonPressedEventArgs : AbstractJoysticEventArgs
 {
 
-    private byte _button;
-    private JoystickButtonState _state;
+    public byte Button { get; }
+    public JoystickButtonState State { get; }
     protected JoystickButtonPressedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        _button = @event.JButton.Button;
-        _state = (JoystickButtonState)@event.JButton.State;
-        _which = @event.JButton.Which;
+        Button = @event.JButton.Button;
+        State = (JoystickButtonState)@event.JButton.State;
+        Which = @event.JButton.Which;
     }
-
-    public byte GetButton() => _button;
-    public JoystickButtonState GetState() => _state;
 }

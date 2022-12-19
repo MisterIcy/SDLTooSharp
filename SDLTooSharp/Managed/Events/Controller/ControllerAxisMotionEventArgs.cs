@@ -6,24 +6,34 @@ namespace SDLTooSharp.Managed.Events.Controller;
 public sealed class ControllerAxisMotionEventArgs : AbstractControllerEventArgs
 {
 
-    private byte _axis;
-    private short _value;
+    /// <summary>
+    /// The Id of the axis
+    /// </summary>
+    public byte Axis
+    {
+        get;
+    }
+
+    /// <summary>
+    /// The value of the axis
+    /// </summary>
+    public short Value
+    {
+        get;
+    }
 
     public ControllerAxisMotionEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.ControllerAxisMotion )
         {
             throw new InvalidEventTypeException(
-                "ControllerAxisMotion",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerAxisMotion,
+                (EventType)@event.Type
             );
         }
 
-        _which = @event.CAxis.Which;
-        _axis = @event.CAxis.Axis;
-        _value = @event.CAxis.Value;
+        Which = @event.CAxis.Which;
+        Axis = @event.CAxis.Axis;
+        Value = @event.CAxis.Value;
     }
-
-    public byte GetAxisID() => _axis;
-    public short GetValue() => _value;
 }

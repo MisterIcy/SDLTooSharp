@@ -11,8 +11,8 @@ public sealed class ControllerDeviceAddedEventArgs : ControllerDeviceEventArgs
         if ( @event.Type != (uint)EventType.ControllerDeviceAdded )
         {
             throw new InvalidEventTypeException(
-                "ControllerDeviceAdded",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerDeviceAdded,
+                (EventType)@event.Type
             );
         }
     }

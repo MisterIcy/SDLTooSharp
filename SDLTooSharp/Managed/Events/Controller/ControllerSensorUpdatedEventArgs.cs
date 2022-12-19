@@ -6,31 +6,27 @@ namespace SDLTooSharp.Managed.Events.Controller;
 public sealed class ControllerSensorUpdatedEventArgs : AbstractControllerEventArgs
 {
 
-    private int _sensorId;
-    private float[] _data;
+    public int SensorId { get; }
+    public float[] Data { get; }
     public ControllerSensorUpdatedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.ControllerSensorUpdate )
         {
             throw new InvalidEventTypeException(
-                "ControllerSensorUpdate",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerSensorUpdate,
+                (EventType)@event.Type
             );
         }
 
-        _which = @event.CSensor.Which;
-        _sensorId = @event.CSensor.Sensor;
-        _data = new float[3];
+        Which = @event.CSensor.Which;
+        SensorId = @event.CSensor.Sensor;
+        Data = new float[3];
         unsafe
         {
             for ( int i = 0; i < 3; i++ )
             {
-                _data[i] = @event.CSensor.data[i];
+                Data[i] = @event.CSensor.data[i];
             }
         }
     }
-
-    public int GetSensorID() => _sensorId;
-
-    public float[] GetData() => _data;
 }

@@ -6,18 +6,12 @@ namespace SDLTooSharp.Managed.Events.Mouse;
 public abstract class AbstractMouseEventArgs : AbstractEventArgs
 {
 
-    protected uint _windowId;
-    protected uint _which;
-    protected int _x;
-    protected int _y;
+    public uint WindowId { get; protected set; }
+    public uint Which { get; protected set; }
+    public int X { get; protected set; }
+    public int Y { get; protected set; }
 
     protected AbstractMouseEventArgs(SDL.SDL_Event @event) : base(@event)
     {
     }
-
-    public uint GetWindowID() => _windowId;
-    public uint GetMouseID() => _which;
-    public int GetX() => _x;
-    public int GetY() => _y;
-    public Point2 GetPosition() => new Point2(_x, _y);
 }

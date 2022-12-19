@@ -17,10 +17,10 @@ public class ControllerButtonDownEventArgsTest
         ev.CButton.State = (byte)ControllerButtonState.Pressed;
 
         var args = new ControllerButtonDownEventArgs(ev);
-        Assert.Equal(EventType.ControllerButtonDown, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
-        Assert.Equal(ControllerButton.A, args.GetButton());
-        Assert.Equal(ControllerButtonState.Pressed, args.GetState());
+        Assert.Equal(EventType.ControllerButtonDown, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(ControllerButton.A, args.Button);
+        Assert.Equal(ControllerButtonState.Pressed, args.State);
     }
 
     [Fact]

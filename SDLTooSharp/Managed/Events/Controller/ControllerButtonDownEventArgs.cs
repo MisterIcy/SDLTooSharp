@@ -11,8 +11,8 @@ public sealed class ControllerButtonDownEventArgs : ControllerButtonPressedEvent
         if ( @event.Type != (uint)EventType.ControllerButtonDown )
         {
             throw new InvalidEventTypeException(
-                "ControllerButtonDown",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerButtonDown,
+                (EventType)@event.Type
             );
         }
     }

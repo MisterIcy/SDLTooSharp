@@ -17,10 +17,10 @@ public class ControllerAxisMotionEventArgsTest
         ev.CAxis.Value = 42;
 
         var args = new ControllerAxisMotionEventArgs(ev);
-        Assert.Equal(EventType.ControllerAxisMotion, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
-        Assert.Equal(1, args.GetAxisID());
-        Assert.Equal(42, args.GetValue());
+        Assert.Equal(EventType.ControllerAxisMotion, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.Axis);
+        Assert.Equal(42, args.Value);
     }
 
     [Fact]

@@ -15,8 +15,8 @@ public class ControllerDeviceRemappedEventArgsTest
         ev.CDevice.Which = 1;
 
         var args = new ControllerDeviceRemappedEventArgs(ev);
-        Assert.Equal(EventType.ControllerDeviceRemapped, args.GetType());
-        Assert.Equal(1, args.GetControllerID());
+        Assert.Equal(EventType.ControllerDeviceRemapped, args.Type);
+        Assert.Equal(1, args.Which);
     }
 
     [Fact]

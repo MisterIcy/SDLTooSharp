@@ -5,24 +5,21 @@ namespace SDLTooSharp.Managed.Events.Joystick;
 
 public sealed class JoystickHatPositionChangeEventArgs : AbstractJoysticEventArgs
 {
-    private byte _hatId;
-    private byte _value;
+    public byte HatId { get; }
+    public byte Value { get; }
 
     public JoystickHatPositionChangeEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.JoyHatMotion )
         {
             throw new InvalidEventTypeException(
-                "JoyHatMotion",
-                ( (EventType)@event.Type ).ToString()
+                EventType.JoyHatMotion,
+                (EventType)@event.Type
             );
         }
 
-        _which = @event.JHat.Which;
-        _hatId = @event.JHat.Hat;
-        _value = @event.JHat.Value;
+        Which = @event.JHat.Which;
+        HatId = @event.JHat.Hat;
+        Value = @event.JHat.Value;
     }
-
-    public byte GetHatID() => _hatId;
-    public byte GetValue() => _value;
 }

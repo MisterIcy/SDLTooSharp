@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events.Window;
 
@@ -10,12 +11,10 @@ public sealed class WindowIccProfileChangedEventArgs : AbstractWindowEventArgs
     {
         if ( @event.Window.Event != (byte)WindowEventType.IccProfileChanged )
         {
-            throw new ArgumentException("Not an IccProfileChanged event", nameof(@event));
+            throw new InvalidWindowSubtypeEventException(
+                WindowEventType.IccProfileChanged,
+                (WindowEventType)@event.Window.Type
+            );
         }
     }
-
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
-    private new int GetData1() => 0;
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
-    private new int GetData2() => 0;
 }

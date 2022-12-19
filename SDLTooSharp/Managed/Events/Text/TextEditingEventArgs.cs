@@ -5,31 +5,26 @@ namespace SDLTooSharp.Managed.Events.Text;
 
 public sealed class TextEditingEventArgs : AbstractTextEventArgs
 {
-    private int _start;
-    private int _length;
+    public int Start { get; }
+    public int Length { get; }
 
     public TextEditingEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         if ( @event.Type != (uint)EventType.TextEditing )
         {
             throw new InvalidEventTypeException(
-                "TextEditing",
-                ( (EventType)@event.Type ).ToString()
+                EventType.TextEditing,
+                (EventType)@event.Type
             );
         }
 
         unsafe
         {
-            _text = new string(@event.Edit.Text);
+            Text = new string(@event.Edit.Text);
         }
 
-        _windowId = @event.Edit.WindowID;
-        _start = @event.Edit.Start;
-        _length = @event.Edit.Length;
-
-
+        WindowId = @event.Edit.WindowID;
+        Start = @event.Edit.Start;
+        Length = @event.Edit.Length;
     }
-
-    public int GetStart() => _start;
-    public int GetLength() => _length;
 }

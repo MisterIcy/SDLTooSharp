@@ -4,12 +4,17 @@ namespace SDLTooSharp.Managed.Events.Controller;
 
 public abstract class AbstractControllerEventArgs : AbstractEventArgs
 {
-    protected int _which;
+    /// <summary>
+    /// The Id of the Controller
+    /// </summary>
+    public int Which
+    {
+        get;
+        protected set;
+    }
 
     protected AbstractControllerEventArgs(SDL.SDL_Event @event) : base(@event)
     {
 
     }
-
-    public int GetControllerID() => _which;
 }

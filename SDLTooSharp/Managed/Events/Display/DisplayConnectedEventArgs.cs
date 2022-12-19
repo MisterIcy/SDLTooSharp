@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace SDLTooSharp.Managed.Events.Display;
 
@@ -10,14 +11,10 @@ public sealed class DisplayConnectedEventArgs : AbstractDisplayEvent
     {
         if ( @event.Display.Event != (byte)DisplayEventType.Connected )
         {
-            throw new ArgumentException("Not an DisplayConnected event", nameof(@event));
+            throw new InvalidDisplaySubtypeEventException(
+                DisplayEventType.Connected,
+                (DisplayEventType)@event.Display.Event
+            );
         }
     }
-
-    /// <summary>
-    /// Not supported in Connected Event
-    /// </summary>
-    /// <returns></returns>
-    [ExcludeFromCodeCoverage(Justification = "Unused in this event")]
-    private new int GetEventData() => 0;
 }

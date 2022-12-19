@@ -11,8 +11,8 @@ public sealed class ControllerTouchPadMotionEventArgs : ControllerTouchPadEventA
         if ( @event.Type != (uint)EventType.ControllerTouchPadMotion )
         {
             throw new InvalidEventTypeException(
-                "ControllerTouchPadMotion",
-                ( (EventType)@event.Type ).ToString()
+                EventType.ControllerTouchPadMotion,
+                (EventType)@event.Type
             );
         }
     }
