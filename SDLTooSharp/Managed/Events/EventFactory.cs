@@ -50,7 +50,25 @@ public class EventFactory
             (uint)EventType.ControllerTouchPadMotion => new ControllerTouchPadMotionEventArgs(ev),
             (uint)EventType.ControllerTouchPadUp => new ControllerTouchPadUpEventArgs(ev),
             (uint)EventType.ControllerSensorUpdate => new ControllerSensorUpdatedEventArgs(ev),
-            _ => throw new ArgumentException("Test")
+            (uint)EventType.FingerDown => throw new NotImplementedException(),
+            (uint)EventType.FingerUp => throw new NotImplementedException(),
+            (uint)EventType.FingerMotion => throw new NotImplementedException(),
+            (uint)EventType.DollarGesture => throw new NotImplementedException(),
+            (uint)EventType.DollarRecord => throw new NotImplementedException(),
+            (uint)EventType.Multigesture => throw new NotImplementedException(),
+            (uint)EventType.ClipboardUpdate => throw new NotImplementedException(),
+            (uint)EventType.DropFile => throw new NotImplementedException(),
+            (uint)EventType.DropText => throw new NotImplementedException(),
+            (uint)EventType.DropBegin => throw new NotImplementedException(),
+            (uint)EventType.DropComplete => throw new NotImplementedException(),
+            (uint)EventType.AudioDeviceAdded => throw new NotImplementedException(),
+            (uint)EventType.AudioDeviceRemoved => throw new NotImplementedException(),
+            (uint)EventType.SensorUpdate => throw new NotImplementedException(),
+            (uint)EventType.RenderDeviceReset => throw new NotImplementedException(),
+            (uint)EventType.RenderTargetsReset => throw new NotImplementedException(),
+            (uint)EventType.PollSentinel => throw new NotImplementedException(),
+            (uint)EventType.UserEvent => throw new NotImplementedException(),
+            _ => throw new ArgumentException($"Invalid event type: {ev.Type}")
         };
 
     private ISDLEvent CreateFromSDLDisplayEvent(SDL.SDL_Event ev)
@@ -85,6 +103,5 @@ public class EventFactory
             (byte)WindowEventType.DisplayChanged => new WindowDisplayChangedEventArgs(ev),
             _ => throw new ArgumentException("Invalid")
         };
-
 
 }

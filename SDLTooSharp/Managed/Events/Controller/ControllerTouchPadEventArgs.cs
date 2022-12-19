@@ -6,13 +6,14 @@ namespace SDLTooSharp.Managed.Events.Controller;
 public abstract class ControllerTouchPadEventArgs : AbstractControllerEventArgs
 {
 
-    private int _touchpadID;
+    private int _touchpadId;
     private int _fingerId;
     private float _x;
     private float _y;
     private float _pressure;
     protected ControllerTouchPadEventArgs(SDL.SDL_Event @event) : base(@event)
     {
+        _touchpadId = @event.CTouchPad.Touchpad;
         _which = @event.CTouchPad.Which;
         _fingerId = @event.CTouchPad.Finger;
         _x = @event.CTouchPad.X;
@@ -20,7 +21,7 @@ public abstract class ControllerTouchPadEventArgs : AbstractControllerEventArgs
         _pressure = @event.CTouchPad.Pressure;
 
     }
-
+    public int GetTouchPadID() => _touchpadId;
     public int GetFingerId() => _fingerId;
     public float GetX() => _x;
     public float GetY() => _y;
