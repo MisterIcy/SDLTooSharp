@@ -27,6 +27,6 @@ public sealed class MouseWheelEventArgs : AbstractMouseEventArgs
         Y = @event.Wheel.Y;
         Direction = (MouseWheelDirection)@event.Wheel.Direction;
         PreciseX = @event.Wheel.PreciseX;
-        PreciseX = @event.Wheel.PreciseY;
+        PreciseY = @event.Wheel.PreciseY;
     }
 }

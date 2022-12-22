@@ -9,9 +9,12 @@ public sealed class DisplayDisconnectedEventArgs : AbstractDisplayEvent
 
     public DisplayDisconnectedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        throw new InvalidDisplaySubtypeEventException(
-            DisplayEventType.Disconnected,
-            (DisplayEventType)@event.Display.Event
-        );
+        if ( @event.Display.Event != (byte)DisplayEventType.Disconnected )
+        {
+            throw new InvalidDisplaySubtypeEventException(
+                DisplayEventType.Disconnected,
+                (DisplayEventType)@event.Display.Event
+            );
+        }
     }
 }

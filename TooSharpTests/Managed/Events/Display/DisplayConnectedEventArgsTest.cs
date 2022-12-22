@@ -14,9 +14,11 @@ public class DisplayConnectedEventArgsTest
         ev.Type = (uint)EventType.DisplayEvent;
         ev.Display.Event = (byte)DisplayEventType.Connected;
         ev.Common.Timestamp = 0;
+        ev.Display.Data1 = 1;
         ev.Display.Display = 1;
 
         DisplayConnectedEventArgs args = new DisplayConnectedEventArgs(ev);
+        Assert.Equal((uint)1, args.DisplayId);
         Assert.Equal(EventType.DisplayEvent, args.Type);
         Assert.Equal(DisplayEventType.Connected, args.DisplayEventType);
         Assert.Equal((uint)0, args.Timestamp);

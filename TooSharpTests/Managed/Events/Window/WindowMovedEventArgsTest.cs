@@ -2,6 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Window;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace TooSharpTests.Managed.Events.Window;
 
@@ -32,7 +33,7 @@ public class WindowMovedEventArgsTest
         ev.Type = (uint)EventType.DisplayEvent;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidEventTypeException>(() => {
             WindowMovedEventArgs args = new WindowMovedEventArgs(ev);
         });
     }
@@ -45,7 +46,7 @@ public class WindowMovedEventArgsTest
         ev.Window.Event = 0;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidWindowSubtypeEventException>(() => {
             WindowMovedEventArgs args = new WindowMovedEventArgs(ev);
         });
     }

@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace TooSharpTests.Managed.Events;
 
@@ -24,7 +25,7 @@ public class LocaleChangedEventArgsTest
         ev.Type = (uint)EventType.DisplayEvent;
         ev.Quit.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidEventTypeException>(() => {
             var args = new LocaleChangedEventArgs(ev);
         });
     }

@@ -1,6 +1,7 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Events;
 using SDLTooSharp.Managed.Events.Window;
+using SDLTooSharp.Managed.Exception.Events;
 
 namespace TooSharpTests.Managed.Events.Window;
 
@@ -27,7 +28,7 @@ public class WindowFocusLostEventArgsTest
         ev.Type = (uint)EventType.DisplayEvent;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidEventTypeException>(() => {
             WindowFocusLostEventArgs args = new WindowFocusLostEventArgs(ev);
         });
     }
@@ -40,7 +41,7 @@ public class WindowFocusLostEventArgsTest
         ev.Window.Event = 0;
         ev.Common.Timestamp = 0;
 
-        Assert.Throws<ArgumentException>(() => {
+        Assert.Throws<InvalidWindowSubtypeEventException>(() => {
             WindowFocusLostEventArgs args = new WindowFocusLostEventArgs(ev);
         });
     }
