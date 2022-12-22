@@ -24,7 +24,7 @@ public class MouseButtonUpEventArgsTest
         var args = new MouseButtonUpEventArgs(ev);
         Assert.Equal(EventType.MouseButtonUp, args.Type);
         Assert.Equal((uint)1, args.WindowId);
-        Assert.Equal((uint)1, args.Which);
+        Assert.Equal((uint)1, args.MouseId);
         Assert.Equal(new MouseState(0b00000001), args.MouseState);
         Assert.Equal(1, args.Clicks);
         Assert.Equal(MouseButton.Left, args.Button);

@@ -24,7 +24,7 @@ public class MouseMotionEventArgsTest
         var args = new MouseMotionEventArgs(ev);
         Assert.Equal(EventType.MouseMotion, args.Type);
         Assert.Equal((uint)1, args.WindowId);
-        Assert.Equal((uint)1, args.Which);
+        Assert.Equal((uint)1, args.MouseId);
         Assert.Equal(10, args.X);
         Assert.Equal(10, args.Y);
         Assert.Equal(new MouseState(0b00000001), args.MouseState);

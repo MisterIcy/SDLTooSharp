@@ -7,7 +7,7 @@ public abstract class AbstractMouseEventArgs : AbstractEventArgs
 {
 
     public uint WindowId { get; protected set; }
-    public uint Which { get; protected set; }
+    public uint MouseId { get; protected set; }
     public int X { get; protected set; }
     public int Y { get; protected set; }
 

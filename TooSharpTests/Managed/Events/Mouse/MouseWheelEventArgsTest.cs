@@ -24,7 +24,7 @@ public class MouseWheelEventArgsTEst
         var args = new MouseWheelEventArgs(ev);
         Assert.Equal(EventType.MouseWheel, args.Type);
         Assert.Equal((uint)1, args.WindowId);
-        Assert.Equal((uint)1, args.Which);
+        Assert.Equal((uint)1, args.MouseId);
         Assert.Equal(10, args.X);
         Assert.Equal(10, args.Y);
         Assert.Equal(MouseWheelDirection.Flipped, args.Direction);

@@ -13,7 +13,7 @@ public abstract class AbstractMouseButtonEventArgs : AbstractMouseEventArgs
     protected AbstractMouseButtonEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         WindowId = @event.Button.WindowID;
-        Which = @event.Button.Which;
+        MouseId = @event.Button.Which;
         X = @event.Button.X;
         Y = @event.Button.Y;
         MouseState = new MouseState(@event.Button.State);

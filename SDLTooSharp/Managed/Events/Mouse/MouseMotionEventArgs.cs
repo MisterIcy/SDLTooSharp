@@ -22,7 +22,7 @@ public sealed class MouseMotionEventArgs : AbstractMouseEventArgs
         }
 
         WindowId = @event.Motion.WindowID;
-        Which = @event.Motion.Which;
+        MouseId = @event.Motion.Which;
         X = @event.Motion.X;
         Y = @event.Motion.Y;
         RelativeX = @event.Motion.XRel;

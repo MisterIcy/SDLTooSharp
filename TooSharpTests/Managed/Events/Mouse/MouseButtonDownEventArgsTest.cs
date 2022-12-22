@@ -24,7 +24,7 @@ public class MouseButtonDownEventArgsTest
         var args = new MouseButtonDownEventArgs(ev);
         Assert.Equal(EventType.MouseButtonDown, args.Type);
         Assert.Equal((uint)1, args.WindowId);
-        Assert.Equal((uint)1, args.Which);
+        Assert.Equal((uint)1, args.MouseId);
         Assert.Equal(new MouseState(0b00000001), args.MouseState);
         Assert.Equal(1, args.Clicks);
         Assert.Equal(MouseButton.Left, args.Button);

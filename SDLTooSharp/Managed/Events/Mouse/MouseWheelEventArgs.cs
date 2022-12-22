@@ -22,7 +22,7 @@ public sealed class MouseWheelEventArgs : AbstractMouseEventArgs
         }
 
         WindowId = @event.Wheel.WindowID;
-        Which = @event.Wheel.Which;
+        MouseId = @event.Wheel.Which;
         X = @event.Wheel.X;
         Y = @event.Wheel.Y;
         Direction = (MouseWheelDirection)@event.Wheel.Direction;
