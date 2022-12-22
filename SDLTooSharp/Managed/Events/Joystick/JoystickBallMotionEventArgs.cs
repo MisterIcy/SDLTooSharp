@@ -5,7 +5,7 @@ namespace SDLTooSharp.Managed.Events.Joystick;
 
 public sealed class JoystickBallMotionEventArgs : AbstractJoysticEventArgs
 {
- 
+
     public byte BallId { get; }
     public short RelativeX { get; }
     public short RelativeY { get; }

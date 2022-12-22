@@ -21,8 +21,8 @@ public class WindowMovedEventArgsTest
         Assert.Equal(EventType.WindowEvent, args.Type);
         Assert.Equal(WindowEventType.Moved, args.WindowEventType);
         Assert.Equal((uint)0, args.Timestamp);
-        Assert.Equal(10,args.Data1);
-        Assert.Equal(20,args.Data2);
+        Assert.Equal(10, args.Data1);
+        Assert.Equal(20, args.Data2);
     }
 
     [Fact]

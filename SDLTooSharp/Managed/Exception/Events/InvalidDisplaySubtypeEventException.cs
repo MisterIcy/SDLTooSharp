@@ -2,7 +2,7 @@ using SDLTooSharp.Managed.Events.Display;
 
 namespace SDLTooSharp.Managed.Exception.Events;
 
-public sealed class InvalidDisplaySubtypeEventException : AbstractEventException 
+public sealed class InvalidDisplaySubtypeEventException : AbstractEventException
 {
 
     public InvalidDisplaySubtypeEventException(DisplayEventType expected, DisplayEventType actual) : base(
