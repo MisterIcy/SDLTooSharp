@@ -16,7 +16,7 @@ public class JoystickDeviceRemovedEventArgsTest
 
         var args = new JoystickDeviceRemovedEventArgs(ev);
         Assert.Equal(EventType.JoyDeviceRemoved, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.JoystickId);
     }
 
     [Fact]

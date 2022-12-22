@@ -17,7 +17,7 @@ public class JoystickBatteryChangedEventArgsTest
 
         var args = new JoystickBatteryChangedEventArgs(ev);
         Assert.Equal(EventType.JoyBatteryUpdated, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.JoystickId);
         Assert.Equal(JoystickPowerLevel.Full, args.PowerLevel);
     }
 

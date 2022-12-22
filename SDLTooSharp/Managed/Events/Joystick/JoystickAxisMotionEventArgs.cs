@@ -20,6 +20,6 @@ public sealed class JoystickAxisMotionEventArgs : AbstractJoysticEventArgs
 
         AxisID = @event.JAxis.Axis;
         Value = @event.JAxis.Value;
-        Which = @event.JAxis.Which;
+        JoystickId = @event.JAxis.Which;
     }
 }

@@ -12,6 +12,6 @@ public abstract class JoystickButtonPressedEventArgs : AbstractJoysticEventArgs
     {
         Button = @event.JButton.Button;
         State = (JoystickButtonState)@event.JButton.State;
-        Which = @event.JButton.Which;
+        JoystickId = @event.JButton.Which;
     }
 }

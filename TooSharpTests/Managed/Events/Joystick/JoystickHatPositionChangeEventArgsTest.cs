@@ -18,7 +18,7 @@ public class JoystickHatPositionChangeEventArgsTest
 
         var args = new JoystickHatPositionChangeEventArgs(ev);
         Assert.Equal(EventType.JoyHatMotion, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.JoystickId);
         Assert.Equal(1, args.HatId);
         Assert.Equal(42, args.Value);
     }

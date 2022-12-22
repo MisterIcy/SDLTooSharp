@@ -7,6 +7,6 @@ public abstract class JoystickDeviceEventArgs : AbstractJoysticEventArgs
 
     protected JoystickDeviceEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        Which = @event.JDevice.Which;
+        JoystickId = @event.JDevice.Which;
     }
 }

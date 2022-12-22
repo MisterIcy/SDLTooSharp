@@ -16,7 +16,7 @@ public sealed class JoystickBatteryChangedEventArgs : AbstractJoysticEventArgs
             );
         }
 
-        Which = @event.JBattery.Which;
+        JoystickId = @event.JBattery.Which;
         PowerLevel = (JoystickPowerLevel)@event.JBattery.Level;
     }
 }

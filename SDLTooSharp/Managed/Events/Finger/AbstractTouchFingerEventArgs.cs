@@ -7,66 +7,42 @@ public abstract class AbstractTouchFingerEventArgs : AbstractEventArgs
     /// <summary>
     /// Gets the ID of the touch device
     /// </summary>
-    public long TouchId
-    {
-        get;
-    }
+    public long TouchId { get; }
 
     /// <summary>
     /// Gets the ID of the finger
     /// </summary>
-    public long FingerId
-    {
-        get;
-    }
+    public long FingerId { get; }
 
     /// <summary>
     /// The x-axis location of the event, normalized (0...1)
     /// </summary>
-    public float X
-    {
-        get;
-    }
+    public float X { get; }
 
     /// <summary>
     /// The y-axis location of the event, normalized (0...1)
     /// </summary>
-    public float Y
-    {
-        get;
-    }
+    public float Y { get; }
 
     /// <summary>
     /// The distance in the x axis, normalized (-1...1)
     /// </summary>
-    public float DX
-    {
-        get;
-    }
+    public float DX { get; }
 
     /// <summary>
     /// The distance in the y axis, normalized (-1...1)
     /// </summary>
-    public float DY
-    {
-        get;
-    }
+    public float DY { get; }
 
     /// <summary>
     /// The quantity of pressure applied, normalized (0...1)
     /// </summary>
-    public float Pressure
-    {
-        get;
-    }
+    public float Pressure { get; }
 
     /// <summary>
     /// The window underneath the finger, if any
     /// </summary>
-    public uint WindowId
-    {
-        get;
-    }
+    public uint WindowId { get; }
 
     protected AbstractTouchFingerEventArgs(SDL.SDL_Event @event) : base(@event)
     {

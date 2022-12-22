@@ -6,7 +6,7 @@ public interface ISDLEvent
     /// The type of the event.
     /// </summary>
     public EventType Type { get; }
-    
+
     /// <summary>
     /// The SDL-timestamp when the event occurred
     /// </summary>

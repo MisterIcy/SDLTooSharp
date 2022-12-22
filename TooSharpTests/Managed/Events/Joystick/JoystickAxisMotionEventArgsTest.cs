@@ -18,7 +18,7 @@ public class JoystickAxisMotionEventArgsTest
 
         var args = new JoystickAxisMotionEventArgs(ev);
         Assert.Equal(EventType.JoyAxisMotion, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.JoystickId);
         Assert.Equal(1, args.AxisID);
         Assert.Equal(42, args.Value);
     }

@@ -9,18 +9,12 @@ public sealed class ControllerAxisMotionEventArgs : AbstractControllerEventArgs
     /// <summary>
     /// The Id of the axis
     /// </summary>
-    public byte AxisId
-    {
-        get;
-    }
+    public byte AxisId { get; }
 
     /// <summary>
     /// The value of the axis
     /// </summary>
-    public short Value
-    {
-        get;
-    }
+    public short Value { get; }
 
     public ControllerAxisMotionEventArgs(SDL.SDL_Event @event) : base(@event)
     {

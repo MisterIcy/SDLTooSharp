@@ -22,6 +22,6 @@ public sealed class JoystickBallMotionEventArgs : AbstractJoysticEventArgs
         BallId = @event.JBall.Ball;
         RelativeX = @event.JBall.XRel;
         RelativeY = @event.JBall.YRel;
-        Which = @event.JBall.Which;
+        JoystickId = @event.JBall.Which;
     }
 }

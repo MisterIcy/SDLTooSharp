@@ -19,7 +19,7 @@ public class JoystickBallMotionEventArgsTest
 
         var args = new JoystickBallMotionEventArgs(ev);
         Assert.Equal(EventType.JoyBallMotion, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.JoystickId);
         Assert.Equal(1, args.BallId);
         Assert.Equal(42, args.RelativeX);
         Assert.Equal(21, args.RelativeY);

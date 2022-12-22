@@ -18,7 +18,7 @@ public sealed class JoystickHatPositionChangeEventArgs : AbstractJoysticEventArg
             );
         }
 
-        Which = @event.JHat.Which;
+        JoystickId = @event.JHat.Which;
         HatId = @event.JHat.Hat;
         Value = @event.JHat.Value;
     }
