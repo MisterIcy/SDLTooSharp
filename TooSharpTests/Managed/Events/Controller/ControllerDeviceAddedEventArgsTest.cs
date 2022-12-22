@@ -17,7 +17,7 @@ public class ControllerDeviceAddedEventArgsTest
 
         var args = new ControllerDeviceAddedEventArgs(ev);
         Assert.Equal(EventType.ControllerDeviceAdded, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.ControllerId);
     }
 
     [Fact]

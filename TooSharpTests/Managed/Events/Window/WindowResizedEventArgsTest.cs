@@ -18,10 +18,11 @@ public class WindowResizedEventArgsTest
         ev.Window.Data2 = 20;
 
         WindowResizedEventArgs args = new WindowResizedEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Resized, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal(new Size(10, 20), args.GetSize());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Resized, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal(10, args.Data1);
+        Assert.Equal(20, args.Data2);
     }
 
     [Fact]

@@ -13,8 +13,8 @@ public class AppDidEnterForegroundEventArgsTest
         ev.Common.Timestamp = 0;
 
         var args = new AppDidEnterForegroundEventArgs(ev);
-        Assert.Equal(EventType.AppDidEnterForeground, args.GetType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.AppDidEnterForeground, args.Type);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

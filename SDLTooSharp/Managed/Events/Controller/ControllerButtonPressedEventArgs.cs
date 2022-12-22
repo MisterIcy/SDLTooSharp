@@ -10,7 +10,7 @@ public abstract class ControllerButtonPressedEventArgs : AbstractControllerEvent
 
     protected ControllerButtonPressedEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        Which = @event.CButton.Which;
+        ControllerId = @event.CButton.Which;
         Button = (ControllerButton)@event.CButton.Button;
         State = (ControllerButtonState)@event.CButton.State;
     }

@@ -15,9 +15,9 @@ public class WindowRestoredEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowRestoredEventArgs args = new WindowRestoredEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Restored, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Restored, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

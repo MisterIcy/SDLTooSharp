@@ -13,8 +13,8 @@ public class AppLowMemoryEventArgsTest
         ev.Common.Timestamp = 0;
 
         var args = new AppLowMemoryEventArgs(ev);
-        Assert.Equal(EventType.AppLowMemory, args.GetType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.AppLowMemory, args.Type);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

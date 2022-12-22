@@ -15,9 +15,9 @@ public class WindowIccProfileChangedEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowIccProfileChangedEventArgs args = new WindowIccProfileChangedEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.IccProfileChanged, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.IccProfileChanged, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

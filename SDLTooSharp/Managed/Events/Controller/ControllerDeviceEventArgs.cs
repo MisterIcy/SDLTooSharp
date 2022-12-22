@@ -7,6 +7,6 @@ public abstract class ControllerDeviceEventArgs : AbstractControllerEventArgs
 
     protected ControllerDeviceEventArgs(SDL.SDL_Event @event) : base(@event)
     {
-        Which = @event.CDevice.Which;
+        ControllerId = @event.CDevice.Which;
     }
 }

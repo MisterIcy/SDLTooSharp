@@ -17,10 +17,10 @@ public class JoystickButtonDownEventArgsTest
         ev.JButton.State = (byte)JoystickButtonState.Pressed;
 
         var args = new JoystickButtonDownEventArgs(ev);
-        Assert.Equal(EventType.JoyButtonDown, args.GetType());
-        Assert.Equal(1, args.GetJoystickID());
-        Assert.Equal(1, args.GetButton());
-        Assert.Equal(JoystickButtonState.Pressed, args.GetState());
+        Assert.Equal(EventType.JoyButtonDown, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.Button);
+        Assert.Equal(JoystickButtonState.Pressed, args.State);
     }
 
     [Fact]

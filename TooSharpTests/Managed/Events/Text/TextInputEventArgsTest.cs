@@ -15,8 +15,8 @@ public class TextInputEventArgsTest
         ev.Edit.WindowID = 1;
 
         var args = new TextInputEventArgs(ev);
-        Assert.Equal(EventType.TextInput, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
+        Assert.Equal(EventType.TextInput, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
     }
 
     [Fact]

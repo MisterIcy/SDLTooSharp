@@ -18,11 +18,11 @@ public class JoystickBallMotionEventArgsTest
         ev.JBall.YRel = 21;
 
         var args = new JoystickBallMotionEventArgs(ev);
-        Assert.Equal(EventType.JoyBallMotion, args.GetType());
-        Assert.Equal(1, args.GetJoystickID());
-        Assert.Equal(1, args.GetBallID());
-        Assert.Equal(42, args.GetRelativeMotionX());
-        Assert.Equal(21, args.GetRelativeMotionY());
+        Assert.Equal(EventType.JoyBallMotion, args.Type);
+        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.BallId);
+        Assert.Equal(42, args.RelativeX);
+        Assert.Equal(21, args.RelativeY);
     }
 
     [Fact]

@@ -7,7 +7,7 @@ public abstract class AbstractControllerEventArgs : AbstractEventArgs
     /// <summary>
     /// The Id of the Controller
     /// </summary>
-    public int Which
+    public int ControllerId
     {
         get;
         protected set;

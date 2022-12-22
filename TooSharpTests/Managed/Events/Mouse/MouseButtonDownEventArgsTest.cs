@@ -22,15 +22,14 @@ public class MouseButtonDownEventArgsTest
         ev.Button.Y = 10;
 
         var args = new MouseButtonDownEventArgs(ev);
-        Assert.Equal(EventType.MouseButtonDown, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal((uint)1, args.GetMouseID());
-        Assert.Equal(new MouseState(0b00000001), args.GetMouseState());
-        Assert.Equal(1, args.GetClicks());
-        Assert.Equal(MouseButton.Left, args.GetMouseButton());
-        Assert.Equal(new Point2(10, 10), args.GetPosition());
-        Assert.Equal(10, args.GetX());
-        Assert.Equal(10, args.GetY());
+        Assert.Equal(EventType.MouseButtonDown, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal((uint)1, args.Which);
+        Assert.Equal(new MouseState(0b00000001), args.MouseState);
+        Assert.Equal(1, args.Clicks);
+        Assert.Equal(MouseButton.Left, args.Button);
+        Assert.Equal(10, args.X);
+        Assert.Equal(10, args.Y);
     }
 
     [Fact]

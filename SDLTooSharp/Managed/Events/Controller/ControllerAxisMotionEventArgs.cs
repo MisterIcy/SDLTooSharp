@@ -9,7 +9,7 @@ public sealed class ControllerAxisMotionEventArgs : AbstractControllerEventArgs
     /// <summary>
     /// The Id of the axis
     /// </summary>
-    public byte Axis
+    public byte AxisId
     {
         get;
     }
@@ -32,8 +32,8 @@ public sealed class ControllerAxisMotionEventArgs : AbstractControllerEventArgs
             );
         }
 
-        Which = @event.CAxis.Which;
-        Axis = @event.CAxis.Axis;
+        ControllerId = @event.CAxis.Which;
+        AxisId = @event.CAxis.Axis;
         Value = @event.CAxis.Value;
     }
 }

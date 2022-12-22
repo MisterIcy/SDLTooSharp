@@ -16,10 +16,10 @@ public class WindowDisplayChangedEventArgsTest
         ev.Window.Data1 = 1;
 
         WindowDisplayChangedEventArgs args = new WindowDisplayChangedEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.DisplayChanged, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal(1, args.GetDisplayId());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.DisplayChanged, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal(1, args.Data1);
     }
 
     [Fact]

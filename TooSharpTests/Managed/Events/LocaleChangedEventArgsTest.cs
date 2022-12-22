@@ -13,8 +13,8 @@ public class LocaleChangedEventArgsTest
         ev.Quit.Timestamp = 0;
 
         var args = new LocaleChangedEventArgs(ev);
-        Assert.Equal(EventType.LocaleChanged, args.GetType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.LocaleChanged, args.Type);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

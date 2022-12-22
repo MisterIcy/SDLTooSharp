@@ -15,9 +15,9 @@ public class WindowFocusLostEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowFocusLostEventArgs args = new WindowFocusLostEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.FocusLost, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.FocusLost, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

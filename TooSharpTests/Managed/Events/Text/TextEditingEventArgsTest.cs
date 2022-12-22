@@ -18,10 +18,10 @@ public class TextEditingEventArgsTest
         ev.Edit.Length = 4;
 
         var args = new TextEditingEventArgs(ev);
-        Assert.Equal(EventType.TextEditing, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal(0, args.GetStart());
-        Assert.Equal(4, args.GetLength());
+        Assert.Equal(EventType.TextEditing, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal(0, args.Start);
+        Assert.Equal(4, args.Length);
     }
 
     [Fact]

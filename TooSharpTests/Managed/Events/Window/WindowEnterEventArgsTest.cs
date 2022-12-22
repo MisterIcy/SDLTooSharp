@@ -15,9 +15,9 @@ public class WindowEnterEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowEnterEventArgs args = new WindowEnterEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Enter, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Enter, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

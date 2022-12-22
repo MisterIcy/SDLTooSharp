@@ -15,9 +15,9 @@ public class WindowHiddenEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowHiddenEventArgs args = new WindowHiddenEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Hidden, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Hidden, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

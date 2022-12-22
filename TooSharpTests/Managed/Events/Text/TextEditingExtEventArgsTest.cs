@@ -20,11 +20,11 @@ public class TextEditingExtEventArgsTest
         ev.EditExt.Text = Marshal.StringToCoTaskMemUTF8("test");
 
         var args = new TextEditingExtEventArgs(ev);
-        Assert.Equal(EventType.TextEditingExt, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal(0, args.GetStart());
-        Assert.Equal(4, args.GetLength());
-        Assert.Equal("test", args.GetText());
+        Assert.Equal(EventType.TextEditingExt, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal(0, args.Start);
+        Assert.Equal(4, args.Length);
+        Assert.Equal("test", args.Text);
     }
 
     [Fact]

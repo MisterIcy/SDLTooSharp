@@ -22,7 +22,7 @@ public class ControllerTouchPadDownEventArgsTest
 
         var args = new ControllerTouchPadDownEventArgs(ev);
         Assert.Equal(EventType.ControllerTouchPadDown, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.ControllerId);
         Assert.Equal(1, args.TouchpadId);
         Assert.Equal(1, args.FingerId);
         Assert.Equal(1.1f, args.X);

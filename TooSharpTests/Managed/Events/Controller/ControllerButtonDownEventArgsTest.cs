@@ -18,7 +18,7 @@ public class ControllerButtonDownEventArgsTest
 
         var args = new ControllerButtonDownEventArgs(ev);
         Assert.Equal(EventType.ControllerButtonDown, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.ControllerId);
         Assert.Equal(ControllerButton.A, args.Button);
         Assert.Equal(ControllerButtonState.Pressed, args.State);
     }

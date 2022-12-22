@@ -22,16 +22,14 @@ public class MouseWheelEventArgsTEst
         ev.Wheel.PreciseY = 9.9f;
 
         var args = new MouseWheelEventArgs(ev);
-        Assert.Equal(EventType.MouseWheel, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal((uint)1, args.GetMouseID());
-        Assert.Equal(new Point2(10, 10), args.GetScrollingAmount());
-        Assert.Equal(10, args.GetX());
-        Assert.Equal(10, args.GetY());
-        Assert.Equal(MouseWheelDirection.Flipped, args.GetDirection());
-        Assert.Equal(new Point2F(10.1f, 9.9f), args.GetPreciseScrollingAmount());
-        Assert.Equal(10.1f, args.GetPreciseX());
-        Assert.Equal(9.9f, args.GetPreciseY());
+        Assert.Equal(EventType.MouseWheel, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal((uint)1, args.Which);
+        Assert.Equal(10, args.X);
+        Assert.Equal(10, args.Y);
+        Assert.Equal(MouseWheelDirection.Flipped, args.Direction);
+        Assert.Equal(10.1f, args.PreciseX);
+        Assert.Equal(9.9f, args.PreciseY);
     }
 
     [Fact]

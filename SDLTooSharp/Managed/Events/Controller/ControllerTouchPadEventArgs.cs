@@ -14,7 +14,7 @@ public abstract class ControllerTouchPadEventArgs : AbstractControllerEventArgs
     protected ControllerTouchPadEventArgs(SDL.SDL_Event @event) : base(@event)
     {
         TouchpadId = @event.CTouchPad.Touchpad;
-        Which = @event.CTouchPad.Which;
+        ControllerId = @event.CTouchPad.Which;
         FingerId = @event.CTouchPad.Finger;
         X = @event.CTouchPad.X;
         Y = @event.CTouchPad.Y;

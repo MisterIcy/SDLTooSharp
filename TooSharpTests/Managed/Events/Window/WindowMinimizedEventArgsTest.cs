@@ -15,9 +15,9 @@ public class WindowMinimizedEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowMinimizedEventArgs args = new WindowMinimizedEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Minimized, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Minimized, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

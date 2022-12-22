@@ -22,16 +22,14 @@ public class MouseMotionEventArgsTest
         ev.Motion.State = 0b00000001;
 
         var args = new MouseMotionEventArgs(ev);
-        Assert.Equal(EventType.MouseMotion, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal((uint)1, args.GetMouseID());
-        Assert.Equal(10, args.GetX());
-        Assert.Equal(10, args.GetY());
-        Assert.Equal(new Point2(10, 10), args.GetPosition());
-        Assert.Equal(new MouseState(0b00000001), args.GetMouseState());
-        Assert.Equal(2, args.GetRelativeX());
-        Assert.Equal(2, args.GetRelativeY());
-        Assert.Equal(new Point2(2, 2), args.GetRelativeMotion());
+        Assert.Equal(EventType.MouseMotion, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal((uint)1, args.Which);
+        Assert.Equal(10, args.X);
+        Assert.Equal(10, args.Y);
+        Assert.Equal(new MouseState(0b00000001), args.MouseState);
+        Assert.Equal(2, args.RelativeX);
+        Assert.Equal(2, args.RelativeY);
     }
 
     [Fact]

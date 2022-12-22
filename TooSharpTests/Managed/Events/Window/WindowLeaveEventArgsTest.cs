@@ -15,9 +15,9 @@ public class WindowLeaveEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowLeaveEventArgs args = new WindowLeaveEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Leave, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Leave, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

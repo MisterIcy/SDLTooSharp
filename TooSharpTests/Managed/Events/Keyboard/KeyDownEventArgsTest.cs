@@ -20,12 +20,12 @@ public class KeyDownEventArgsTest
         ev.Key.KeySym = new SDL.SDL_Keysym();
 
         KeyDownEventArgs args = new KeyDownEventArgs(ev);
-        Assert.Equal(EventType.KeyDown, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal(KeyState.Pressed, args.GetState());
-        Assert.Equal(1, args.GetRepeat());
-        Assert.Equal(new SDL.SDL_Keysym(), args.GetKeySym());
+        Assert.Equal(EventType.KeyDown, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal(KeyState.Pressed, args.State);
+        Assert.Equal(1, args.Repeat);
+        Assert.Equal(new SDL.SDL_Keysym(), args.Keysym);
     }
 
     [Fact]

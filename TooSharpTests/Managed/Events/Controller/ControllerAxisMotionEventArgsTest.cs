@@ -18,8 +18,8 @@ public class ControllerAxisMotionEventArgsTest
 
         var args = new ControllerAxisMotionEventArgs(ev);
         Assert.Equal(EventType.ControllerAxisMotion, args.Type);
-        Assert.Equal(1, args.Which);
-        Assert.Equal(1, args.Axis);
+        Assert.Equal(1, args.ControllerId);
+        Assert.Equal(1, args.AxisId);
         Assert.Equal(42, args.Value);
     }
 

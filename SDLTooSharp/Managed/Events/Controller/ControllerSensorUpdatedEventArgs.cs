@@ -18,7 +18,7 @@ public sealed class ControllerSensorUpdatedEventArgs : AbstractControllerEventAr
             );
         }
 
-        Which = @event.CSensor.Which;
+        ControllerId = @event.CSensor.Which;
         SensorId = @event.CSensor.Sensor;
         Data = new float[3];
         unsafe

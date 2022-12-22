@@ -16,7 +16,7 @@ public class ControllerDeviceRemovedEventArgsTest
 
         var args = new ControllerDeviceRemovedEventArgs(ev);
         Assert.Equal(EventType.ControllerDeviceRemoved, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.ControllerId);
     }
 
     [Fact]

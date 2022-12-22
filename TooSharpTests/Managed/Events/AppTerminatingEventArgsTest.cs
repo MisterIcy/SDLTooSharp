@@ -13,8 +13,8 @@ public class AppTerminatingEventArgsTest
         ev.Common.Timestamp = 0;
 
         var args = new AppTerminatingEventArgs(ev);
-        Assert.Equal(EventType.AppTerminating, args.GetType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.AppTerminating, args.Type);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

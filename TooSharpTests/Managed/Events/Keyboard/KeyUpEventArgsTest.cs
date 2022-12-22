@@ -19,12 +19,12 @@ public class KeyUpEventArgsTest
         ev.Key.KeySym = new SDL.SDL_Keysym();
 
         KeyUpEventArgs args = new KeyUpEventArgs(ev);
-        Assert.Equal(EventType.KeyUp, args.GetType());
-        Assert.Equal((uint)1, args.GetWindowID());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal(KeyState.Released, args.GetState());
-        Assert.Equal(1, args.GetRepeat());
-        Assert.Equal(new SDL.SDL_Keysym(), args.GetKeySym());
+        Assert.Equal(EventType.KeyUp, args.Type);
+        Assert.Equal((uint)1, args.WindowId);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal(KeyState.Released, args.State);
+        Assert.Equal(1, args.Repeat);
+        Assert.Equal(new SDL.SDL_Keysym(), args.Keysym);
     }
 
     [Fact]

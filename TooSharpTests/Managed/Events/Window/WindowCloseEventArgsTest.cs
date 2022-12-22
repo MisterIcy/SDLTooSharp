@@ -16,10 +16,10 @@ public class WindowCloseEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowCloseEventArgs args = new WindowCloseEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.Close, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
-        Assert.Equal((uint)1, args.GetWindowID());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.Close, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
+        Assert.Equal((uint)1, args.WindowId);
     }
 
     [Fact]

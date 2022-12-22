@@ -15,9 +15,9 @@ public class WindowHitTestEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowHitTestEventArgs args = new WindowHitTestEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.HitTest, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.HitTest, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

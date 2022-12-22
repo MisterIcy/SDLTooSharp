@@ -14,8 +14,8 @@ public class QuitEventArgsTest
         ev.Common.Timestamp = 0;
 
         var args = new QuitEventArgs(ev);
-        Assert.Equal(EventType.Quit, args.GetType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.Quit, args.Type);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

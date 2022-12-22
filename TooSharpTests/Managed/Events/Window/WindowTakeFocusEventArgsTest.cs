@@ -15,9 +15,9 @@ public class WindowTakeFocusEventArgsTest
         ev.Common.Timestamp = 0;
 
         WindowTakeFocusEventArgs args = new WindowTakeFocusEventArgs(ev);
-        Assert.Equal(EventType.WindowEvent, args.GetType());
-        Assert.Equal(WindowEventType.TakeFocus, args.GetEventType());
-        Assert.Equal((uint)0, args.GetTimestamp());
+        Assert.Equal(EventType.WindowEvent, args.Type);
+        Assert.Equal(WindowEventType.TakeFocus, args.WindowEventType);
+        Assert.Equal((uint)0, args.Timestamp);
     }
 
     [Fact]

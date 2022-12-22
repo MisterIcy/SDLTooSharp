@@ -18,7 +18,7 @@ public class ControllerButtonUpEventArgsTest
 
         var args = new ControllerButtonUpEventArgs(ev);
         Assert.Equal(EventType.ControllerButtonUp, args.Type);
-        Assert.Equal(1, args.Which);
+        Assert.Equal(1, args.ControllerId);
         Assert.Equal(ControllerButton.A, args.Button);
         Assert.Equal(ControllerButtonState.Released, args.State);
     }
