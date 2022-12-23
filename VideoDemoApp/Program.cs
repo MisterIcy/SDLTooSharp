@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
@@ -18,7 +18,7 @@ for ( int i = 0; i < displays; i++ )
 
     Rectangle bounds = display.Bounds;
     Rectangle usableBounds = display.UsableBounds;
-    
+
     Console.WriteLine($"Desktop: {bounds.X},{bounds.Y} {bounds.Width}x{bounds.Height}");
     Console.WriteLine($"Usable: {usableBounds.X},{usableBounds.Y} {usableBounds.Width}x{usableBounds.Height}");
     Console.WriteLine($"Orientation: {display.Orientation}");

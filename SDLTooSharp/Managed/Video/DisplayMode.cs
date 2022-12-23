@@ -66,7 +66,7 @@ public class DisplayMode
         Height = mode.H;
         RefreshRate = mode.RefreshRate;
     }
-    
+
     public static explicit operator SDL.SDL_DisplayMode(DisplayMode mode)
     {
         SDL.SDL_DisplayMode disp = default;

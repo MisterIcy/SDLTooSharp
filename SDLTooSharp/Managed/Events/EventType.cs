@@ -1,6 +1,6 @@
 namespace SDLTooSharp.Managed.Events;
 
-public enum EventType: uint
+public enum EventType : uint
 {
-    
+
 }
