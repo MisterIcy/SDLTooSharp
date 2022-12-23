@@ -197,7 +197,7 @@ public static partial class SDL
     public static extern bool SDL_GameControllerHasAxis(IntPtr gameController, SDL_GameControllerAxis axis);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern ushort SDL_GameControllerGetAxis(IntPtr gameController, SDL_GameControllerAxis axis);
+    public static extern short SDL_GameControllerGetAxis(IntPtr gameController, SDL_GameControllerAxis axis);
 
     public enum SDL_GameControllerButton
     {

@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added classes for [Point2](SDLTooSharp/Managed/Common/Point2.cs) and [Point2F](SDLTooSharp/Managed/Common/Point2.cs).
 - Added classes for [Size](SDLTooSharp/Managed/Common/Size.cs) and [SizeF](SDLTooSharp/Managed/Common/Size.cs).
 
+### Fixed
+- Fixed `SDL_GameControllerGetAxis` which returned an unsigned value instead of a signed one. 
+
 ## [0.2.0] - 2022-09-25
 ### Added
 - Added missing function `SDL_LoadWAV`.
