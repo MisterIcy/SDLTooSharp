@@ -8,7 +8,7 @@ public abstract class SDLException : System.Exception
     /// Gets the error message reported by SDL.
     /// </summary>
     public string SdlErrorMsg { get; }
-    
+
     protected SDLException(string message) : base(message)
     {
         try
