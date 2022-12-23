@@ -12,8 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added classes for [Size](SDLTooSharp/Managed/Common/Size.cs) and [SizeF](SDLTooSharp/Managed/Common/Size.cs).
 
 ### Fixed
-- Fixed `SDL_GameControllerGetAxis` which returned an unsigned value instead of a signed one. 
-
+- Fixed `SDL_GameControllerGetAxis` which returned an unsigned value instead of a signed one.
+- Fixed `SDL_GetClosestDisplayMode` which had a wrong signature.
 ## [0.2.0] - 2022-09-25
 ### Added
 - Added missing function `SDL_LoadWAV`.

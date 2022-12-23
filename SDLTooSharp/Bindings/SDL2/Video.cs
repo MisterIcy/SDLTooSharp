@@ -207,7 +207,7 @@ public static partial class SDL
     public static extern int SDL_GetCurrentDisplayMode(int displayIndex, out SDL_DisplayMode mode);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr SDL_GetClosestDisplayMode(int displayIndex, in SDL_DisplayMode closest);
+    public static extern IntPtr SDL_GetClosestDisplayMode(int displayIndex, in SDL_DisplayMode mode, out SDL_DisplayMode closest);
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GetPointDisplayIndex(in SDL_Point point);
