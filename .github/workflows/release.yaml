@@ -36,10 +36,10 @@ jobs:
         run: dotnet restore
         
       - name: Build
-        run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore /p:Version=${VERSION}
+        run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} /p:Version=${VERSION}
 
       - name: Pack
-        run: dotnet pack --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore /p:Version=${VERSION} --no-build --output .
+        run: dotnet pack --configuration ${{matrix.configuration}} /p:Version=${VERSION} --no-build --output .
       
       - name: Push (Github)
         run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source "https://nuget.pkg.github.com/MisterIcy/index.json" --api-key ${GITHUB_TOKEN}
