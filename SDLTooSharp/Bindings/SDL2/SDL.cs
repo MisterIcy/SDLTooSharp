@@ -22,19 +22,24 @@ public static partial class SDL
     public const uint SDL_INIT_EVERYTHING = SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS |
                                             SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER |
                                             SDL_INIT_SENSOR;
-
+    ///<summary>Initialize the SDL library.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_Init">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_Init(uint flags);
-
+    ///<summary>Compatibility function to initialize the SDL library.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_InitSubSystem">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_InitSubSystem(uint flags);
-
+    ///<summary>Shut down specific SDL subsystems.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_QuitSubSystem">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_QuitSubSystem(uint flags);
-
+    ///<summary>Get a mask of the specified subsystems which are currently initialized.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_WasInit">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern uint SDL_WasInit(uint flags);
-
+    ///<summary>Clean up all initialized subsystems.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_Quit">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_Quit();
 

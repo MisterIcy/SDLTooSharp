@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace SDLTooSharp.Bindings.SDL2;
@@ -452,6 +451,8 @@ public static partial class SDL
         [FieldOffset(0)] public SDL_DropEvent Drop;
     }
 
+    ///<summary>Pump the event loop, gathering events from the input devices.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PumpEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_PumpEvents();
 
@@ -462,6 +463,8 @@ public static partial class SDL
         SDL_GETEVENT
     }
 
+    ///<summary>Check the event queue for messages and optionally return them.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PeepEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_PeepEvents(
         out SDL_Event[] events,
@@ -470,58 +473,72 @@ public static partial class SDL
         uint minType,
         uint maxType
     );
-
+    ///<summary>Check for the existence of a certain event type in the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_HasEvent">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool SDL_HasEvent(uint type);
-
+    ///<summary>Check for the existence of certain event types in the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_HasEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool SDL_HasEvents(uint minType, uint maxType);
-
+    ///<summary>Clear events of a specific type from the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FlushEvent">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_FlushEvent(uint type);
-
+    ///<summary>Clear events of a range of types from the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FlushEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_FlushEvents(uint minType, uint maxType);
-
+    ///<summary>Poll for currently pending events.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PollEvent">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_PollEvent(out SDL_Event @event);
-
+    ///<summary>Wait indefinitely for the next available event.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_WaitEvent">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_WaitEvent(out SDL_Event @event);
-
+    ///<summary>Wait until the specified timeout (in milliseconds) for the next available event.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_WaitEventTimeout">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_WaitEventTimeout(out SDL_Event @event, int timeout);
-
+    ///<summary>Add an event to the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PushEvent">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_PushEvent(in SDL_Event @event);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate int SDL_EventFilter(IntPtr userData, ref SDL_Event @event);
 
+    ///<summary>Set up a filter to process all events before they change internal state and are posted to the internal event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetEventFilter">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_SetEventFilter(
         [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
         IntPtr userData
     );
-
+    ///<summary>Query the current event filter.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetEventFilter">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool SDL_GetEventFilter(
         [MarshalAs(UnmanagedType.FunctionPtr)] out SDL_EventFilter filter,
         out IntPtr userData
     );
-
+    ///<summary>Add a callback to be triggered when an event is added to the event queue.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_AddEventWatch">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_AddEventWatch(
         [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
         IntPtr userData
     );
-
+    ///<summary>Remove an event watch callback added with SDL_AddEventWatch().</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_DelEventWatch">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_DelEventWatch(
         [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
         IntPtr userData
     );
-
+    ///<summary>Run a specific filter function on the current event queue, removing any events for which the filter returns 0.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FilterEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_FilterEvents(
         [MarshalAs(UnmanagedType.FunctionPtr)] SDL_EventFilter filter,
@@ -532,12 +549,15 @@ public static partial class SDL
     public const int SDL_IGNORE = 0;
     public const int SDL_DISABLE = 0;
     public const int SDL_ENABLE = 1;
-
+    ///<summary>Set the state of processing events by type.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_EventState">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern byte SDL_EventState(uint type, int state);
-
+    ///<summary>Use this macro to query the current processing state of a specified SDL_EventType.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetEventState">SDL2 Documentation</a></remarks>
     public static byte SDL_GetEventState(uint type) => SDL_EventState(type, SDL_QUERY);
-
+    ///<summary>Allocate a set of user-defined events, and return the beginning event number for that set of events.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RegisterEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern uint SDL_RegisterEvents(int numEvents);
 }

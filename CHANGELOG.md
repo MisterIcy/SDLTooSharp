@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added an enumeration for [Display Orientations](SDLTooSharp/Managed/Video/DisplayOrientation.cs).
+- Added simple documentation and links to SDL Wiki to most SDL_ functions.
 
 ### Changed
 - Added a `SdlErrorMsg` property in `SDLException` which contains the actual error reported by SDL.

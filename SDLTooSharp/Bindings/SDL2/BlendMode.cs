@@ -37,7 +37,8 @@ public static partial class SDL
         SDL_BLENDFACTOR_ONE_MINUS_DST_ALPHA = 0xA
     }
 
-
+    ///<summary>Compose a custom blend mode for renderers.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_ComposeCustomBlendMode">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern SDL_BlendMode SDL_ComposeCustomBlendMode(
         SDL_BlendFactor srcColorFactor,
@@ -45,5 +46,6 @@ public static partial class SDL
         SDL_BlendOperation colorOperation,
         SDL_BlendFactor srcAlphaFactor,
         SDL_BlendFactor dstAlphaFactor,
-        SDL_BlendOperation alphaOperation);
+        SDL_BlendOperation alphaOperation
+    );
 }

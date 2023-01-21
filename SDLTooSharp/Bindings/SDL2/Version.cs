@@ -11,7 +11,8 @@ public static partial class SDL
         public byte Minor;
         public byte Patch;
     }
-
+    ///<summary>Get the version of SDL that is linked against your program.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetVersion">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_GetVersion(out SDL_version ver);
 }

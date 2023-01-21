@@ -67,34 +67,41 @@ public static partial class SDL
         SDL_PACKEDLAYOUT_2101010,
         SDL_PACKEDLAYOUT_1010102
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_DEFINE_PIXELFOURCC">SDL2 Documentation</a></remarks>
     public static uint SDL_DEFINE_PIXELFOURCC(uint a, uint b, uint c, uint d) => SDL_FOURCC(a, b, c, d);
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_DEFINE_PIXELFORMAT">SDL2 Documentation</a></remarks>
     public static uint SDL_DEFINE_PIXELFORMAT(int type, int order, int layout, int bits, int bytes)
     {
         return (uint)( ( 1 << 28 ) | ( type << 24 ) | ( order << 20 ) | ( layout << 16 ) | ( bits << 8 ) | ( bytes << 0 ) );
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PIXELFLAG">SDL2 Documentation</a></remarks>
     public static byte SDL_PIXELFLAG(uint x)
     {
         return (byte)( ( x >> 28 ) & 0x0f );
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PIXELTYPE">SDL2 Documentation</a></remarks>
     public static byte SDL_PIXELTYPE(uint x)
     {
         return (byte)( ( x >> 24 ) & 0x0f );
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PIXELORDER">SDL2 Documentation</a></remarks>
     public static byte SDL_PIXELORDER(uint x)
     {
         return (byte)( ( x >> 20 ) & 0x0f );
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PIXELLAYOUT">SDL2 Documentation</a></remarks>
     public static byte SDL_PIXELLAYOUT(uint x)
     {
         return (byte)( ( x >> 16 ) & 0x0f );
     }
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_BITSPERPIXEL">SDL2 Documentation</a></remarks>
     public static byte SDL_BITSPERPIXEL(uint x)
     {
         return (byte)( ( x >> 8 ) & 0xff );
@@ -273,47 +280,61 @@ public static partial class SDL
 
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetPixelFormatName")]
     private static extern IntPtr _SDL_GetPixelFormatName(uint format);
-
+    ///<summary>Get the human readable name of a pixel format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetPixelFormatName">SDL2 Documentation</a></remarks>
     public static string SDL_GetPixelFormatName(uint format) => PtrToManaged(_SDL_GetPixelFormatName(format));
-
+    ///<summary>Convert one of the enumerated pixel formats to a bpp value and RGBA masks.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PixelFormatEnumToMasks">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool SDL_PixelFormatEnumToMasks(uint format, ref int bpp, out uint rMask, out uint gMask,
-        out uint bMask, out uint aMask);
-
+            out uint bMask, out uint aMask);
+    ///<summary>Convert a bpp value and RGBA masks to an enumerated pixel format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_MasksToPixelFormatEnum">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern uint SDL_MasksToPixelFormatEnum(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
-
+    ///<summary>Create an SDL_PixelFormat structure corresponding to a pixel format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_AllocFormat">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern IntPtr SDL_AllocFormat(uint pixelFormat);
-
+    ///<summary>Free an SDL_PixelFormat structure allocated by SDL_AllocFormat().</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FreeFormat">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_FreeFormat(IntPtr format);
-
+    ///<summary>Create a palette structure with the specified number of color entries.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_AllocPalette">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern IntPtr SDL_AllocPalette(int nColors);
-
+    ///<summary>Set the palette for a pixel format structure.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetPixelFormatPalette">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_SetPixelFormatPalette(IntPtr format, IntPtr palette);
-
+    ///<summary>Set a range of colors in a palette.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetPaletteColors">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_SetPaletteColors(IntPtr palette, [In] SDL_Color[] colors, int firstColor, int nColors);
-
+    ///<summary>Free a palette created with SDL_AllocPalette().</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FreePalette">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_FreePalette(IntPtr palette);
-
+    ///<summary>Map an RGB triple to an opaque pixel value for a given pixel format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_MapRGB">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern uint SDL_MapRGB(in SDL_PixelFormat format, byte r, byte g, byte b);
-
+    ///<summary>Map an RGBA quadruple to a pixel value for a given pixel format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_MapRGBA">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern uint SDL_MapRGBA(in SDL_PixelFormat format, byte r, byte g, byte b, byte a);
-
+    ///<summary>Get RGB values from a pixel in the specified format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetRGB">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_GetRGB(uint pixel, in SDL_PixelFormat format, out byte r, out byte g, out byte b);
-
+    ///<summary>Get RGBA values from a pixel in the specified format.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetRGBA">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_GetRGBA(uint pixel, in SDL_PixelFormat format, out byte r, out byte g, out byte b,
-        out byte a);
-
+            out byte a);
+    ///<summary>Calculate a 256 entry gamma ramp for a gamma value.</summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_CalculateGammaRamp">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern void SDL_CalculateGammaRamp(float gamma, [Out] ushort[] ramp);
 }
