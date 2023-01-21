@@ -5,7 +5,8 @@ namespace SDLTooSharp.Bindings.SDL2;
 public static partial class SDL
 {
     public const int SDLK_SCANCODE_MASK = ( 1 << 30 );
-
+    ///<summary></summary>
+    ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SCANCODE_TO_KEYCODE">SDL2 Documentation</a></remarks>
     public static int SDL_SCANCODE_TO_KEYCODE(int x)
     {
         return x | SDLK_SCANCODE_MASK;
