@@ -8,6 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    strategy:
+      matrix:
+        dotnet_versions: [ '6.0', '7.0' ]
+        configuration: [ 'Release' ]
+        
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,12 +24,22 @@ jobs:
       
       - name: Set Version from Tag
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            6.0.x
+            7.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
         
       - name: Build
-        run: dotnet build --configuration Release /p:Version=${VERSION}
+        run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore /p:Version=${VERSION}
 
       - name: Pack
-        run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+        run: dotnet pack --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore /p:Version=${VERSION} --no-build --output .
       
       - name: Push (Github)
         run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source "https://nuget.pkg.github.com/MisterIcy/index.json" --api-key ${GITHUB_TOKEN}
