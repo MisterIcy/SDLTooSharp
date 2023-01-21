@@ -1,27 +1,23 @@
 ﻿name: Release Workflow
-on: 
+on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    strategy:
-      matrix:
-        dotnet_versions: [ '6.0', '7.0' ]
-        configuration: [ 'Release' ]
-        
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Verify commit exists in master
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           git branch --remote --contains | grep origin/master
-      
+
       - name: Set Version from Tag
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
 
@@ -34,18 +30,21 @@ jobs:
 
       - name: Install dependencies
         run: dotnet restore
-        
-      - name: Build
-        run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} /p:Version=${VERSION}
+
+      - name: Build (6.0)
+        run: dotnet build --configuration Release --framework net6.0 /p:Version=${VERSION}
+
+      - name: Build (7.0)
+        run: dotnet build --configuration Release --framework net7.0 /p:Version=${VERSION}
 
       - name: Pack
-        run: dotnet pack --configuration ${{matrix.configuration}} /p:Version=${VERSION} --no-build --output .
-      
+        run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+
       - name: Push (Github)
         run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source "https://nuget.pkg.github.com/MisterIcy/index.json" --api-key ${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Push (NuGet)
         run: dotnet nuget push SDLTooSharp.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_TOKEN}
         env:
