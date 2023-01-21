@@ -15,7 +15,6 @@
         <RepositoryUrl>https://github.com/MisterIcy/SDLTooSharp</RepositoryUrl>
         <RepositoryType>github</RepositoryType>
         <PackageTags>SDL2</PackageTags>
-        <PackageLicenseUrl>https://github.com/MisterIcy/SDLTooSharp/blob/master/LICENSE</PackageLicenseUrl>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
