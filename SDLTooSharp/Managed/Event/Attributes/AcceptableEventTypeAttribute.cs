@@ -19,5 +19,6 @@ public class AcceptableEventTypeAttribute : Attribute
     /// <param name="Type">The event type acceptable by the event args class</param>
     public AcceptableEventTypeAttribute(SDL.SDL_EventType Type)
     {
+        EventType = Type;
     }
 }
