@@ -27,9 +27,18 @@ public abstract class AbstractSDLEventArgs : EventArgs
     /// <exception cref="EventClassMissingAttributeException">In case the child class is not annotated with a <see cref="AcceptableEventTypeAttribute"/> and as such the check cannot be performed</exception>
     protected AbstractSDLEventArgs(SDL.SDL_Event evt)
     {
-        CheckEventType((SDL.SDL_EventType)evt.Type);
+        // This is intended: The event type must be called on the most derived class (if applicable). 
+        // This leaves the freedom to the developer to override the check event type method on their own derived types.
+        // ReSharper disable once VirtualMemberCallInConstructor
+        CheckEventType(evt);
         Event = evt;
-        EventType = (EventType)evt.Type;
+        if ( evt.Type is >= (uint)SDL.SDL_EventType.SDL_USEREVENT and <= (uint)SDL.SDL_EventType.SDL_LASTEVENT )
+        {
+            EventType = EventType.UserEvent;
+        } else
+        {
+            EventType = (EventType)evt.Type;
+        }
     }
 
     /// <summary>
@@ -39,10 +48,10 @@ public abstract class AbstractSDLEventArgs : EventArgs
     /// This is a more generic validation than having to perform the same check in each
     /// of the EventArgs classes constructors. 
     /// </remarks>
-    /// <param name="evtType">The event type which came from SDL</param>
+    /// <param name="evt">An SDL_Event structure containing event information</param>
     /// <exception cref="InvalidEventTypeException">In case the event type is unacceptable. </exception>
     /// <exception cref="EventClassMissingAttributeException">In case the child class is not annotated with a <see cref="AcceptableEventTypeAttribute"/> and as such the check cannot be performed</exception>
-    private void CheckEventType(SDL.SDL_EventType evtType)
+    protected virtual void CheckEventType(SDL.SDL_Event evt)
     {
         if ( DoesInternalChecks() )
         {
@@ -63,12 +72,12 @@ public abstract class AbstractSDLEventArgs : EventArgs
             throw new EventClassMissingAttributeException(GetType().Name);
         }
 
-        if ( (uint)evtType != declaredEventType )
+        if ( evt.Type != declaredEventType )
         {
             throw new InvalidEventTypeException(
                 GetType().Name,
                 declaredEventType,
-                (uint)evtType
+                evt.Type
             );
         }
     }
