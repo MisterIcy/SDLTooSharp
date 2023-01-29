@@ -2,7 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Event.Attributes;
 using SDLTooSharp.Managed.Exception.Event;
 
-namespace SDLTooSharp.Managed.Event;
+namespace SDLTooSharp.Managed.Event.Window;
 
 /// <summary>
 /// Event args for when a Window is moved to another display

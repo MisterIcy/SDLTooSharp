@@ -2,7 +2,7 @@ using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Event.Attributes;
 using SDLTooSharp.Managed.Exception.Event;
 
-namespace SDLTooSharp.Managed.Event;
+namespace SDLTooSharp.Managed.Event.Window;
 
 /// <summary>
 /// Event arguments for when the Window Manager requests the window to be closed.

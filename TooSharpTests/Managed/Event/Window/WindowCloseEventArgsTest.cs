@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Event;
+using SDLTooSharp.Managed.Event.Window;
 using SDLTooSharp.Managed.Exception.Event;
 
 namespace TooSharpTests.Managed.Event.Window;
