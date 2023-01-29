@@ -9,7 +9,7 @@ public abstract class AbstractWindowEventArgs : AbstractSDLEventArgs
     public uint WindowId { get; }
     public int Data1 { get; }
     public int Data2 { get; }
-    
+
     protected AbstractWindowEventArgs(SDL.SDL_Event evt) : base(evt)
     {
         WindowId = evt.Window.WindowID;
@@ -29,13 +29,13 @@ public abstract class AbstractWindowEventArgs : AbstractSDLEventArgs
                 evt.Display.Type
             );
         }
-        
+
         try
         {
             var attributeData = GetType()
                                .GetCustomAttributesData()
                                .First(x => x.AttributeType == typeof(AcceptableWindowEventAttribute));
-            
+
             declaredEventType = (uint)( attributeData.ConstructorArguments[0].Value ?? 0 );
         } catch ( InvalidOperationException )
         {

@@ -7,7 +7,7 @@ namespace TooSharpTests.Managed.Event.Display;
 
 public class DisplayConnectedEventArgsTest
 {
-    
+
     [Fact]
     public void CreateEvent()
     {
@@ -28,7 +28,7 @@ public class DisplayConnectedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_WINDOWEVENT;
-        
+
         Assert.Throws<InvalidEventTypeException>(() => {
             var args = new DisplayConnectedEventArgs(evt);
         });
@@ -39,10 +39,10 @@ public class DisplayConnectedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_DISPLAYEVENT
-            
+
             ;
         evt.Display.Event = (byte)SDL.SDL_DisplayEventID.SDL_DISPLAYEVENT_DISCONNECTED;
-        
+
         Assert.Throws<InvalidEventIdException>(() => {
             var args = new DisplayConnectedEventArgs(evt);
         });

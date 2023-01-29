@@ -28,7 +28,7 @@ public class WindowHiddenEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_DISPLAYEVENT;
-        
+
         Assert.Throws<InvalidEventTypeException>(() => {
             var args = new WindowHiddenEventArgs(evt);
         });
@@ -40,7 +40,7 @@ public class WindowHiddenEventArgsTest
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_WINDOWEVENT;
         evt.Display.Event = (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_NONE;
-        
+
         Assert.Throws<InvalidEventIdException>(() => {
             var args = new WindowHiddenEventArgs(evt);
         });

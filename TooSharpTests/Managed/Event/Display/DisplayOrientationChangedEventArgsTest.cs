@@ -28,7 +28,7 @@ public class DisplayOrientationChangedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_WINDOWEVENT;
-        
+
         Assert.Throws<InvalidEventTypeException>(() => {
             var args = new DisplayOrientationChangedEventArgs(evt);
         });
@@ -39,10 +39,10 @@ public class DisplayOrientationChangedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_DISPLAYEVENT
-            
+
             ;
         evt.Display.Event = (byte)SDL.SDL_DisplayEventID.SDL_DISPLAYEVENT_CONNECTED;
-        
+
         Assert.Throws<InvalidEventIdException>(() => {
             var args = new DisplayOrientationChangedEventArgs(evt);
         });

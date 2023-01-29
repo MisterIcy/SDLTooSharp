@@ -10,7 +10,7 @@ public abstract class AbstractDisplayEventArgs : AbstractSDLEventArgs
     /// The display for which the event got triggered.
     /// </summary>
     public uint Display { get; }
-    
+
     /// <summary>
     /// Extra data contained by the event (such as the display's orientation)
     /// </summary>
@@ -35,13 +35,13 @@ public abstract class AbstractDisplayEventArgs : AbstractSDLEventArgs
                 evt.Display.Type
             );
         }
-        
+
         try
         {
             var attributeData = GetType()
                                .GetCustomAttributesData()
                                .First(x => x.AttributeType == typeof(AcceptableDisplayEventAttribute));
-            
+
             declaredEventType = (uint)( attributeData.ConstructorArguments[0].Value ?? 0 );
         } catch ( InvalidOperationException )
         {

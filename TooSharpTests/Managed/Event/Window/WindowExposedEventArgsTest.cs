@@ -29,7 +29,7 @@ public class WindowExposedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_DISPLAYEVENT;
-        
+
         Assert.Throws<InvalidEventTypeException>(() => {
             var args = new WindowExposedEventArgs(evt);
         });
@@ -41,7 +41,7 @@ public class WindowExposedEventArgsTest
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_WINDOWEVENT;
         evt.Display.Event = (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_NONE;
-        
+
         Assert.Throws<InvalidEventIdException>(() => {
             var args = new WindowExposedEventArgs(evt);
         });

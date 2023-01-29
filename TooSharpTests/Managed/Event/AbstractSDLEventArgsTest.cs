@@ -28,7 +28,7 @@ public class AbstractSDLEventArgsTest
         var args = new TestEventPerformingInternalChecksEventArgs(evt);
         Assert.IsType<TestEventPerformingInternalChecksEventArgs>(args);
     }
-    
+
 }
 
 internal class TestEventMissingAnnotationEventArgs : AbstractSDLEventArgs

@@ -27,7 +27,7 @@ public class DisplayDisconnectedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_WINDOWEVENT;
-        
+
         Assert.Throws<InvalidEventTypeException>(() => {
             var args = new DisplayDisconnectedEventArgs(evt);
         });
@@ -38,10 +38,10 @@ public class DisplayDisconnectedEventArgsTest
     {
         SDL.SDL_Event evt = default;
         evt.Type = (uint)SDL.SDL_EventType.SDL_DISPLAYEVENT
-            
+
             ;
         evt.Display.Event = (byte)SDL.SDL_DisplayEventID.SDL_DISPLAYEVENT_ORIENTATION;
-        
+
         Assert.Throws<InvalidEventIdException>(() => {
             var args = new DisplayDisconnectedEventArgs(evt);
         });
