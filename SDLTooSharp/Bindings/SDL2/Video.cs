@@ -72,7 +72,7 @@ public static partial class SDL
         SDL_WINDOWEVENT_DISPLAY_CHANGED
     }
 
-    public enum SDL_DisplayEventID
+    public enum SDL_DisplayEventID: uint
     {
         SDL_DISPLAYEVENT_NONE,
         SDL_DISPLAYEVENT_ORIENTATION,
