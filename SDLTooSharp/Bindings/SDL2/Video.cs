@@ -49,7 +49,7 @@ public static partial class SDL
     public const uint SDL_WINDOWPOS_UNDEFINED = SDL_WINDOWPOS_UNDEFINED_MASK;
     public const uint SDL_WINDOWPOS_CENTERED = SDL_WINDOWPOS_CENTERED_MASK;
 
-    public enum SDL_WindowEventID
+    public enum SDL_WindowEventID: uint
     {
         SDL_WINDOWEVENT_NONE,
         SDL_WINDOWEVENT_SHOWN,
