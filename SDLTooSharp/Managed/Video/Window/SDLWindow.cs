@@ -1,9 +1,14 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
+using SDLTooSharp.Managed.Exception;
+using SDLTooSharp.Managed.Exception.Video.Window;
 
 namespace SDLTooSharp.Managed.Video.Window;
 
-public class SDLWindow : IWindow
+/// <summary>
+/// Describes a window created by SDL
+/// </summary>
+public class SDLWindow : IWindow, IDisposable
 {
     /// <summary>
     /// Actual pointer to the SDL_Window* structure.
@@ -33,6 +38,8 @@ public class SDLWindow : IWindow
     private Size _size;
 
     /// <inheritdoc cref="IWindow.Size"/>
+    /// <exception cref="WindowMinimumSizeException">When attempting to set a size that violates the Window's <see cref="MinimumSize"/></exception>
+    /// <exception cref="WindowMaximumSizeException">When attempting to set a size that violates the Window's <see cref="MaximumSize"/></exception>
     public Size Size
     {
         get {
@@ -50,14 +57,14 @@ public class SDLWindow : IWindow
 
             if ( minSize is not null && ( value.Width < minSize.Width || value.Height < minSize.Height ) )
             {
-                // TODO: Throw that size cannot be less than minimum size
+                throw new WindowMinimumSizeException();
             }
 
             if ( maxSize is not null && ( value.Width > maxSize.Width || value.Height > maxSize.Height ) )
             {
-                // TODO: Throw that size cannot be greater than the maximum size
+                throw new WindowMaximumSizeException();
             }
-            
+
             SDL.SDL_SetWindowSize(WindowPtr, value.Width, value.Height);
             _size = value;
         }
@@ -77,9 +84,9 @@ public class SDLWindow : IWindow
 
             if ( _minimumSize is null || _minimumSize.Width != w || _minimumSize.Height != h )
             {
-                _minimumSize = new Size(w, h);    
+                _minimumSize = new Size(w, h);
             }
-            
+
             return _minimumSize;
         }
         set {
@@ -93,7 +100,7 @@ public class SDLWindow : IWindow
     }
 
     private Size? _maximumSize = null;
-    
+
     /// <inheritdoc cref="IWindow.MaximumSize"/>
     public Size? MaximumSize
     {
@@ -106,9 +113,9 @@ public class SDLWindow : IWindow
 
             if ( _maximumSize is null || _maximumSize.Width != w || _maximumSize.Height != h )
             {
-                _maximumSize = new Size(w, h);    
+                _maximumSize = new Size(w, h);
             }
-            
+
             return _maximumSize;
         }
         set {
@@ -124,6 +131,7 @@ public class SDLWindow : IWindow
     private WindowMode _mode;
 
     /// <inheritdoc cref="IWindow.Mode"/>
+    /// <exception cref="UnableToChangeFullscreenModeException">When we cannot change the current fullscreen mode of the window</exception>
     public WindowMode Mode
     {
         get {
@@ -133,8 +141,10 @@ public class SDLWindow : IWindow
             {
                 _mode = WindowMode.Fullscreen;
                 return _mode;
-            } else if ( ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP ) ==
-                        (uint)SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP )
+            }
+
+            if ( ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP ) ==
+                 (uint)SDL.SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP )
             {
                 _mode = WindowMode.DesktopFullscreen;
                 return _mode;
@@ -155,7 +165,7 @@ public class SDLWindow : IWindow
 
             if ( result != 0 )
             {
-                // TODO: Cannot set fullscreen mode, throw
+                throw new UnableToChangeFullscreenModeException(value);
             }
 
             _mode = value;
@@ -163,18 +173,152 @@ public class SDLWindow : IWindow
     }
 
     private bool _shown;
+
     /// <inheritdoc cref="IWindow.Shown"/>
-    public bool Shown { get; set; }
-    public bool Decorated { get; set; }
-    public bool Resizable { get; set; }
-    public bool Minimized { get; set; }
-    public bool Maximized { get; set; }
+    public bool Shown
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+
+            _shown = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_HIDDEN ) !=
+                     (uint)SDL.SDL_WindowFlags.SDL_WINDOW_HIDDEN;
+
+            return _shown;
+        }
+        set {
+            if ( value == _shown )
+            {
+                return;
+            }
+
+            if ( value == false )
+            {
+                SDL.SDL_HideWindow(WindowPtr);
+            } else
+            {
+                SDL.SDL_ShowWindow(WindowPtr);
+            }
+
+            _shown = value;
+        }
+    }
+
+    public bool _decorated;
+
+    /// <inheritdoc cref="IWindow.Decorated"/>
+    public bool Decorated
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+            _decorated = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_BORDERLESS ) !=
+                         (uint)SDL.SDL_WindowFlags.SDL_WINDOW_BORDERLESS;
+
+            return _decorated;
+        }
+        set {
+            if ( _decorated == value )
+            {
+                return;
+            }
+
+            SDL.SDL_SetWindowBordered(WindowPtr, value);
+
+            _decorated = true;
+        }
+    }
+
+    private bool _resizable;
+
+    /// <inheritdoc cref="IWindow.Resizable"/>
+    public bool Resizable
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+            _resizable = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE ) ==
+                         (uint)SDL.SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
+
+            return _resizable;
+        }
+        set {
+            if ( _resizable == value )
+            {
+                return;
+            }
+
+            SDL.SDL_SetWindowResizable(WindowPtr, value);
+            _resizable = value;
+        }
+    }
+
+    private bool _minimized;
+
+    /// <see cref="IWindow.Minimized"/>
+    public bool Minimized
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+            _minimized = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_MINIMIZED ) ==
+                         (uint)SDL.SDL_WindowFlags.SDL_WINDOW_MINIMIZED;
+
+            return _minimized;
+        }
+        set {
+            if ( _minimized == value )
+            {
+                return;
+            }
+
+            if ( value )
+            {
+                SDL.SDL_MinimizeWindow(WindowPtr);
+            } else
+            {
+                SDL.SDL_RestoreWindow(WindowPtr);
+            }
+
+            _minimized = value;
+        }
+    }
+
+    private bool _maximized;
+
+    /// <inheritdoc cref="IWindow.Maximized"/>
+    public bool Maximized
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+            _maximized = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_MAXIMIZED ) ==
+                         (uint)SDL.SDL_WindowFlags.SDL_WINDOW_MAXIMIZED;
+
+            return _maximized;
+        }
+        set {
+            if ( _maximized == value )
+            {
+                return;
+            }
+
+            if ( value )
+            {
+                SDL.SDL_MaximizeWindow(WindowPtr);
+            } else
+            {
+                SDL.SDL_RestoreWindow(WindowPtr);
+            }
+
+            _maximized = value;
+        }
+    }
+
     private string _title;
 
     /// <inheritdoc cref="Title"/>
     public string Title
     {
-        get => _title;
+        get {
+            _title = SDL.SDL_GetWindowTitle(WindowPtr);
+            return _title;
+        }
         set {
             SDL.SDL_SetWindowTitle(WindowPtr, value);
 
@@ -193,6 +337,7 @@ public class SDLWindow : IWindow
     /// <param name="title">The window's title</param>
     /// <param name="position">The window's position</param>
     /// <param name="dimensions">The window's dimensions</param>
+    /// <exception cref="UnableToCreateWindowException">In case we cannot create the window. See <see cref="SDLException.SdlErrorMsg"/> in order to determine what went wrong</exception>
     public SDLWindow(string title, Point2 position, Size dimensions)
     {
         WindowPtr = SDL.SDL_CreateWindow(
@@ -206,7 +351,7 @@ public class SDLWindow : IWindow
 
         if ( WindowPtr == IntPtr.Zero )
         {
-            // TODO: Throw proper exception
+            throw new UnableToCreateWindowException();
         }
 
         // Initialize Properties
@@ -217,5 +362,37 @@ public class SDLWindow : IWindow
         _maximumSize = null;
         _mode = WindowMode.Windowed;
         _shown = true;
+        _decorated = true;
+        _resizable = false;
+        _minimized = false;
+        _maximized = false;
+    }
+
+    ~SDLWindow()
+    {
+        Dispose(false);
+    }
+
+    private void ReleaseUnmanagedResources()
+    {
+        if ( WindowPtr != IntPtr.Zero )
+        {
+            SDL.SDL_DestroyWindow(WindowPtr);
+            WindowPtr = IntPtr.Zero;
+        }
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        ReleaseUnmanagedResources();
+        if ( disposing )
+        {
+        }
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 }
