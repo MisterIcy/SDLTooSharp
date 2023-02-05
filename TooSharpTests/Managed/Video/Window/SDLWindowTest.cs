@@ -14,8 +14,8 @@ public class SDLWindowTest
         var window = new SDLWindow("Test", new Point2(0, 0), new Size(100, 100));
 
         Assert.IsType<SDLWindow>(window);
-        Assert.Equal(new Point2(0,0), window.Position);
-        Assert.Equal(new Size(100,100), window.Size);
+        Assert.Equal(new Point2(0, 0), window.Position);
+        Assert.Equal(new Size(100, 100), window.Size);
         window.Dispose();
         Assert.Equal(IntPtr.Zero, window.WindowPtr);
         SDL.SDL_Quit();

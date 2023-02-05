@@ -3,7 +3,7 @@ namespace SDLTooSharp.Managed.Exception.Video.Window;
 /// <summary>
 /// Exception thrown when we cannot create an SDL Window
 /// </summary>
-public sealed class UnableToCreateWindowException: WindowException
+public sealed class UnableToCreateWindowException : WindowException
 {
     /// <summary>
     /// Creates a new <see cref="UnableToCreateWindowException"/>

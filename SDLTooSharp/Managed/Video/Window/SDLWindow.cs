@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
+using SDLTooSharp.Managed.Events.Video.Window;
 using SDLTooSharp.Managed.Exception;
 using SDLTooSharp.Managed.Exception.Video.Window;
 
@@ -174,8 +175,8 @@ public class SDLWindow : IWindow, IDisposable
 
     private bool _shown;
 
-    /// <inheritdoc cref="IWindow.Shown"/>
-    public bool Shown
+    /// <inheritdoc cref="IWindow.IsShown"/>
+    public bool IsShown
     {
         get {
             uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
@@ -253,7 +254,7 @@ public class SDLWindow : IWindow, IDisposable
     private bool _minimized;
 
     /// <see cref="IWindow.Minimized"/>
-    public bool Minimized
+    public bool IsMinimized
     {
         get {
             uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
@@ -283,7 +284,7 @@ public class SDLWindow : IWindow, IDisposable
     private bool _maximized;
 
     /// <inheritdoc cref="IWindow.Maximized"/>
-    public bool Maximized
+    public bool IsMaximized
     {
         get {
             uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
@@ -375,13 +376,16 @@ public class SDLWindow : IWindow, IDisposable
 
     private void ReleaseUnmanagedResources()
     {
-        if ( WindowPtr != IntPtr.Zero )
+        if ( WindowPtr == IntPtr.Zero )
         {
-            SDL.SDL_DestroyWindow(WindowPtr);
-            WindowPtr = IntPtr.Zero;
+            return;
         }
+
+        SDL.SDL_DestroyWindow(WindowPtr);
+        WindowPtr = IntPtr.Zero;
     }
 
+    /// <inheritdoc cref="IDisposable.Dispose"/>
     protected virtual void Dispose(bool disposing)
     {
         ReleaseUnmanagedResources();
@@ -390,9 +394,345 @@ public class SDLWindow : IWindow, IDisposable
         }
     }
 
+    /// <inheritdoc cref="IDisposable.Dispose"/>
     public void Dispose()
     {
         Dispose(true);
         GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Returns the index of the display containing the center of the window.
+    /// </summary>
+    public int DisplayIndex
+    {
+        get {
+            int result = SDL.SDL_GetWindowDisplayIndex(WindowPtr);
+            if ( result < 0 )
+            {
+                //TODO: Throw exception
+            }
+
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets a value indicating the window's current <see cref="DisplayMode"/>
+    /// </summary>
+    /// <remarks>Setting the display mode only has an effect when the window is in fullscreen</remarks>
+    /// <exception cref="UnableToGetWindowDisplayModeException">When we cannot get the current display mode.</exception>
+    /// <exception cref="UnableToSetWindowDisplayModeException">When we cannot set the display mode</exception>
+    public DisplayMode DisplayMode
+    {
+        get {
+            int result = SDL.SDL_GetWindowDisplayMode(WindowPtr, out var displayMode);
+            if ( result != 0 )
+            {
+                throw new UnableToGetWindowDisplayModeException();
+            }
+
+            return displayMode;
+        }
+        set {
+            if ( Mode != WindowMode.Fullscreen )
+            {
+                return;
+            }
+
+            int result = SDL.SDL_SetWindowDisplayMode(WindowPtr, (SDL.SDL_DisplayMode)value);
+            if ( result != 0 )
+            {
+                throw new UnableToSetWindowDisplayModeException();
+            }
+        }
+    }
+
+    public uint PixelFormat
+    {
+        get {
+            uint result = SDL.SDL_GetWindowPixelFormat(WindowPtr);
+            if ( result == (uint)SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_UNKNOWN )
+            {
+                //TODO: Throw an exception
+            }
+
+            return result;
+        }
+    }
+
+    public string PixelFormatName => SDL.SDL_GetPixelFormatName(PixelFormat);
+
+    public uint WindowId
+    {
+        get {
+            uint result = SDL.SDL_GetWindowID(WindowPtr);
+            if ( result == 0 )
+            {
+                //TODO: Throw
+            }
+
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// Sets the window's icon
+    /// </summary>
+    /// <remarks>TODO: Properly refactor wish surface object</remarks>
+    /// <param name="surfaceIcon"></param>
+    public void SetIcon(IntPtr surfaceIcon)
+    {
+        SDL.SDL_SetWindowIcon(WindowPtr, surfaceIcon);
+    }
+
+    public Rectangle BorderSize
+    {
+        get {
+            int result =
+                SDL.SDL_GetWindowBordersSize(WindowPtr, out int top, out int left, out int bottom, out int right);
+            if ( result != 0 )
+            {
+                //TODO: Throw an exception
+            }
+
+            return Rectangle.FromLTRB(left, top, right, bottom);
+        }
+    }
+
+    public bool _alwaysOnTop;
+
+    public bool AlwaysOnTop
+    {
+        get {
+            uint flags = SDL.SDL_GetWindowFlags(WindowPtr);
+            _alwaysOnTop = ( flags & (uint)SDL.SDL_WindowFlags.SDL_WINDOW_ALWAYS_ON_TOP ) ==
+                           (uint)SDL.SDL_WindowFlags.SDL_WINDOW_ALWAYS_ON_TOP;
+
+            return _alwaysOnTop;
+        }
+        set {
+            if ( value == _alwaysOnTop )
+            {
+                return;
+            }
+
+            SDL.SDL_SetWindowAlwaysOnTop(WindowPtr, value);
+            _alwaysOnTop = value;
+        }
+    }
+
+    public void Raise()
+    {
+        SDL.SDL_RaiseWindow(WindowPtr);
+    }
+
+    /// <inheritdoc cref="IWindow.Shown"/>
+    public event EventHandler<WindowShownEventArgsArgs>? Shown;
+
+    /// <inheritdoc cref="IWindow.Hidden"/>
+    public event EventHandler<WindowHiddenEventArgsArgs>? Hidden;
+
+    /// <inheritdoc cref="IWindow.Exposed"/>
+    public event EventHandler<WindowExposedEventArgs>? Exposed;
+
+    /// <inheritdoc cref="IWindow.Moved"/>
+    public event EventHandler<WindowMovedEventArgs>? Moved;
+
+    /// <inheritdoc cref="IWindow.Resized"/>
+    public event EventHandler<WindowResizedEventArgs>? Resized;
+
+    /// <inheritdoc cref="IWindow.SizeChanged"/>
+    public event EventHandler<WindowSizeChangedEventArgs>? SizeChanged;
+
+    /// <inheritdoc cref="IWindow.Minimized"/>
+    public event EventHandler<WindowMinimizedEventArgs>? Minimized;
+
+    /// <inheritdoc cref="IWindow.Maximized"/>
+    public event EventHandler<WindowMaximizedEventArgs>? Maximized;
+
+    /// <inheritdoc cref="IWindow.Restored"/>
+    public event EventHandler<WindowRestoredEventArgs>? Restored;
+
+    /// <inheritdoc cref="IWindow.Enter"/>
+    public event EventHandler<WindowEnterEventArgs>? Enter;
+
+    /// <inheritdoc cref="IWindow.Leave"/>
+    public event EventHandler<WindowLeaveEventArgs>? Leave;
+
+    /// <inheritdoc cref="IWindow.FocusGained"/>
+    public event EventHandler<WindowFocusGainedEventArgs>? FocusGained;
+
+    /// <inheritdoc cref="IWindow.FocusLost"/>
+    public event EventHandler<WindowFocusLostEventArgs>? FocusLost;
+
+    /// <inheritdoc cref="IWindow.Close"/>
+    public event EventHandler<WindowCloseEventArgs>? Close;
+
+    /// <inheritdoc cref="IWindow.TakeFocus"/>
+    public event EventHandler<WindowTakeFocusEventArgs>? TakeFocus;
+
+    /// <inheritdoc cref="IWindow.DisplayChanged"/>
+    public event EventHandler<WindowDisplayChangedEventArgs>? DisplayChanged;
+
+    /// <summary>
+    /// Handles an SDL Event
+    /// </summary>
+    /// <param name="ev">The event to be handled</param>
+    public virtual void HandleEvent(SDL.SDL_Event ev)
+    {
+        if ( ev.Type != (uint)SDL.SDL_EventType.SDL_WINDOWEVENT )
+        {
+            return;
+        }
+
+        switch ( ev.Window.Event )
+        {
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
+                OnShown(new WindowShownEventArgsArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIDDEN:
+                OnHidden(new WindowHiddenEventArgsArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_EXPOSED:
+                OnExposed(new WindowExposedEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MOVED:
+                OnMoved(new WindowMovedEventArgs(this, new Point2(ev.Window.Data1, ev.Window.Data2)));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
+                OnResized(new WindowResizedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
+                OnSizeChanged(new WindowSizeChangedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MINIMIZED:
+                OnMinimized(new WindowMinimizedEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MAXIMIZED:
+                OnMaximized(new WindowMaximizedEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESTORED:
+                OnRestored(new WindowRestoredEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ENTER:
+                OnEnter(new WindowEnterEventArgs(this));
+                break;
+                ;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_LEAVE:
+                OnLeave(new WindowLeaveEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+                OnFocusGained(new WindowFocusGainedEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+                OnFocusLost(new WindowFocusLostEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
+                OnClose(new WindowCloseEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS:
+                OnTakeFocus(new WindowTakeFocusEventArgs(this));
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
+                // Not implemented!
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED:
+                // Not implemented!
+                break;
+            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED:
+                OnDisplayChanged(new WindowDisplayChangedEventArgs(this, (uint)ev.Window.Data1));
+                break;
+        }
+    }
+
+    protected virtual void OnShown(WindowShownEventArgsArgs args)
+    {
+        _shown = true;
+        Shown?.Invoke(this, args);
+    }
+
+    protected virtual void OnHidden(WindowHiddenEventArgsArgs args)
+    {
+        _shown = false;
+        Hidden?.Invoke(this, args);
+    }
+
+    protected virtual void OnExposed(WindowExposedEventArgs args)
+    {
+        Exposed?.Invoke(this, args);
+    }
+
+    protected virtual void OnMoved(WindowMovedEventArgs args)
+    {
+        _position = args.Position;
+        Moved?.Invoke(this, args);
+    }
+
+    protected virtual void OnResized(WindowResizedEventArgs args)
+    {
+        _size = args.Dimensions;
+        Resized?.Invoke(this, args);
+    }
+
+    protected virtual void OnSizeChanged(WindowSizeChangedEventArgs args)
+    {
+        _size = args.Dimensions;
+        SizeChanged?.Invoke(this, args);
+    }
+
+    protected virtual void OnMinimized(WindowMinimizedEventArgs args)
+    {
+        _minimized = true;
+        _maximized = false;
+        Minimized?.Invoke(this, args);
+    }
+
+    protected virtual void OnMaximized(WindowMaximizedEventArgs args)
+    {
+        _minimized = false;
+        _maximized = true;
+        Maximized?.Invoke(this, args);
+    }
+
+    protected virtual void OnRestored(WindowRestoredEventArgs args)
+    {
+        _minimized = _maximized = false;
+        Restored?.Invoke(this, args);
+    }
+
+    protected virtual void OnEnter(WindowEnterEventArgs args)
+    {
+        Enter?.Invoke(this, args);
+    }
+
+    protected virtual void OnLeave(WindowLeaveEventArgs args)
+    {
+        Leave?.Invoke(this, args);
+    }
+
+    protected virtual void OnFocusGained(WindowFocusGainedEventArgs args)
+    {
+        FocusGained?.Invoke(this, args);
+    }
+
+    protected virtual void OnFocusLost(WindowFocusLostEventArgs args)
+    {
+        FocusLost?.Invoke(this, args);
+    }
+
+    protected virtual void OnClose(WindowCloseEventArgs args)
+    {
+        Close?.Invoke(this, args);
+    }
+
+    protected virtual void OnTakeFocus(WindowTakeFocusEventArgs args)
+    {
+        TakeFocus?.Invoke(this, args);
+    }
+
+    protected virtual void OnDisplayChanged(WindowDisplayChangedEventArgs args)
+    {
+        DisplayChanged?.Invoke(this, args);
     }
 }
