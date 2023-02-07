@@ -1,5 +1,10 @@
+using SDLTooSharp.Bindings.SDL2;
+
 namespace SDLTooSharp.Managed.Common;
 
+/// <summary>
+/// Class that defines a color
+/// </summary>
 public class Color
 {
     private float _red;
@@ -10,6 +15,9 @@ public class Color
     private float _saturation;
     private float _lightness;
 
+    /// <summary>
+    /// Gets a sets a value which indicates the red component of the color.
+    /// </summary>
     public float Red
     {
         get => _red;
@@ -19,6 +27,9 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value which indicates the green component of the color.
+    /// </summary>
     public float Green
     {
         get => _green;
@@ -28,6 +39,9 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value which indicates the blue component of the color.
+    /// </summary>
     public float Blue
     {
         get => _blue;
@@ -37,36 +51,46 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value that indicates the alpha component of the color.
+    /// </summary>
     public float Alpha
     {
         get => _alpha;
         set => _alpha = Math.Clamp(value, 0.0f, 1.0f);
     }
 
+    /// <inheritdoc cref="Red"/>
     public byte R
     {
         get => (byte)( _red * 255 );
         set => Red = value / 255.0f;
     }
 
+    /// <inheritdoc cref="Green"/>
     public byte G
     {
         get => (byte)( _green * 255 );
         set => Green = value / 255.0f;
     }
 
+    /// <inheritdoc cref="Blue"/>
     public byte B
     {
         get => (byte)( _blue * 255 );
         set => Blue = value / 255.0f;
     }
 
+    /// <inheritdoc cref="Alpha"/>
     public byte A
     {
         get => (byte)( _alpha * 255 );
         set => Alpha = value / 255.0f;
     }
 
+    /// <summary>
+    /// Gets or sets a value which indicates the Hue of the color.
+    /// </summary>
     public float Hue
     {
         get => _hue;
@@ -76,6 +100,9 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value which indicates the saturation of the color
+    /// </summary>
     public float Saturation
     {
         get => _saturation;
@@ -85,6 +112,9 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value which indicates the lightness of the color.
+    /// </summary>
     public float Lightness
     {
         get => _lightness;
@@ -94,6 +124,13 @@ public class Color
         }
     }
 
+    /// <summary>
+    /// Creates a new <see cref="Color"/>
+    /// </summary>
+    /// <param name="r">The red component</param>
+    /// <param name="g">The green component</param>
+    /// <param name="b">The blue component</param>
+    /// <param name="a">The alpha component</param>
     public Color(float r, float g, float b, float a = 1.0f)
     {
         Red = r;
@@ -102,6 +139,13 @@ public class Color
         Alpha = a;
     }
 
+    /// <summary>
+    /// Creates a new <see cref="Color"/>
+    /// </summary>
+    /// <param name="r">The red component</param>
+    /// <param name="g">The green component</param>
+    /// <param name="b">The blue component</param>
+    /// <param name="a">The alpha component</param>
     public Color(byte r, byte g, byte b, byte a = 255)
     {
         R = r;
@@ -110,6 +154,10 @@ public class Color
         A = a;
     }
 
+    /// <summary>
+    /// Creates a new color
+    /// </summary>
+    /// <param name="color">The color in RGBA format</param>
     public Color(uint color)
     {
         R = (byte)( ( color & 0xff000000 ) >> 24 );
@@ -120,11 +168,12 @@ public class Color
 
     private void RgbToHsl()
     {
-        float hue = 0f, saturation = 0f, luminance = 0f;
+        float hue;
+        float saturation;
         float max = Math.Max(_red, Math.Max(_green, _blue));
         float min = Math.Min(_red, Math.Min(_green, _blue));
 
-        luminance = ( min + max ) / 2;
+        float luminance = ( min + max ) / 2;
         if ( Math.Abs(min - max) < float.Epsilon )
         {
             saturation = 0;
@@ -175,7 +224,7 @@ public class Color
             return;
         }
 
-        float t1 = 0f, t2 = 0f;
+        float t1;
         if ( _lightness < 0.5f )
         {
             t1 = _lightness * ( 1f + _saturation );
@@ -184,7 +233,7 @@ public class Color
             t1 = _lightness + _saturation - _lightness * _saturation;
         }
 
-        t2 = 2f * _lightness - t1;
+        float t2 = 2f * _lightness - t1;
 
         float tHue = _hue / 360f;
 
@@ -201,10 +250,8 @@ public class Color
         _blue = CalculateChannelFromHsl(tb, t1, t2);
     }
 
-    public float CalculateChannelFromHsl(float channel, float t1, float t2)
+    private float CalculateChannelFromHsl(float channel, float t1, float t2)
     {
-        // Test 1
-
         var tC1 = 6f * channel;
         var tC2 = 2f * channel;
         var tC3 = 3f * channel;
@@ -226,7 +273,7 @@ public class Color
         return t2;
     }
 
-    public float NormalizeComponent(float component)
+    private float NormalizeComponent(float component)
     {
         return component switch {
             < 0f => component + 1f,
@@ -236,12 +283,48 @@ public class Color
     }
 
     /// <summary>
-    /// 
+    /// Casts a <see cref="Color"/> to an 32-bit RGBA <see cref="uint"/>
     /// </summary>
     /// <param name="color"></param>
     /// <returns></returns>
     public static explicit operator uint(Color color)
     {
         return (uint)( color.R << 24 | color.G << 16 | color.B << 8 | color.A );
+    }
+
+    /// <summary>
+    /// Casts a 32bit RGBA <see cref="uint"/> to a<see cref="Color"/>
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static explicit operator Color(uint color)
+    {
+        return new Color(color);
+    }
+
+    /// <summary>
+    /// Casts a <see cref="Color"/> to an <see cref="SDL.SDL_Color"/> structure.
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static explicit operator SDL.SDL_Color(Color color)
+    {
+        SDL.SDL_Color sdlColor = default;
+        sdlColor.R = color.R;
+        sdlColor.G = color.G;
+        sdlColor.B = color.B;
+        sdlColor.A = color.A;
+
+        return sdlColor;
+    }
+
+    /// <summary>
+    /// Casts a <see cref="SDL.SDL_Color"/> structure to a <see cref="Color"/> object.
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static explicit operator Color(SDL.SDL_Color color)
+    {
+        return new Color(color.R, color.G, color.B, color.A);
     }
 }
