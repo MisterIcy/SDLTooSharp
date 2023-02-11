@@ -1,4 +1,5 @@
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2Image;
 using SDLTooSharp.Managed.Common;
 using SDLTooSharp.Managed.Exception.Video.Texture;
 using SDLTooSharp.Managed.Video.Renderer;
@@ -6,7 +7,7 @@ using SDLTooSharp.Managed.Video.Surface;
 
 namespace SDLTooSharp.Managed.Video.Texture;
 
-public class SDLTexture
+public class SDLTexture: IDisposable
 {
     public IntPtr TexturePtr { get; protected set; }
 
@@ -122,5 +123,53 @@ public class SDLTexture
                 throw new UnableToSetTextureScaleModeException();
             }
         }
+    }
+
+    /// <summary>
+    /// Create a new texture from a file
+    /// </summary>
+    /// <param name="renderer"></param>
+    /// <param name="filename"></param>
+    /// <exception cref="FileNotFoundException"></exception>
+    /// <exception cref="UnableToCreateTextureException"></exception>
+    public SDLTexture(SDLRenderer renderer, string filename)
+    {
+        if ( !File.Exists(filename) )
+        {
+            throw new FileNotFoundException("File not found", filename);
+        }
+
+        TexturePtr = SDLImage.IMG_LoadTexture(renderer.RendererPtr, filename);
+
+        if ( TexturePtr == IntPtr.Zero )
+        {
+            throw new UnableToCreateTextureException();
+        }
+
+        Renderer = renderer;
+    }
+    private void ReleaseUnmanagedResources()
+    {
+        if ( TexturePtr != IntPtr.Zero )
+        {
+            SDL.SDL_DestroyTexture(TexturePtr);
+        }
+    }
+    protected virtual void Dispose(bool disposing)
+    {
+        ReleaseUnmanagedResources();
+        if ( disposing )
+        {
+            
+        }
+    }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    ~SDLTexture()
+    {
+        Dispose(false);
     }
 }
