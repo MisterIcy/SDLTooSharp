@@ -7,7 +7,7 @@ using SDLTooSharp.Managed.Video.Surface;
 
 namespace SDLTooSharp.Managed.Video.Texture;
 
-public class SDLTexture: IDisposable
+public class SDLTexture : IDisposable
 {
     public IntPtr TexturePtr { get; protected set; }
 
@@ -160,7 +160,7 @@ public class SDLTexture: IDisposable
         ReleaseUnmanagedResources();
         if ( disposing )
         {
-            
+
         }
     }
     public void Dispose()
