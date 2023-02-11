@@ -1,5 +1,7 @@
 namespace SDLTooSharp.Managed.Video.Renderer;
-
+/// <summary>
+/// Renderer interface
+/// </summary>
 public interface IRenderer
 {
     /// <summary>

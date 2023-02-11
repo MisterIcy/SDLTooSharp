@@ -25,7 +25,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Managed\Video\Graphics" />
+      <Folder Include="Managed\Video\Texture" />
     </ItemGroup>
 
 
