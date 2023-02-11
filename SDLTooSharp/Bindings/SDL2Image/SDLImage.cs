@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Bindings.SDL2Image;
 
 [ExcludeFromCodeCoverage]

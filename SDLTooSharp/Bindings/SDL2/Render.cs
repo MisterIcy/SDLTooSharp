@@ -1,5 +1,5 @@
 using System.Runtime.InteropServices;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL
@@ -266,7 +266,7 @@ public static partial class SDL
     ///<summary>Draw multiple points on the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderDrawPoints">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_RenderDrawPoints(IntPtr renderer, in SDL_Point[] points, int count);
+    public static extern int SDL_RenderDrawPoints(IntPtr renderer, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points, int count);
     ///<summary>Draw a line on the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderDrawLine">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -274,7 +274,7 @@ public static partial class SDL
     ///<summary>Draw a series of connected lines on the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderDrawLines">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_RenderDrawLines(IntPtr renderer, in SDL_Point[] points, int count);
+    public static extern int SDL_RenderDrawLines(IntPtr renderer, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points, int count);
     ///<summary>Draw a rectangle on the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderDrawRect">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -282,7 +282,7 @@ public static partial class SDL
     ///<summary>Draw some number of rectangles on the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderDrawRects">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_RenderDrawRects(IntPtr renderer, in SDL_Rect[] rects, int count);
+    public static extern int SDL_RenderDrawRects(IntPtr renderer, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects, int count);
     ///<summary>Fill a rectangle on the current rendering target with the drawing color.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderFillRect">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -290,7 +290,7 @@ public static partial class SDL
     ///<summary>Fill some number of rectangles on the current rendering target with the drawing color.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderFillRects">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_RenderFillRects(IntPtr renderer, in SDL_Rect[] rects, int count);
+    public static extern int SDL_RenderFillRects(IntPtr renderer, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects, int count);
     ///<summary>Copy a portion of the texture to the current rendering target.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_RenderCopy">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]

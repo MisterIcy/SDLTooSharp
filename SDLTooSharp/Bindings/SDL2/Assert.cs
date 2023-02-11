@@ -1,4 +1,5 @@
 using System.Diagnostics;
+#pragma warning disable CS1591
 
 namespace SDLTooSharp.Bindings.SDL2;
 

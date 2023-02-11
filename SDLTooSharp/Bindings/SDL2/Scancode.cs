@@ -1,5 +1,5 @@
 namespace SDLTooSharp.Bindings.SDL2;
-
+#pragma warning disable CS1591
 public static partial class SDL
 {
     public enum SDL_Scancode

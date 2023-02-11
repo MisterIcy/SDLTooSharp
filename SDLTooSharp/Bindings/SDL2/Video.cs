@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL

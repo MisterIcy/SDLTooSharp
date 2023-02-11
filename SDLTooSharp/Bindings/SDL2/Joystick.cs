@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 using Microsoft.VisualBasic.CompilerServices;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Bindings.SDL2;
 
 public static partial class SDL

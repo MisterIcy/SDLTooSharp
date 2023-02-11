@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
+using SDLTooSharp.Bindings.SDL2Image;
 using SDLTooSharp.Managed.Common;
 using SDLTooSharp.Managed.Exception.Video.Surface;
 
@@ -361,4 +362,21 @@ public partial class SDLSurface : ISurface, IDisposable
     /// <exception cref="NotImplementedException"></exception>
     public SDLSurface Covnert(IntPtr format) =>
         throw new NotImplementedException("SDL_ConvertSurface is not implemented");
+
+    public static SDLSurface FromImageFile(string file)
+    {
+        if ( !File.Exists(file) )
+        {
+            throw new FileNotFoundException("Image file was not found", file);
+        }
+
+        IntPtr surfacePtr = SDLImage.IMG_Load(file);
+
+        if ( surfacePtr == IntPtr.Zero )
+        {
+            //TODO: Throw
+        }
+
+        return new SDLSurface(surfacePtr);
+    }
 }
