@@ -1,5 +1,6 @@
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
+using SDLTooSharp.Managed.Events.Keyboard;
 using SDLTooSharp.Managed.Events.Video.Window;
 using SDLTooSharp.Managed.Exception;
 using SDLTooSharp.Managed.Exception.Video.Window;
@@ -575,74 +576,91 @@ public class SDLWindow : IWindow, IDisposable
     /// <inheritdoc cref="IWindow.DisplayChanged"/>
     public event EventHandler<WindowDisplayChangedEventArgs>? DisplayChanged;
 
+    public event EventHandler<KeyDownEventArgs>? KeyDown;
+    public event EventHandler<KeyUpEventArgs>? KeyUp;
+
     /// <summary>
     /// Handles an SDL Event
     /// </summary>
     /// <param name="ev">The event to be handled</param>
     public virtual void HandleEvent(SDL.SDL_Event ev)
     {
-        if ( ev.Type != (uint)SDL.SDL_EventType.SDL_WINDOWEVENT )
+        if ( ev.Type == (uint)SDL.SDL_EventType.SDL_WINDOWEVENT )
         {
+
+
+            switch ( ev.Window.Event )
+            {
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
+                    OnShown(new WindowShownEventArgsArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIDDEN:
+                    OnHidden(new WindowHiddenEventArgsArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_EXPOSED:
+                    OnExposed(new WindowExposedEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MOVED:
+                    OnMoved(new WindowMovedEventArgs(this, new Point2(ev.Window.Data1, ev.Window.Data2)));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
+                    OnResized(new WindowResizedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
+                    OnSizeChanged(new WindowSizeChangedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MINIMIZED:
+                    OnMinimized(new WindowMinimizedEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MAXIMIZED:
+                    OnMaximized(new WindowMaximizedEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESTORED:
+                    OnRestored(new WindowRestoredEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ENTER:
+                    OnEnter(new WindowEnterEventArgs(this));
+                    break;
+                    ;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_LEAVE:
+                    OnLeave(new WindowLeaveEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
+                    OnFocusGained(new WindowFocusGainedEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
+                    OnFocusLost(new WindowFocusLostEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
+                    OnClose(new WindowCloseEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS:
+                    OnTakeFocus(new WindowTakeFocusEventArgs(this));
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
+                    // Not implemented!
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED:
+                    // Not implemented!
+                    break;
+                case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED:
+                    OnDisplayChanged(new WindowDisplayChangedEventArgs(this, (uint)ev.Window.Data1));
+                    break;
+            }
+
             return;
         }
 
-        switch ( ev.Window.Event )
+        if ( ev.Type == (uint)SDL.SDL_EventType.SDL_KEYUP )
         {
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SHOWN:
-                OnShown(new WindowShownEventArgsArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIDDEN:
-                OnHidden(new WindowHiddenEventArgsArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_EXPOSED:
-                OnExposed(new WindowExposedEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MOVED:
-                OnMoved(new WindowMovedEventArgs(this, new Point2(ev.Window.Data1, ev.Window.Data2)));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESIZED:
-                OnResized(new WindowResizedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_SIZE_CHANGED:
-                OnSizeChanged(new WindowSizeChangedEventArgs(this, new Size(ev.Window.Data1, ev.Window.Data2)));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MINIMIZED:
-                OnMinimized(new WindowMinimizedEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_MAXIMIZED:
-                OnMaximized(new WindowMaximizedEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_RESTORED:
-                OnRestored(new WindowRestoredEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ENTER:
-                OnEnter(new WindowEnterEventArgs(this));
-                break;
-                ;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_LEAVE:
-                OnLeave(new WindowLeaveEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_GAINED:
-                OnFocusGained(new WindowFocusGainedEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_FOCUS_LOST:
-                OnFocusLost(new WindowFocusLostEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_CLOSE:
-                OnClose(new WindowCloseEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_TAKE_FOCUS:
-                OnTakeFocus(new WindowTakeFocusEventArgs(this));
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_HIT_TEST:
-                // Not implemented!
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_ICCPROF_CHANGED:
-                // Not implemented!
-                break;
-            case (byte)SDL.SDL_WindowEventID.SDL_WINDOWEVENT_DISPLAY_CHANGED:
-                OnDisplayChanged(new WindowDisplayChangedEventArgs(this, (uint)ev.Window.Data1));
-                break;
+            OnKeyUp(new KeyUpEventArgs(ev));
+            return;
+        }
+
+        if ( ev.Type == (uint)SDL.SDL_EventType.SDL_KEYDOWN )
+        {
+            OnKeyDown(new KeyDownEventArgs(ev));
+            return;
         }
     }
 
@@ -734,5 +752,15 @@ public class SDLWindow : IWindow, IDisposable
     protected virtual void OnDisplayChanged(WindowDisplayChangedEventArgs args)
     {
         DisplayChanged?.Invoke(this, args);
+    }
+
+    protected virtual void OnKeyDown(KeyDownEventArgs args)
+    {
+        KeyDown?.Invoke(this, args);
+    }
+
+    protected virtual void OnKeyUp(KeyUpEventArgs args)
+    {
+        KeyUp?.Invoke(this, args);
     }
 }
