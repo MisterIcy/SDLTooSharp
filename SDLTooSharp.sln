@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDLTooSharp", "SDLTooSharp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooSharpTests", "TooSharpTests\TooSharpTests.csproj", "{01C68590-9760-4735-A3CB-BC7BCEC33807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderingExample", "RenderingExample\RenderingExample.csproj", "{9929F9E0-7BE2-46A7-B88E-E619DF748663}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C68590-9760-4735-A3CB-BC7BCEC33807}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9929F9E0-7BE2-46A7-B88E-E619DF748663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9929F9E0-7BE2-46A7-B88E-E619DF748663}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9929F9E0-7BE2-46A7-B88E-E619DF748663}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9929F9E0-7BE2-46A7-B88E-E619DF748663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

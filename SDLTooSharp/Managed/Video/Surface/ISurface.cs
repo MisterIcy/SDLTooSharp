@@ -1,7 +1,9 @@
 using SDLTooSharp.Managed.Common;
 
 namespace SDLTooSharp.Managed.Video.Surface;
-
+/// <summary>
+/// Interface for surfaces
+/// </summary>
 public interface ISurface
 {
     public Size Dimensions { get; }

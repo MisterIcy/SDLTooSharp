@@ -24,9 +24,5 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Managed\Video\Texture" />
-    </ItemGroup>
-
 
 </Project>

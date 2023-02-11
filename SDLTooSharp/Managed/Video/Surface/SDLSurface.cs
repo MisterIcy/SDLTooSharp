@@ -228,7 +228,7 @@ public partial class SDLSurface : ISurface, IDisposable
     /// <param name="bMask"></param>
     /// <param name="aMask"></param>
     public SDLSurface(Size size,
-        SurfaceDepth depth = SurfaceDepth.D32BPP,
+        SurfaceDepth depth = SurfaceDepth.Depth32BitPerPixel,
         uint rMask = 0xff000000,
         uint gMask = 0x00ff0000,
         uint bMask = 0x0000ff00,
@@ -250,7 +250,7 @@ public partial class SDLSurface : ISurface, IDisposable
     /// <param name="size"></param>
     /// <param name="depth"></param>
     /// <param name="format"></param>
-    public SDLSurface(Size size, SurfaceDepth depth = SurfaceDepth.D32BPP,
+    public SDLSurface(Size size, SurfaceDepth depth = SurfaceDepth.Depth32BitPerPixel,
         SDL.SDL_PixelFormatEnum format = SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_RGBA8888)
     {
         SurfacePtr = SDL.SDL_CreateRGBSurfaceWithFormat(
