@@ -29,8 +29,8 @@ jobs:
     steps:
       - name: Setup Environment
         run: |
-          apt-get update -y 
-          apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev 
+          sudo apt-get update -y 
+          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev 
       
       - name: Checkout
         uses: actions/checkout@v3
