@@ -1,5 +1,5 @@
 using System.Runtime.CompilerServices;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Managed.Common;
 
 public class SizeF : IEquatable<SizeF>

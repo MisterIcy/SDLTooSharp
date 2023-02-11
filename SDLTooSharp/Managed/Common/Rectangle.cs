@@ -1,6 +1,6 @@
 using System.Drawing;
 using SDLTooSharp.Bindings.SDL2;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Managed.Common;
 
 /// <summary>

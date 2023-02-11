@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic.CompilerServices;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Managed.Common;
 
 public class Size : IEquatable<Size>

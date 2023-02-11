@@ -1,24 +1,43 @@
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using SDLTooSharp.Bindings.SDL2;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Managed.Common;
-
+/// <summary>
+/// Defines a two dimensional point
+/// </summary>
 public class Point2 : IEquatable<Point2>
 {
+    /// <summary>
+    /// The x-coordinate of the point
+    /// </summary>
     public int X { get; set; }
+    /// <summary>
+    /// The y-coordinate of the point
+    /// </summary>
     public int Y { get; set; }
-
+    /// <summary>
+    /// Creates a new point
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public Point2(int x, int y)
     {
         X = x;
         Y = y;
     }
 
+    /// <summary>
+    /// Creates a new point
+    /// </summary>
+    /// <param name="v"></param>
     public Point2(int v) : this(v, v)
     {
     }
 
+    /// <summary>
+    /// Creates a new point
+    /// </summary>
     public Point2() : this(0)
     {
     }

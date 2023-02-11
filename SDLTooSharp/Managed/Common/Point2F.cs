@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using SDLTooSharp.Bindings.SDL2;
-
+#pragma warning disable CS1591
 namespace SDLTooSharp.Managed.Common;
 
 public class Point2F : IEquatable<Point2F>
