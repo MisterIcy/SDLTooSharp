@@ -343,16 +343,16 @@ public abstract partial class SDLRenderer
 
     #region Filled Rectangle
 
-        public void FilledRectangle(Rectangle rect)
+    public void FilledRectangle(Rectangle rect)
+    {
+        var rectangle = (SDL.SDL_Rect)rect;
+        int result = SDL.SDL_RenderFillRect(RendererPtr, in rectangle);
+        if ( result != 0 )
         {
-            var rectangle = (SDL.SDL_Rect)rect;
-            int result = SDL.SDL_RenderFillRect(RendererPtr, in rectangle);
-            if ( result != 0 )
-            {
-                throw new DrawOperationFailedException("Filled Rectangle");
-            }
+            throw new DrawOperationFailedException("Filled Rectangle");
         }
-        
+    }
+
 
     #endregion
 }

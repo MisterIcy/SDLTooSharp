@@ -409,7 +409,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_UpdateWindowSurfaceRects(
         IntPtr window,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
         int numRects
     );
     ///<summary>Set a window's input grab mode.</summary>
@@ -477,9 +477,9 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_SetWindowGammaRamp(
         IntPtr window,
-        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] red,
-        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] green,
-        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] blue
+        [In][MarshalAs(UnmanagedType.LPArray)] ushort[] red,
+        [In][MarshalAs(UnmanagedType.LPArray)] ushort[] green,
+        [In][MarshalAs(UnmanagedType.LPArray)] ushort[] blue
     );
     ///<summary>Get the gamma ramp for a given window's display.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetWindowGammaRamp">SDL2 Documentation</a></remarks>

@@ -52,14 +52,14 @@ public class SDLTexture : IDisposable
             {
                 return _colorMod;
             }
-            
+
             int result = SDL.SDL_GetTextureColorMod(TexturePtr, out byte r, out byte g, out byte b);
             if ( result != 0 )
             {
                 throw new UnableToGetTextureColorModException();
             }
 
-            _colorMod  = new Color(r, g, b);
+            _colorMod = new Color(r, g, b);
             return _colorMod;
         }
         set {
@@ -67,7 +67,7 @@ public class SDLTexture : IDisposable
             {
                 return;
             }
-            
+
             int result = SDL.SDL_SetTextureColorMod(TexturePtr, value.R, value.G, value.B);
             if ( result != 0 )
             {
@@ -150,7 +150,7 @@ public class SDLTexture : IDisposable
         }
 
         var surface = new SDLSurface(surfacePtr);
-        
+
         var newSurface = surface.Convert((uint)SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_RGBA8888);
         surface.Dispose();
         newSurface.ColorKey = colorKey;

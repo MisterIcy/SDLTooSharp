@@ -163,11 +163,11 @@ public static partial class SDL
     public static extern int SDL_UpdateYUVTexture(
         IntPtr texture,
         in SDL_Rect rect,
-        [In] [MarshalAs(UnmanagedType.LPArray)] byte[] yPlane,
+        [In][MarshalAs(UnmanagedType.LPArray)] byte[] yPlane,
         int yPitch,
-        [In] [MarshalAs(UnmanagedType.LPArray)] byte[] uPlane,
+        [In][MarshalAs(UnmanagedType.LPArray)] byte[] uPlane,
         int uPitch,
-        [In] [MarshalAs(UnmanagedType.LPArray)] byte[] vPlane,
+        [In][MarshalAs(UnmanagedType.LPArray)] byte[] vPlane,
         int vPitch
     );
     ///<summary>Update a rectangle within a planar NV12 or NV21 texture with new pixels.</summary>
@@ -176,9 +176,9 @@ public static partial class SDL
     public static extern int SDL_UpdateNVTexture(
         IntPtr texture,
         in SDL_Rect rect,
-        [In] [MarshalAs(UnmanagedType.LPArray)] byte[] yPlane,
+        [In][MarshalAs(UnmanagedType.LPArray)] byte[] yPlane,
         int yPitch,
-        [In] [MarshalAs(UnmanagedType.LPArray)] byte[] uvPlane,
+        [In][MarshalAs(UnmanagedType.LPArray)] byte[] uvPlane,
         int uvPitch
     );
     ///<summary>Lock a portion of the texture for write-only pixel access.</summary>
@@ -298,7 +298,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawPoints(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points,
         int count
     );
     ///<summary>Draw a line on the current rendering target.</summary>
@@ -310,7 +310,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawLines(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points,
         int count
     );
     ///<summary>Draw a rectangle on the current rendering target.</summary>
@@ -322,7 +322,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawRects(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
         int count
     );
     ///<summary>Fill a rectangle on the current rendering target with the drawing color.</summary>
@@ -334,7 +334,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderFillRects(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
         int count
     );
     ///<summary>Copy a portion of the texture to the current rendering target.</summary>
@@ -362,7 +362,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawPointsF(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_FPoint[] points,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_FPoint[] points,
         int count
     );
     ///<summary>Draw a line on the current rendering target at subpixel precision.</summary>
@@ -374,7 +374,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawLinesF(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_FPoint[] points,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_FPoint[] points,
         int count
     );
     ///<summary>Draw a rectangle on the current rendering target at subpixel precision.</summary>
@@ -386,7 +386,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderDrawRectsF(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_FRect[] rects,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_FRect[] rects,
         int count
     );
     ///<summary>Fill a rectangle on the current rendering target with the drawing color at subpixel precision.</summary>
@@ -398,7 +398,7 @@ public static partial class SDL
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_RenderFillRectsF(
         IntPtr renderer,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_FRect[] rects,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_FRect[] rects,
         int count
     );
     ///<summary>Copy a portion of the texture to the current rendering target at subpixel precision.</summary>
@@ -428,9 +428,9 @@ public static partial class SDL
     public static extern int SDL_RenderGeometry(
         IntPtr renderer,
         IntPtr texture,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Vertex[] vertices,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Vertex[] vertices,
         int numVertices,
-        [In] [MarshalAs(UnmanagedType.LPArray)] int[] indices,
+        [In][MarshalAs(UnmanagedType.LPArray)] int[] indices,
         int numIndices
     );
     ///<summary>Render a list of triangles, optionally using a texture and indices into the vertex arrays Color and alpha modulation is done per vertex (SDL_SetTextureColorMod and SDL_SetTextureAlphaMod are ignored).</summary>
@@ -439,11 +439,11 @@ public static partial class SDL
     public static extern int SDL_RenderGeometryRaw(
         IntPtr renderer,
         IntPtr texture,
-        [In] [MarshalAs(UnmanagedType.LPArray)] float[] xy,
+        [In][MarshalAs(UnmanagedType.LPArray)] float[] xy,
         int xyStride,
-        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Color[] colors,
+        [In][MarshalAs(UnmanagedType.LPArray)] SDL_Color[] colors,
         int colorStride,
-        [In] [MarshalAs(UnmanagedType.LPArray)] float[] uv,
+        [In][MarshalAs(UnmanagedType.LPArray)] float[] uv,
         int uvStride,
         int numVertices,
         IntPtr indices,

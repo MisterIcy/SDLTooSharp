@@ -168,13 +168,13 @@ public abstract partial class SDLRenderer : IRenderer, IDisposable
             {
                 return _drawColor;
             }
-            
+
             int result = SDL.SDL_GetRenderDrawColor(RendererPtr, out var r, out var g, out var b, out var a);
             if ( result != 0 )
             {
                 throw new UnableToGetDrawColorException();
             }
-            _drawColor =  new Color(r, g, b, a);
+            _drawColor = new Color(r, g, b, a);
             return _drawColor;
         }
         set {
@@ -182,7 +182,7 @@ public abstract partial class SDLRenderer : IRenderer, IDisposable
             {
                 return;
             }
-            
+
             int result = SDL.SDL_SetRenderDrawColor(RendererPtr, value.R, value.G, value.B, value.A);
             if ( result != 0 )
             {
