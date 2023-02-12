@@ -154,6 +154,7 @@ public static partial class SDL
         SDL_GL_CONTEXT_RESET_NO_NOTIFICATION = 0x0000,
         SDL_GL_CONTEXT_RESET_LOSE_CONTEXT = 0x0001
     }
+
     ///<summary>Get the number of video drivers compiled into SDL.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetNumVideoDrivers">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -223,7 +224,11 @@ public static partial class SDL
     ///<summary>Get the closest match to the requested display mode.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetClosestDisplayMode">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr SDL_GetClosestDisplayMode(int displayIndex, in SDL_DisplayMode mode, out SDL_DisplayMode closest);
+    public static extern IntPtr SDL_GetClosestDisplayMode(
+        int displayIndex,
+        in SDL_DisplayMode mode,
+        out SDL_DisplayMode closest
+    );
     ///<summary>Get the index of the display containing a point</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetPointDisplayIndex">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -255,8 +260,14 @@ public static partial class SDL
     ///<summary>Create a window with the specified position, dimensions, and flags.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_CreateWindow">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr SDL_CreateWindow([MarshalAs(UnmanagedType.LPUTF8Str)] string title, int x, int y, int w,
-            int h, uint flags);
+    public static extern IntPtr SDL_CreateWindow(
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
+        int x,
+        int y,
+        int w,
+        int h,
+        uint flags
+    );
     ///<summary>Create an SDL window from an existing native window.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_CreateWindowFrom">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -290,8 +301,11 @@ public static partial class SDL
     ///<summary>Associate an arbitrary named pointer with a window.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetWindowData">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern IntPtr SDL_SetWindowData(IntPtr window, [MarshalAs(UnmanagedType.LPUTF8Str)] string name,
-            IntPtr userData);
+    public static extern IntPtr SDL_SetWindowData(
+        IntPtr window,
+        [MarshalAs(UnmanagedType.LPUTF8Str)] string name,
+        IntPtr userData
+    );
     ///<summary>Retrieve the data pointer associated with a window.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetWindowData">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -315,8 +329,13 @@ public static partial class SDL
     ///<summary>Get the size of a window's borders (decorations) around the client area.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetWindowBordersSize">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_GetWindowBordersSize(IntPtr window, out int top, out int left, out int bottom,
-            out int right);
+    public static extern int SDL_GetWindowBordersSize(
+        IntPtr window,
+        out int top,
+        out int left,
+        out int bottom,
+        out int right
+    );
     ///<summary>Get the size of a window in pixels.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetWindowSizeInPixels">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -388,7 +407,11 @@ public static partial class SDL
     ///<summary>Copy areas of the window surface to the screen.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_UpdateWindowSurfaceRects">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_UpdateWindowSurfaceRects(IntPtr window, in SDL_Rect[] rects, int numRects);
+    public static extern int SDL_UpdateWindowSurfaceRects(
+        IntPtr window,
+        [In] [MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects,
+        int numRects
+    );
     ///<summary>Set a window's input grab mode.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetWindowGrab">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -453,13 +476,20 @@ public static partial class SDL
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetWindowGammaRamp">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_SetWindowGammaRamp(
-            IntPtr window, in ushort[] red, in ushort[] green, in ushort[] blue
-        );
+        IntPtr window,
+        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] red,
+        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] green,
+        [In] [MarshalAs(UnmanagedType.LPArray)] ushort[] blue
+    );
     ///<summary>Get the gamma ramp for a given window's display.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_GetWindowGammaRamp">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_GetWindowGammaRamp(
-            IntPtr window, out ushort[] red, out ushort[] green, out ushort[] blue);
+        IntPtr window,
+        [Out][MarshalAs(UnmanagedType.LPArray)] ushort[] red,
+        [Out][MarshalAs(UnmanagedType.LPArray)] ushort[] green,
+        [Out][MarshalAs(UnmanagedType.LPArray)] ushort[] blue
+    );
 
     public enum SDL_HitTestResult
     {
@@ -477,6 +507,7 @@ public static partial class SDL
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate SDL_HitTestResult SDL_HitTest(IntPtr window, in SDL_Point area, IntPtr data);
+
     ///<summary>Provide a callback that decides if a window region has special properties.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetWindowHitTest">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]

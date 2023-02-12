@@ -167,7 +167,7 @@ public static partial class SDL
     ///<summary>Perform a fast fill of a set of rectangles with a specific color.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FillRects">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_FillRects(IntPtr dst, in SDL_Rect[] rects, int count, uint color);
+    public static extern int SDL_FillRects(IntPtr dst, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Rect[] rects, int count, uint color);
     ///<summary>Perform a fast blit from the source surface to the destination surface.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_UpperBlit">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]

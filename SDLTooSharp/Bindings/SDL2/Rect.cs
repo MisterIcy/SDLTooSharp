@@ -74,7 +74,7 @@ public static partial class SDL
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_EnclosePoints">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern bool
-            SDL_EnclosePoints(in SDL_Point[] points, int count, in SDL_Rect clip, out SDL_Rect result);
+            SDL_EnclosePoints([In][MarshalAs(UnmanagedType.LPArray)] SDL_Point[] points, int count, in SDL_Rect clip, out SDL_Rect result);
     ///<summary>Calculate the intersection of a rectangle and line segment.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_IntersectRectAndLine">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -127,7 +127,7 @@ public static partial class SDL
     ///<summary>Calculate a minimal rectangle enclosing a set of points with float precision.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_EncloseFPoints">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern bool SDL_EncloseFPoints([In] SDL_FPoint[] points, int count, in SDL_FRect clip,
+    public static extern bool SDL_EncloseFPoints([In][MarshalAs(UnmanagedType.LPArray)] SDL_FPoint[] points, int count, in SDL_FRect clip,
             out SDL_FRect result);
     ///<summary>Calculate the intersection of a rectangle and line segment with float precision.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_IntersectFRectAndLine">SDL2 Documentation</a></remarks>

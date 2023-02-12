@@ -77,7 +77,7 @@ public static partial class SDL
     ///<summary>Get the current state of an opened sensor.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SensorGetData">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_SensorGetData(IntPtr sensor, out float[] data, int numValues);
+    public static extern int SDL_SensorGetData(IntPtr sensor, [Out][MarshalAs(UnmanagedType.LPArray)] float[] data, int numValues);
     ///<summary>Close a sensor previously opened with SDL_SensorOpen().</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SensorClose">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]

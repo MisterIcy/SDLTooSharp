@@ -467,7 +467,7 @@ public static partial class SDL
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_PeepEvents">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
     public static extern int SDL_PeepEvents(
-        out SDL_Event[] events,
+        [Out][MarshalAs((UnmanagedType.LPArray))] SDL_Event[] events,
         int numEvents,
         SDL_eventaction action,
         uint minType,

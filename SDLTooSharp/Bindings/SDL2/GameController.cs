@@ -364,7 +364,7 @@ public static partial class SDL
     public static extern int SDL_GameControllerGetSensorData(
         IntPtr gameController,
         SDL_SensorType type,
-        out float[] data,
+        [Out][MarshalAs(UnmanagedType.LPArray)] float[] data,
         int numValues
     );
     ///<summary>Start a rumble effect on a game controller.</summary>

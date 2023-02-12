@@ -311,7 +311,7 @@ public static partial class SDL
     ///<summary>Set a range of colors in a palette.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_SetPaletteColors">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern int SDL_SetPaletteColors(IntPtr palette, [In] SDL_Color[] colors, int firstColor, int nColors);
+    public static extern int SDL_SetPaletteColors(IntPtr palette, [In][MarshalAs(UnmanagedType.LPArray)] SDL_Color[] colors, int firstColor, int nColors);
     ///<summary>Free a palette created with SDL_AllocPalette().</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_FreePalette">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
@@ -336,5 +336,5 @@ public static partial class SDL
     ///<summary>Calculate a 256 entry gamma ramp for a gamma value.</summary>
     ///<remarks><a href="https://wiki.libsdl.org/SDL2/SDL_CalculateGammaRamp">SDL2 Documentation</a></remarks>
     [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    public static extern void SDL_CalculateGammaRamp(float gamma, [Out] ushort[] ramp);
+    public static extern void SDL_CalculateGammaRamp(float gamma, [Out][MarshalAs(UnmanagedType.LPArray)] ushort[] ramp);
 }
