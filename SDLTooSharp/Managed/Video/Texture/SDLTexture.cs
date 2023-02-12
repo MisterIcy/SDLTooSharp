@@ -44,19 +44,30 @@ public class SDLTexture : IDisposable
 
         Renderer = renderer;
     }
-
+    private Color? _colorMod;
     public Color ColorMod
     {
         get {
+            if ( _colorMod != null )
+            {
+                return _colorMod;
+            }
+            
             int result = SDL.SDL_GetTextureColorMod(TexturePtr, out byte r, out byte g, out byte b);
             if ( result != 0 )
             {
                 throw new UnableToGetTextureColorModException();
             }
 
-            return new Color(r, g, b);
+            _colorMod  = new Color(r, g, b);
+            return _colorMod;
         }
         set {
+            if ( _colorMod == value )
+            {
+                return;
+            }
+            
             int result = SDL.SDL_SetTextureColorMod(TexturePtr, value.R, value.G, value.B);
             if ( result != 0 )
             {
@@ -125,6 +136,36 @@ public class SDLTexture : IDisposable
         }
     }
 
+    public SDLTexture(SDLRenderer renderer, string filename, Color colorKey)
+    {
+        if ( !File.Exists(filename) )
+        {
+            throw new FileNotFoundException("File not found", filename);
+        }
+
+        var surfacePtr = SDLImage.IMG_Load(filename);
+        if ( surfacePtr == IntPtr.Zero )
+        {
+            throw new UnableToCreateTextureException();
+        }
+
+        var surface = new SDLSurface(surfacePtr);
+        
+        var newSurface = surface.Convert((uint)SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_RGBA8888);
+        surface.Dispose();
+        newSurface.ColorKey = colorKey;
+
+        TexturePtr = SDL.SDL_CreateTextureFromSurface(renderer.RendererPtr, newSurface.SurfacePtr);
+        if ( TexturePtr == IntPtr.Zero )
+        {
+            newSurface.Dispose();
+            throw new UnableToCreateTextureException();
+        }
+
+        newSurface.Dispose();
+        Renderer = renderer;
+
+    }
     /// <summary>
     /// Create a new texture from a file
     /// </summary>

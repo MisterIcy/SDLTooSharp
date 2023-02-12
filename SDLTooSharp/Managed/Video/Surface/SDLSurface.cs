@@ -313,7 +313,7 @@ public partial class SDLSurface : ISurface, IDisposable
     /// 
     /// </summary>
     /// <param name="surfacePtr"></param>
-    private SDLSurface(IntPtr surfacePtr)
+    public SDLSurface(IntPtr surfacePtr)
     {
         SurfacePtr = surfacePtr;
         if ( SurfacePtr == IntPtr.Zero )

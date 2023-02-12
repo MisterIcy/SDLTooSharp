@@ -155,6 +155,7 @@ public abstract partial class SDLRenderer : IRenderer, IDisposable
         return new Point2(x, y);
     }
 
+    private Color? _drawColor;
     /// <summary>
     /// Gets or sets the renderer's draw color
     /// </summary>
@@ -163,15 +164,25 @@ public abstract partial class SDLRenderer : IRenderer, IDisposable
     public Color DrawColor
     {
         get {
+            if ( _drawColor != null )
+            {
+                return _drawColor;
+            }
+            
             int result = SDL.SDL_GetRenderDrawColor(RendererPtr, out var r, out var g, out var b, out var a);
             if ( result != 0 )
             {
                 throw new UnableToGetDrawColorException();
             }
-
-            return new Color(r, g, b, a);
+            _drawColor =  new Color(r, g, b, a);
+            return _drawColor;
         }
         set {
+            if ( _drawColor == value )
+            {
+                return;
+            }
+            
             int result = SDL.SDL_SetRenderDrawColor(RendererPtr, value.R, value.G, value.B, value.A);
             if ( result != 0 )
             {
