@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Bindings.SDL2Image;
@@ -9,6 +10,7 @@ namespace SDLTooSharp.Managed.Video.Surface;
 /// <summary>
 /// Class for SDL Surface
 /// </summary>
+[ExcludeFromCodeCoverage]
 public partial class SDLSurface : ISurface, IDisposable
 {
     /// <summary>
@@ -17,42 +19,25 @@ public partial class SDLSurface : ISurface, IDisposable
     public IntPtr SurfacePtr { get; protected set; }
 
     private Size _dimensions;
-
-    /// <summary>
-    /// Gets a value that indicates the dimensions of the surface
-    /// </summary>
+    /// <inheritdoc cref="Dimensions"/>
     public Size Dimensions => _dimensions;
 
     private int _pitch;
 
-    /// <summary>
-    /// Gets a value that indicates the pitch of the surface
-    /// (i.e. how many pixels there are per row)
-    /// </summary>
+    /// <inheritdoc cref="Pitch"/>
     public int Pitch => _pitch;
 
     private IntPtr _pixelPtr;
 
-    /// <summary>
-    /// Gets a value that indicates the pointer where the surface's pixels exist
-    /// </summary>
+    /// <inheritdoc cref="Pixels"/>
     public IntPtr Pixels => _pixelPtr;
 
     private bool _locked;
 
-    /// <summary>
-    /// Gets a value that indicates whether the surface is locked (and thus you can write to its pixels)
-    /// </summary>
+    /// <inheritdoc cref="IsLocked"/>
     public bool IsLocked => _locked;
 
-    /// <summary>
-    /// Gets or sets a value that indicates the Surface's color key.
-    /// </summary>
-    /// <remarks>For implementation details, check <see cref="SDL.SDL_GetColorKey">SDL_GetColorKey</see>,
-    /// <see cref="SDL.SDL_HasColorKey">HasColorKey</see> and <see cref="SDL.SDL_SetColorKey">SetColorKey</see>
-    /// </remarks>
-    /// <exception cref="UnableToGetSurfaceColorKeyException">In case we cannot get the surface color key</exception>
-    /// <exception cref="UnableToSetSurfaceColorKeyException">In case we cannot set the surface color key</exception>
+    /// <inheritdoc cref="ColorKey"/>
     public Color? ColorKey
     {
         get {
