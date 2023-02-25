@@ -1,7 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Managed.Font;
 
 namespace TooSharpTests.Managed.Font;
-
+[ExcludeFromCodeCoverage]
 public class FontStyleTest
 {
     [Fact]
