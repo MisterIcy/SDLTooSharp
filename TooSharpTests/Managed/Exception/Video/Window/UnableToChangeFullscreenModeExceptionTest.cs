@@ -1,8 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Managed.Exception.Video.Window;
 using SDLTooSharp.Managed.Video.Window;
 
 namespace TooSharpTests.Managed.Exception.Video.Window;
-
+[ExcludeFromCodeCoverage]
 public class UnableToChangeFullscreenModeExceptionTest
 {
 

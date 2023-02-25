@@ -1,7 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Managed.Exception.Video.Window;
 
 namespace TooSharpTests.Managed.Exception.Video.Window;
-
+[ExcludeFromCodeCoverage]
 public class WindowMinimumSizeExceptionTest
 {
     [Fact]
