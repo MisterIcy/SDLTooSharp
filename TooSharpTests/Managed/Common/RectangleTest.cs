@@ -1,9 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
-
+[ExcludeFromCodeCoverage]
 public class RectangleTest
 {
     [Fact]

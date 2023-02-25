@@ -1,9 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
-
+[ExcludeFromCodeCoverage]
 public class Point2FTest
 {
     [Fact]

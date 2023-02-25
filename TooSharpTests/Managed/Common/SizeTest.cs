@@ -1,7 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
 using SDLTooSharp.Managed.Common;
 
 namespace TooSharpTests.Managed.Common;
-
+[ExcludeFromCodeCoverage]
 public class SizeTest
 {
     [Fact]
