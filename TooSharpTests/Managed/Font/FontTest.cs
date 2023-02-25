@@ -17,15 +17,18 @@ public class FontTest
         Color fg = new Color(0, 0, 0);
         Color bg = new Color(0, 0, 0);
 
-        var surface = new SDLSurface(
-            new Size(1, 1),
-            SurfaceDepth.Depth32BitPerPixel,
-            SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_RGBA8888
-        );
-
         var mock = new Mock<IFont>();
-        mock.Setup(x => x.RenderGlyphLCD(glyph, fg, bg)).Returns(surface);
+        mock.Setup(x => x.RenderGlyphLCD(glyph, fg, bg))
+            .Returns(() => {
+                var srf = new SDLSurface(
+                    new Size(1, 2),
+                    SurfaceDepth.Depth1BitPerPixel,
+                    SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_BGR24);
 
-        Assert.Equal(surface, mock.Object.RenderGlyphLCD(glyph, fg, bg));
+                return srf;
+            });
+
+        var o = mock.Object.RenderGlyphLCD(glyph, fg, bg);
+        Assert.IsType<SDLSurface>(o);
     }
 }

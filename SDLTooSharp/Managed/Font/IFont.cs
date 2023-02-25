@@ -5,5 +5,5 @@ namespace SDLTooSharp.Managed.Font;
 
 public interface IFont
 {
-    public SDLSurface RenderGlyphLCD(uint glyph, Color foreground, Color background);
+    public ISurface RenderGlyphLCD(uint glyph, Color foreground, Color background);
 }

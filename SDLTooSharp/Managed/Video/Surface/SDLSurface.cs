@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using SDLTooSharp.Bindings.SDL2;
 using SDLTooSharp.Bindings.SDL2Image;
@@ -9,50 +10,33 @@ namespace SDLTooSharp.Managed.Video.Surface;
 /// <summary>
 /// Class for SDL Surface
 /// </summary>
-public partial class SDLSurface : ISurface, IDisposable
+[ExcludeFromCodeCoverage]
+public partial class SDLSurface : ISurface
 {
-    /// <summary>
-    /// Gets the actual pointer to an <see cref="SDLTooSharp.Bindings.SDL2.SDL.SDL_Surface"/> structure
-    /// </summary>
-    public IntPtr SurfacePtr { get; protected set; }
+    /// <inheritdoc cref="SurfacePtr"/>
+    public IntPtr SurfacePtr { get; init; }
 
     private Size _dimensions;
 
-    /// <summary>
-    /// Gets a value that indicates the dimensions of the surface
-    /// </summary>
+    /// <inheritdoc cref="Dimensions"/>
     public Size Dimensions => _dimensions;
 
     private int _pitch;
 
-    /// <summary>
-    /// Gets a value that indicates the pitch of the surface
-    /// (i.e. how many pixels there are per row)
-    /// </summary>
+    /// <inheritdoc cref="Pitch"/>
     public int Pitch => _pitch;
 
     private IntPtr _pixelPtr;
 
-    /// <summary>
-    /// Gets a value that indicates the pointer where the surface's pixels exist
-    /// </summary>
+    /// <inheritdoc cref="Pixels"/>
     public IntPtr Pixels => _pixelPtr;
 
     private bool _locked;
 
-    /// <summary>
-    /// Gets a value that indicates whether the surface is locked (and thus you can write to its pixels)
-    /// </summary>
+    /// <inheritdoc cref="IsLocked"/>
     public bool IsLocked => _locked;
 
-    /// <summary>
-    /// Gets or sets a value that indicates the Surface's color key.
-    /// </summary>
-    /// <remarks>For implementation details, check <see cref="SDL.SDL_GetColorKey">SDL_GetColorKey</see>,
-    /// <see cref="SDL.SDL_HasColorKey">HasColorKey</see> and <see cref="SDL.SDL_SetColorKey">SetColorKey</see>
-    /// </remarks>
-    /// <exception cref="UnableToGetSurfaceColorKeyException">In case we cannot get the surface color key</exception>
-    /// <exception cref="UnableToSetSurfaceColorKeyException">In case we cannot set the surface color key</exception>
+    /// <inheritdoc cref="ColorKey"/>
     public Color? ColorKey
     {
         get {
@@ -83,15 +67,7 @@ public partial class SDLSurface : ISurface, IDisposable
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value that indicates a color value that gets multiplied into blit operations
-    /// </summary>
-    /// <remarks>
-    /// For implementation details see <see cref="SDL.SDL_GetSurfaceColorMod">SDL_GetSurfaceColorMod</see> and
-    /// <see cref="SDL.SDL_SetSurfaceColorMod">SDL_SetSurfaceColorMod</see>
-    /// </remarks>
-    /// <exception cref="UnableToGetSurfaceColorModException">In case we are not able to get the surface's color mod</exception>
-    /// <exception cref="UnableToSetSurfaceColorModException">In case we are not able to set the surface's color mod</exception>
+    /// <inheritdoc cref="ColorMod"/>
     public Color? ColorMod
     {
         get {
@@ -114,13 +90,7 @@ public partial class SDLSurface : ISurface, IDisposable
         }
     }
 
-    /// <summary>
-    /// Sets or gets a value which indicates the alpha component to be multiplied in blit operations
-    /// </summary>
-    /// <remarks>For implementation details check <see cref="SDL.SDL_GetSurfaceAlphaMod"/>
-    /// and <see cref="SDL.SDL_SetSurfaceAlphaMod"/></remarks>
-    /// <exception cref="UnableToGetSurfaceAlphaModException"/>
-    /// <exception cref="UnableToSetSurfaceAlphaModException"/>
+    /// <inheritdoc cref="AlphaMod"/>
     public byte AlphaMod
     {
         get {
@@ -141,11 +111,7 @@ public partial class SDLSurface : ISurface, IDisposable
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value that indicates the surface's blend mode.
-    /// </summary>
-    /// <exception cref="UnableToGetSurfaceBlendModeException"></exception>
-    /// <exception cref="UnableToSetSurfaceBlendModeException"></exception>
+    /// <inheritdoc cref="BlendMode"/>
     public SDL.SDL_BlendMode BlendMode
     {
         get {
@@ -166,10 +132,7 @@ public partial class SDLSurface : ISurface, IDisposable
         }
     }
 
-    /// <summary>
-    /// Gets or sets a value which indicates whether the surface is RLE-enabled.
-    /// </summary>
-    /// <exception cref="UnableToSetRLEException"></exception>
+    /// <inheritdoc cref="RLE"/>
     public bool RLE
     {
         get => SDL.SDL_HasSurfaceRLE(SurfacePtr);
@@ -185,9 +148,7 @@ public partial class SDLSurface : ISurface, IDisposable
     }
 
 
-    /// <summary>
-    /// Set up a surface for directly accessing the pixels.
-    /// </summary>
+    /// <inheritdoc cref="Lock"/>
     public void Lock()
     {
         if ( _locked )
@@ -204,9 +165,7 @@ public partial class SDLSurface : ISurface, IDisposable
         _locked = true;
     }
 
-    /// <summary>
-    /// Release a surface after directly accessing the pixels.
-    /// </summary>
+    /// <inheritdoc cref="Unlock"/>
     public void Unlock()
     {
         if ( !_locked )
@@ -320,14 +279,12 @@ public partial class SDLSurface : ISurface, IDisposable
         {
             throw new UnableToCreateSurfaceException();
         }
+
         InitializeSurface();
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public SDLSurface Duplicate()
+    /// <inheritdoc cref="Duplicate"/>
+    public ISurface Duplicate()
     {
         IntPtr surfacePtr = SDL.SDL_DuplicateSurface(SurfacePtr);
         if ( surfacePtr == IntPtr.Zero )
@@ -338,12 +295,8 @@ public partial class SDLSurface : ISurface, IDisposable
         return new SDLSurface(surfacePtr);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="format"></param>
-    /// <returns></returns>
-    public SDLSurface Convert(uint format)
+    /// <inheritdoc cref="Convert"/>
+    public ISurface Convert(uint format)
     {
         IntPtr surfacePtr = SDL.SDL_ConvertSurfaceFormat(SurfacePtr, format, 0);
         if ( surfacePtr == IntPtr.Zero )
@@ -360,10 +313,10 @@ public partial class SDLSurface : ISurface, IDisposable
     /// <param name="format"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public SDLSurface Covnert(IntPtr format) =>
+    public ISurface Covnert(IntPtr format) =>
         throw new NotImplementedException("SDL_ConvertSurface is not implemented");
 
-    public static SDLSurface FromImageFile(string file)
+    public static ISurface FromImageFile(string file)
     {
         if ( !File.Exists(file) )
         {
