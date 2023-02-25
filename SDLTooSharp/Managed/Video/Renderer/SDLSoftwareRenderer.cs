@@ -11,13 +11,13 @@ public class SDLSoftwareRenderer : SDLRenderer
     /// <summary>
     /// A pointer to the surface
     /// </summary>
-    public SDLSurface Surface { get; protected set; }
+    public ISurface Surface { get; protected set; }
 
     /// <summary>
     /// Creates a new SoftwareRenderer
     /// </summary>
     /// <param name="surface"></param>
-    public SDLSoftwareRenderer(SDLSurface surface)
+    public SDLSoftwareRenderer(ISurface surface)
     {
         RendererPtr = SDL.SDL_CreateSoftwareRenderer(surface.SurfacePtr);
         if ( RendererPtr == IntPtr.Zero )

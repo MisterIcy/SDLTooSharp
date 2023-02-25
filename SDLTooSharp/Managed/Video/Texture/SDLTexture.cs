@@ -13,7 +13,7 @@ public class SDLTexture : IDisposable
 
     public SDLRenderer Renderer { get; protected init; }
 
-    public SDLTexture(SDLRenderer renderer, SDLSurface surface)
+    public SDLTexture(SDLRenderer renderer, ISurface surface)
     {
         TexturePtr = SDL.SDL_CreateTextureFromSurface(
             renderer.RendererPtr,
@@ -143,13 +143,7 @@ public class SDLTexture : IDisposable
             throw new FileNotFoundException("File not found", filename);
         }
 
-        var surfacePtr = SDLImage.IMG_Load(filename);
-        if ( surfacePtr == IntPtr.Zero )
-        {
-            throw new UnableToCreateTextureException();
-        }
-
-        var surface = new SDLSurface(surfacePtr);
+        var surface = SDLSurface.FromImageFile(filename);
 
         var newSurface = surface.Convert((uint)SDL.SDL_PixelFormatEnum.SDL_PIXELFORMAT_RGBA8888);
         surface.Dispose();
