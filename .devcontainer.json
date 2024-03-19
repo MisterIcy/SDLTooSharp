@@ -1,0 +1,6 @@
+{
+    "name": "C# (.NET)",
+    "build": {
+        "dockerfile": "docker/Dockerfile"
+    }
+}

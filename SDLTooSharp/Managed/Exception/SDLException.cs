@@ -12,6 +12,7 @@ public abstract class SDLException : System.Exception
     /// </summary>
     public string SdlErrorMsg { get; }
 
+
     /// <summary>
     /// Creates a new SDLException
     /// </summary>
