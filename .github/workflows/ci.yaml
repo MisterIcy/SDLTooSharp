@@ -29,8 +29,9 @@ jobs:
     steps:
       - name: Setup Environment
         run: |
-          sudo apt-get update -y 
-          sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev 
+          sudo apt-get update -y -qq && \
+          sudo apt-get install -y -qq libsdl2-dev libsdl2-image-dev \
+          libsdl2-mixer-dev libsdl2-ttf-dev 
       
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,22 +53,6 @@ jobs:
       - name: Build
         run: dotnet build --configuration ${{matrix.configuration}} --framework net${{matrix.dotnet_versions}} --no-restore
 
-      - name: Set PR Number
-        id: prNumber
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: kkak10/pr-number-action@v1.3
-
-      - name: Set Test Title
-        run: |
-          if ${{ github.event_name == 'pull_request' }}
-          then
-            echo "title=Test Run for PR #${{steps.prNumber.outputs.pr}} (${{github.run_number}})" >> $GITHUB_ENV
-            echo "file_name=TestReport.${{steps.prNumber.outputs.pr}}.${{github.run_number}}.md" >> $GITHUB_ENV              
-          else
-            echo "title=Test Run ${{github.run_number}}" >> $GITHUB_ENV
-            echo "file_name=TestReport.${{github.run_number}}.md" >> $GITHUB_ENV
-          fi
-
       - name: Test PR
         run: |
           dotnet test --no-restore --no-build --configuration ${{matrix.configuration}} \
@@ -75,39 +60,3 @@ jobs:
           --collect:"XPlat Code Coverage" --results-directory ./coverage \
           --framework net${{matrix.dotnet_versions}} \
           --logger:"liquid.md;LogFileName=${{github.workspace}}/${{env.file_name}};Title=${{env.title}};"
-
-      - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
-        with:
-          filename: coverage/**/coverage.cobertura.xml
-          badge: true
-          fail_below_min: false
-          format: markdown
-          hide_branch_rate: false
-          hide_complexity: true
-          indicators: true
-          output: both
-          thresholds: '50 75'
-
-      - name: Add Coverage PR Comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request'
-        with:
-          recreate: true
-          path: code-coverage-results.md
-      
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{always()}}
-        with:
-          name: 'Test Run'
-          path: ${{github.workspace}}/${{env.file_name}}
-
-      # add report as PR comment (if PR)
-      - name: Comment PR
-        uses: machine-learning-apps/pr-comment@master
-        if: ${{ github.event_name == 'pull_request' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: ${{env.file_name}}
